@@ -35,7 +35,7 @@ subtitle:
 description: >- # this means to ignore newlines until "baseurl:"
   A website hosting my portfolio and blog posts.
 author: Edward Rees
-email: your-email@example.com
+email:
 avatar: none
 
 # You'll want to customize url and baseurl for your own site:

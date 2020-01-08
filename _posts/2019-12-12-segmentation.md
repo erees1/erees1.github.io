@@ -26,9 +26,9 @@ layout: post
 
 I have recently completed a data science course at General Assembly in London and for the past 5 weeks in the evenings I have been working on my final project. Cognisant of the rising tide of fake news / fake images and more recently deep fakes on the internet  I decided to create an image classifier that could spot whether pictures of faces had been photoshopped or not. 
 
-This project ended up bifurcating into two parts with part 1 concerning pixel-based semantic segmentation of images of faces and part 2 developing the classifier to detect fake faces. Part 1 is discussed in this blog post and part 2 can be found [here]().
+This project ended up bifurcating into two parts with part 1 concerning pixel-based semantic segmentation of images of faces and part 2 developing the classifier to detect fake faces. Part 1 is discussed in this blog post and the full source code can be found on my [github](https://github.com/Rees451/faces-segmentation). Part 2 can also be found on my github [here](https://github.com/Rees451/faces-fake-vs-real).
 
-For the full source code of this project please see my [Github](https://github.com/Rees451/faces-segmentation). This project was primarily based of the work of [1] and utilises the dataset that they collected.
+ This project was primarily based of the work of [1] and utilises the dataset that they collected.
 
 ## Data cleaning / preparation
 
@@ -124,7 +124,7 @@ The images below were input to the K-means algorithm and have **256 unique class
 
 <span class="image blog"><img src="{{ "./assets/images/segmentation_post/seg-1.jpeg" | relative_url }}" alt="seg-1" /></span>
 
-The output of the k-means algorithm below has **7 unqiue classes** and are integer arrays as opposed to r-g-b arrays. (Although I present them here as colours for visualisation purposes.)
+The output of the k-means algorithm below has **7 unique classes** and are integer arrays as opposed to r-g-b arrays. (Although I present them here as colours for visualisation purposes.)
 
 ```python
 print('Number of unique colors:', len(np.unique(processed_label_sample[0])))
@@ -390,7 +390,7 @@ The chart below shows the feature importance of the different elements in the mo
 
 <span class="image blog"><img src="{{ "./assets/images/segmentation_post/feature-importance.jpeg" | relative_url }}" alt="feature-importance" /></span>
 
-This shows that the location of the pixel is by far the biggest indicator of class. This highlights perhaps the limitation of the dataset in that the iamges are very consitent and well centered. Interestingly the pixel value for red is stronger than the other colours. This is potentially due to the red colour found in the skin tone of most of the images.
+This shows that the location of the pixel is by far the biggest indicator of class. This highlights perhaps the limitation of the dataset in that the images are very consistent and well centred. Interestingly the pixel value for red is stronger than the other colours. This is potentially due to the red colour found in the skin tone of most of the images.
 
 ### Precision recall curve
 
@@ -398,7 +398,7 @@ The precision recall curve is a good way to investigate the quality of the class
 
 <span class="image blog"><img src="{{ "./assets/images/segmentation_post/precision-recall-curve.jpeg" | relative_url }}" alt="precision-recall-curve" /></span>
 
-This shows that the classifier is weakest at classiifying class 3 and 4 which are the left and right eyes respectivley. These correspond to the classes with the fewest number of observations (pixels). This contrasts with class 1 and 0, the padding and background respectivley which are the most common classes.
+This shows that the classifier is weakest at classifying class 3 and 4 which are the left and right eyes respectively. These correspond to the classes with the fewest number of observations (pixels). This contrasts with class 1 and 0, the padding and background respectively which are the most common classes.
 
 
 
