@@ -24,11 +24,11 @@ layout: post
 
 ## Intro
 
-I have recently completed a data science course at General Assembly in London and for the past 5 weeks in the evenings I have been working on my final project. Cognisant of the rising tide of fake news / fake images and more recently deep fakes on the internet  I decided to create an image classifier that could spot whether pictures of faces had been photoshopped or not. 
+I have recently completed a data science course at General Assembly in London and for the past 5 weeks in the evenings I have been working on my final project. Cognisant of the rising tide of fake news / fake images and more recently deep fakes on the internet I decided to create an image classifier that could spot whether pictures of faces had been photoshopped or not.
 
 This project ended up bifurcating into two parts with part 1 concerning pixel-based semantic segmentation of images of faces and part 2 developing the classifier to detect fake faces. Part 1 is discussed in this blog post and the full source code can be found on my [github](https://github.com/Rees451/faces-segmentation). Part 2 can also be found on my github [here](https://github.com/Rees451/faces-fake-vs-real).
 
- This project was primarily based of the work of [1] and utilises the dataset that they collected.
+This project was primarily based of the work of [1] and utilises the dataset that they collected.
 
 ## Data cleaning / preparation
 
@@ -38,8 +38,6 @@ Inspecting the dataset:
 <span class="image blog"><img src="{{ "./assets/images/segmentation_post/seg.jpeg" | relative_url }}" alt="" /></span>
 
 There were two main points to tackle before Modelling. The first was to resize the images to a uniform size (necessary if I want to run them through a convolutional net, or create an array containing all of the images) and the second was to clean up the labels (the images on the bottom row above).
-
-
 
 ### Image loading
 
@@ -62,9 +60,6 @@ for i, img in enumerate(tqdm(dir_list, desc='Loading Images')):
 
 This loads the images as numpy arrays and appends them to a list. I then resized the images and converted them to one large array of size `(n_images, img_width, img_height, 3)`. I then went through some preprocessing steps to get the images in a state suitable for modelling.
 
-
-
-
 ### Image resizing
 
 I wanted to maintain the aspect ratio of the images when resizing so I implemented a set of functions that scaled the image such that the largest dimension was equal the size required then padded the other dimension with zeros to meet the size required. I resized all of the images to `(600, 600)` square. This was done to each of the images and labels in turn. Source code is [TODO]
@@ -73,8 +68,6 @@ I wanted to maintain the aspect ratio of the images when resizing so I implement
 
 <span class="image blog"><img src="{{ "./assets/images/segmentation_post/resize_1.jpeg" | relative_url }}" alt="resize-1-1" /></span>
 
-
-
 #### Images after resizing (black bars indicate zeros)
 
 <span class="image blog"><img src="{{ "./assets/images/segmentation_post/resize_2.jpeg" | relative_url }}" alt="resize_2" /></span>
@@ -82,10 +75,12 @@ I wanted to maintain the aspect ratio of the images when resizing so I implement
 ### Label cleaning
 
 Cleaning the labels proved to be one of the most intricate part of the projects - the problem with the labelled images was that while the colours of the labels represent the classes, i.e. nose, mouth etc... the colours are represented by r-g-b numbers and there are more unique colours than there are classes:
+
 ```python
-print('Number of unique colors:', len(np.unique(label_sample[0]))) 
+print('Number of unique colors:', len(np.unique(label_sample[0])))
 #--> Number of unique colors: 256
 ```
+
 where `label_sample[0]` represents the array of pixels for the first labelled image.
 
 In order to use the labelled image as a target class it was necessary to map the r-g-b pixels in the labels to integers ensuring that I ended up with only 7 classes. I achieved this using a K-means clustering algorithm with `K` being equal to the number of distinct classes in the original image. As I was just trying to fix colours that had slightly deviated from their intended value (i.e. a red part of the image that had distorted from `(255, 0, 0)` to `(249, 0, 0)`) I converted the images to grayscale and clustered based on the grayscale pixel value - I found this to work adequately for this situation.
@@ -94,7 +89,7 @@ The function below illustrates how the algorithm was implemented on the images, 
 
 ```python
 def run_kmeans(img, n_clusters):
-    """Cluster pixels in an image to n distinct classes 
+    """Cluster pixels in an image to n distinct classes
 
     Args:
         img (np.array): Grayscale Image to convert
@@ -103,7 +98,7 @@ def run_kmeans(img, n_clusters):
     Returns:
         np.array of ints: with classes in range (1, n_clusters)
     """
-        
+
     # Create features
     make_flat = MakeFlat(img.shape)
     flat_image = make_flat.transform(img)
@@ -167,7 +162,7 @@ Here the input `seg_img` is the output of the K-means clustering algorithm above
 
 ```python
 # Map the classes first in the list indicates r-g-b value in original image
-# second value indicates output for 
+# second value indicates output for
 raw_label_mapping = {
     'mouth': ['0-255-0', 1],
     'skin': ['255-255-0', 6],
@@ -231,8 +226,6 @@ y #--> array([0. , 0. , 0.5, 0.5])
 
 This generalises to any nxn image. Appending the `x` and `y` values for each pixel to the r-g-b triplet therefore includes the pixel location as a feature for modelling.
 
-
-
 ### HOG Features
 
 The limitation of this approach is that each data point considers each pixel totally in isolation with no account taken of the surrounding pixels or structure. In [1], Khan et al. utilise HOG (Histogram of Orientated Gradients) to encapsulate some information about the pixels surrounding region. This is actually quite a neat function which takes an image and calculates the predominant direction in the surrounding region. It is best demonstrated by the demonstration below I used scikit-images [HOG function](https://scikit-image.org/docs/dev/auto_examples/features_detection/plot_hog.html) to perform this calculation.
@@ -244,7 +237,7 @@ The limitation of this approach is that each data point considers each pixel tot
 In order to streamline the use of these features I created an sklearn preprocessing class which can be used in an sklearn pipeline. Full source code is [here](https://github.com/Rees451/faces-segmentation/blob/master/src/feature_processing.py). Here I use the class to specify grayscale images and include location feature but not HOG features.
 
 ```python
-feature_params = {'color': 'gray', 
+feature_params = {'color': 'gray',
                   'loc': True,
                   'hog': False}
 
@@ -259,8 +252,6 @@ steps = [('features', feat), ('model', rfc1)]
 pipe = Pipeline(steps)
 ```
 
-
-
 ## Modelling
 
 As in [1] I utilised scikit-learns' random forest classifiers to predict the class of each pixel. In order to find the best hyper-parameters I performed a grid search. Unfortunately I wasn't able to use scikit-learns' inbuilt [GridSearchCV](https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html) function as in each cross-validation fold I needed to split the images into train-test folds and then flatten the images and labels to feed through the random forest classifier. I thus created a custom grid search class to mimic the functionality of scikit-learns'.
@@ -272,14 +263,14 @@ class CustomGridSearchCV():
     '''
     Grid search class to mimic scikit-learn, only fit method implemented
     '''
-    
+
     def __init__(self,
                  estimator,
                  param_grid,
                  cv=3,
                  refit=True,
                  random_state=None):
-        
+
         self.base_estimator = estimator
         self._estimator = copy.deepcopy(estimator)
         self.param_grid = param_grid
@@ -332,8 +323,6 @@ optimal_model = gs.best_estimator_
 joblib.dump(optimal_model, save_path, compress=('zlib',7))
 ```
 
-
-
 ## Results
 
 I ran two models as a comparison, the first which doesn't include HOG features and uses grayscale images and the second which uses colour images and HOG features, with the hyper-parameters selected using the grid search class created above.
@@ -359,8 +348,6 @@ weighted avg       0.93      0.93      0.93    540000
 
 <span class="image blog"><img src="{{ "./assets/images/segmentation_post/model1.jpeg" | relative_url }}" alt="model1" /></span>
 
-
-
 ### Model with HOG features
 
 ```
@@ -382,11 +369,11 @@ weighted avg       0.94      0.95      0.94    540000
 
 <span class="image blog"><img src="{{ "./assets/images/segmentation_post/model2.jpeg" | relative_url }}" alt="model2" /></span>
 
-Including the HOG features gave a slight bump of c.1% to the overall model accuracy. 
+Including the HOG features gave a slight bump of c.1% to the overall model accuracy.
 
 ### Feature Importance
 
-The chart below shows the feature importance of the different elements in the model, pixel location turned out to be the strongest predictor of class which is unsurprising given the uniformity of the images. Thus their may be potential to use image augmentation to improve the robustness of the classifier. 
+The chart below shows the feature importance of the different elements in the model, pixel location turned out to be the strongest predictor of class which is unsurprising given the uniformity of the images. Thus their may be potential to use image augmentation to improve the robustness of the classifier.
 
 <span class="image blog"><img src="{{ "./assets/images/segmentation_post/feature-importance.jpeg" | relative_url }}" alt="feature-importance" /></span>
 
@@ -394,37 +381,32 @@ This shows that the location of the pixel is by far the biggest indicator of cla
 
 ### Precision recall curve
 
-The precision recall curve is a good way to investigate the quality of the classifier. For an explanation of what they are check out the good explanation [here](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/). This graph is quite good at highlighting the models strengths and weaknesses, 
+The precision recall curve is a good way to investigate the quality of the classifier. For an explanation of what they are check out the good explanation [here](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/).
 
 <span class="image blog"><img src="{{ "./assets/images/segmentation_post/precision-recall-curve.jpeg" | relative_url }}" alt="precision-recall-curve" /></span>
 
 This shows that the classifier is weakest at classifying class 3 and 4 which are the left and right eyes respectively. These correspond to the classes with the fewest number of observations (pixels). This contrasts with class 1 and 0, the padding and background respectively which are the most common classes.
 
-
-
 ## Conclusion
 
-I found that it's possible to develop a fairly strong segmentation classifier of faces using only pixel value, pixel location and HOG features. Whilst the model performs fairly strongly on this dataset,the images in this dataset are very uniform being both well centred, well cropped and with similar backgrounds. The model therefore does lack generalisability to images outside this dataset. There are a couple of potential measures that could be taken to improve model performance and generalisability which I may come back and revisit in the future. 
+I found that it's possible to develop a fairly strong segmentation classifier of faces using only pixel value, pixel location and HOG features. Whilst the model performs fairly strongly on this dataset,the images in this dataset are very uniform being both well centred, well cropped and with similar backgrounds. The model therefore does lack generalisability to images outside this dataset. There are a couple of potential measures that could be taken to improve model performance and generalisability which I may come back and revisit in the future.
 
 ### Model Improvements
 
-* Image augmentation to reduce the reliance on location feature
-* Inclusion of more than one size of HOG feature to encapsulate information from both the immediate vicinity and other features further away from the pixel being classified
-* Encode location information as relative rather than as absolute, for instance predict the location of the nose then base other measurements from this (I would have to think more deeply about how to implement this in practice)
-* Create a histogram of colours from the pixels around the pixel being classified to encapsulate more information from the surrounding region, this is implemented in [1]
-
-
+- Image augmentation to reduce the reliance on location feature
+- Inclusion of more than one size of HOG feature to encapsulate information from both the immediate vicinity and other features further away from the pixel being classified
+- Encode location information as relative rather than as absolute, for instance predict the location of the nose then base other measurements from this (I would have to think more deeply about how to implement this in practice)
+- Create a histogram of colours from the pixels around the pixel being classified to encapsulate more information from the surrounding region, this is implemented in [1]
 
 ## References
 
-[1] *Khalil Khan*, *Massimo Mauro*, *Riccardo Leonardi*,
+[1] _Khalil Khan_, _Massimo Mauro_, _Riccardo Leonardi_,
 **"Multi-class semantic segmentation of faces"**,
 IEEE International Conference on Image Processing (ICIP), 2015
 -- [**PDF**](https://github.com/massimomauro/FASSEG-repository/blob/master/papers/multiclass_face_segmentation_ICIP2015.pdf)
 
-[2] *Khalil Khan*, *Massimo Mauro*, *Pierangelo Migliorati*, *Riccardo Leonardi*,
+[2] _Khalil Khan_, _Massimo Mauro_, _Pierangelo Migliorati_, _Riccardo Leonardi_,
 **"Head pose estimation through multiclass face segmentation"**,
 IEEE International Conference on Multimedia and Expo (ICME), 2017
-*In collaboration with [YonderLabs](http://www.yonderlabs.com)*
+_In collaboration with [YonderLabs](http://www.yonderlabs.com)_
 -- [**PDF**](https://github.com/massimomauro/FASSEG-repository/blob/master/papers/pose_estimation_by_segmentation_ICME2017.pdf)
-
