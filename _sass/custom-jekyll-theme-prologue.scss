@@ -135,7 +135,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   font-weight: 400;
   // color: rgb(10, 10, 10);
   line-height: 1.5em;
@@ -335,7 +335,7 @@ article {
     display: block;
     width: 65%;
     margin-left: auto;
-    margin-right: auto;  
+    margin-right: auto;
   }
 
   &.featured {
@@ -1034,6 +1034,7 @@ button,
     overflow-y: auto;
     position: fixed;
     top: 0;
+    // width: 100%;
     // max-width: 220px;
     width: _size(header);
     z-index: _misc(z-index-base) + 2;
@@ -1208,6 +1209,14 @@ button,
           padding: 0 1em;
         }
       }
+    }
+  }
+
+  /* Blog Images */
+
+  .image {
+    &.blog {
+      width: 95%;
     }
   }
 
