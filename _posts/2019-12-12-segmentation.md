@@ -26,7 +26,7 @@ layout: post
 
 I have recently completed a data science course at General Assembly in London and for the past 5 weeks in the evenings I have been working on my final project. Cognisant of the rising tide of fake news / fake images and more recently deep fakes on the internet I decided to create an image classifier that could spot whether pictures of faces had been photoshopped or not.
 
-This project ended up bifurcating into two parts with part 1 concerning pixel-based semantic segmentation of images of faces and part 2 developing the classifier to detect fake faces. Part 1 is discussed in this blog post and the full source code can be found on my [github](https://github.com/Rees451/faces-segmentation). Part 2 can also be found on my github [here](https://github.com/Rees451/faces-fake-vs-real).
+This project ended up bifurcating into two parts with part 1 concerning pixel-based semantic segmentation of images of faces and part 2 developing the classifier to detect fake faces. Part 1 is discussed in this blog post and the full source code can be found on my [github](https://github.com/erees1/faces-segmentation). Part 2 can also be found on my github [here](https://github.com/erees1/faces-fake-vs-real).
 
 This project was primarily based of the work of [1] and utilises the dataset that they collected.
 
@@ -41,7 +41,7 @@ There were two main points to tackle before Modelling. The first was to resize t
 
 ### Image loading
 
-To load the images I wrote a series of functions to act as a data pipeline, for full source code click [here](https://github.com/Rees451/faces-segmentation/blob/master/src/image_processing.py). I used `os.listdir()` and [scikit-image](https://scikit-image.org) to load each image. As the dataset consists of pairs of images and labels I used the following to code to load the images and correct corresponding labels at the same time.
+To load the images I wrote a series of functions to act as a data pipeline, for full source code click [here](https://github.com/erees1/faces-segmentation/blob/master/src/image_processing.py). I used `os.listdir()` and [scikit-image](https://scikit-image.org) to load each image. As the dataset consists of pairs of images and labels I used the following to code to load the images and correct corresponding labels at the same time.
 
 ```python
 dir_list = os.listdir(RGB_directory)
@@ -184,7 +184,7 @@ desired_labels = [
 ]
 ```
 
-The function `convert_labels()` utilises another function `mask_image()` which takes the original labelled_image and masks it basked on the criteria in `label_dict`. By multiplying the result of this mask with the result of the K-means algorithm it is possible to infer which number corresponds to which class and then reassign the labels accordingly. I haven't included the full code here as it is quite verbose but the full source code is [here](https://github.com/Rees451/faces-segmentation/blob/master/src/label_processing.py#L114). Below shows the `mask_image()` function in action.
+The function `convert_labels()` utilises another function `mask_image()` which takes the original labelled_image and masks it basked on the criteria in `label_dict`. By multiplying the result of this mask with the result of the K-means algorithm it is possible to infer which number corresponds to which class and then reassign the labels accordingly. I haven't included the full code here as it is quite verbose but the full source code is [here](https://github.com/erees1/faces-segmentation/blob/master/src/label_processing.py#L114). Below shows the `mask_image()` function in action.
 
 <span class="image blog"><img src="{{ "./assets/images/segmentation_post/mask-example.jpeg" | relative_url }}" alt="mask-example" /></span>
 
@@ -234,7 +234,7 @@ The limitation of this approach is that each data point considers each pixel tot
 
 ### Feature Creation Class
 
-In order to streamline the use of these features I created an sklearn preprocessing class which can be used in an sklearn pipeline. Full source code is [here](https://github.com/Rees451/faces-segmentation/blob/master/src/feature_processing.py). Here I use the class to specify grayscale images and include location feature but not HOG features.
+In order to streamline the use of these features I created an sklearn preprocessing class which can be used in an sklearn pipeline. Full source code is [here](https://github.com/erees1/faces-segmentation/blob/master/src/feature_processing.py). Here I use the class to specify grayscale images and include location feature but not HOG features.
 
 ```python
 feature_params = {'color': 'gray',
