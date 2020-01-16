@@ -102,7 +102,6 @@ body {
   line-height: 1.75em;
   letter-spacing: 0.05em;
   color: rgb(32, 33, 36);
-  // color: rgb(100, 100, 100);
 
   &.is-loading * {
     @include vendor("transition", "none !important");
@@ -198,8 +197,6 @@ a {
   //   Hover over links - affects all links
   &:hover {
     color: rgb(0, 0, 0);
-    // font-weight: 400;
-    border-bottom-color: rgba(255, 255, 255, 0);
   }
 }
 
@@ -217,7 +214,7 @@ sup {
 
 hr {
   border: 0;
-  border-top: solid 1px #41484c;
+  border-top: solid 1px rgb(150, 150, 150);
 }
 
 code {
@@ -606,7 +603,7 @@ button,
       li {
         font-size: 0.7em;
         display: table-cell;
-        text-align: left;
+        text-align: center;
       }
     }
   }
@@ -709,12 +706,12 @@ button,
 
 #footer {
   // margin-left: 375px;
-  text-align: left;
+  text-align: center;
 
   background-color: rgb(255, 255, 255);
   padding: 0em 0 0em 0;
   // box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.05), inset 0 0.1em 0.1em 0 rgba(0, 0, 0, 0.025);
-  margin-left: 0px;
+  margin-left: 375px;
 
   ul.copyright {
     cursor: default;
@@ -723,11 +720,11 @@ button,
     line-height: 1em;
     li {
       font-size: 0.5em;
-      // display: inline-block;
+      display: inline-block;
       list-style: none;
       line-height: 1.4em;
       // border-left: solid 1px rgba(128, 128, 128, 0.35);
-      text-align: left;
+      text-align: centre;
 
       // &:first-child {
       // 	border-left: 0;
@@ -759,9 +756,9 @@ button,
     margin: 0;
     overflow: hidden;
     padding: 4em 0;
-    box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.05),
-      inset 0 0.1em 0.1em 0 rgba(0, 0, 0, 0.025);
-    background-image: url("images/overlay.png");
+    // box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.05),
+      // inset 0 0.1em 0.1em 0 rgba(0, 0, 0, 0.025);
+    // background-image: url("images/overlay.png");
 
     &.dark {
       color: #ddd;
@@ -844,7 +841,7 @@ button,
   /* Footer */
 
   #footer {
-    margin-left: 0px;
+    margin-left: 263px;
   }
 
   /* Main */
@@ -963,7 +960,7 @@ button,
   /* Footer */
 
   #footer {
-    margin-left: 0;
+    margin-left: 20%;
   }
 
   /* Main */
@@ -1127,15 +1124,24 @@ button,
         @include vendor("transform", "translateX(#{_size(header)})");
       }
 
+      #footer {
+        @include vendor("transform", "translateX(#{_size(header)})");
+      }
+
       #header {
         @include vendor("transform", "translateX(0)");
       }
+
+      
+
     }
   }
 
   /* Footer */
 
   #footer {
+    @include vendor("backface-visibility", "hidden");
+    @include vendor("transition", "transform #{_duration(header)} ease");
     margin-left: 0;
   }
 
@@ -1222,19 +1228,19 @@ button,
 
   /* Footer */
 
-  #footer {
-    .copyright {
-      li {
-        display: block;
-        line-height: 1.25em;
-        border: 0;
-        padding: 0;
-        margin: 0em 0 0 0;
+  // #footer {
+  //   .copyright {
+  //     li {
+  //       display: block;
+  //       line-height: 1.25em;
+  //       border: 0;
+  //       padding: 0;
+  //       margin: 0em 0 0 0;
 
-        &:first-child {
-          margin-top: 0;
-        }
-      }
-    }
-  }
+  //       &:first-child {
+  //         margin-top: 0;
+  //       }
+  //     }
+  //   }
+  // }
 }
