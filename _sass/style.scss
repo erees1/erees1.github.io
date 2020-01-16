@@ -1,28 +1,5 @@
 @import "libs/material"; // For code highlighting
 
-#main {
-  > section,
-  article {
-    background-image: none;
-
-    &.shade-one {
-      background-color: rgb(255, 255, 255);
-    }
-
-    &.shade-two {
-      background-color: rgb(255, 255, 255);
-    }
-
-    &.shade-three {
-      background-color: rgb(255, 255, 255);
-    }
-
-    &.shade-four {
-      background-color: rgb(255, 255, 255);
-    }
-  }
-}
-
 /* Fonts */
 
 @font-face {
