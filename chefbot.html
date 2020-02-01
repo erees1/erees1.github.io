@@ -1,0 +1,37 @@
+---
+layout: page
+title: ChefBot
+icon: none
+order: 3
+---
+
+<span class="image med-icon"><img src="assets/images/chefbot-icon.png" /></span>
+<p></p>
+<p>
+  I've been working on a chatbot to provide people with cooking ideas and recipes.
+  The idea for this project arose because whilst I quite enjoy cooking I often struggle 
+  to come up with good ideas or recipes to cook. 
+  Additionally, I often don't end up thinking about what to cook until I am in the supermarket, by which time it is too late to do a proper search.
+  Therefore I made this chatbot to try and assist me in finding recipes. I am a big fan of <a href=https://mobkitchen.co.uk>MobKitchen</a> so they were the first set of recipes that I added to the bot. 
+  However I hope to add some other sites in the future.
+</p>
+<p>
+  The bot is still very much in development and hence runs locally on my computer. However, if the server is running you should see a blue chat icon in the bottom right hand corner. 
+  Feel free to try it out! The source code and more explanation is on my <a href=https://github.com/erees1/recipe-chatbot>GitHub</a>. Note that it is not yet very good at handling deviations for the happy path! 
+</p>
+
+<div id="webchat"/>
+<script src="https://storage.googleapis.com/mrbot-cdn/webchat-latest.js"></script>
+// Or you can replace latest with a specific version
+<script>
+  WebChat.default.init({
+    selector: "#webchat",
+    initPayload: "/greet",
+    customData: {"language": "en"}, // arbitrary custom data. Stay minimal as this will be added to the socket
+    socketUrl: "https://477680a3.ngrok.io",
+    title: "ChefBot",
+    subtitle: "",
+    hideWhenNotConnected: true,
+  })
+</script>
+</div>

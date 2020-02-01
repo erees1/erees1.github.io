@@ -338,7 +338,7 @@ article {
   &.featured {
     display: block;
     width: 100%;
-    margin: 0 0 2em 0;
+    margin: 0 0 2em 0
   }
 
   &.left {
@@ -349,6 +349,13 @@ article {
   &.right {
     float: right;
     margin: 0 0 2em 2em;
+  }
+
+  &.med-icon{
+    display: block;
+    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   &.centered {
