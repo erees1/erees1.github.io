@@ -292,6 +292,7 @@ article {
 .image {
   display: inline-block;
   border: 0;
+  border-bottom: none;
 
   img {
     display: block;
@@ -312,6 +313,7 @@ article {
   &.fit {
     display: block;
     width: 100%;
+    border-bottom: none;
   }
 
   &.blog {
