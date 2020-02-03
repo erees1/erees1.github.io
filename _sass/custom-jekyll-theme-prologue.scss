@@ -343,7 +343,7 @@ article {
 
   &.med-icon {
     display: block;
-    width: 35%;
+    width: 30%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -1244,6 +1244,13 @@ button,
   .image {
     &.blog {
       width: 100%;
+    }
+
+    &.med-icon {
+      display: block;
+      width: 40%;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 
