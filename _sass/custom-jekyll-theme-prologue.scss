@@ -103,6 +103,10 @@ body {
 }
 
 #main {
+  // display: inline-block;
+  // width: 100%;
+  // height: 100%;
+  // position: aboslute;
   letter-spacing: 0em;
   p {
     font-size: calc(var(--default-font-size) - 2pt);
@@ -159,6 +163,7 @@ header {
 }
 
 footer {
+  // display: inline-block;
   margin: 2em 0 0 0;
 }
 
@@ -177,7 +182,10 @@ a {
   text-decoration: none;
   color: rgb(35, 118, 229);
   //   border-bottom: dotted 1px rgba(128, 128, 128, 0.5);
-  @include vendor('transition', ('color 0.05s ease-in-out', 'border-bottom-color 0.05s ease-in-out'));
+  @include vendor(
+    "transition",
+    ("color 0.05s ease-in-out", "border-bottom-color 0.05s ease-in-out")
+  );
   outline: 0;
 
   //   Hover over links - affects all links
@@ -526,7 +534,6 @@ button,
   header {
     color: #666;
     text-align: left;
-    background: #fff;
     margin: 0;
     padding: 1em;
     font-size: 0.8em;
@@ -557,7 +564,7 @@ button,
   @include vendor("display", "flex");
   @include vendor("flex-direction", "column");
   @include vendor("justify-content", "space-between");
-  // background: #222629 url('images/overlay.png');
+  background: white;
   // box-shadow: inset -0.25em 0 0.25em 0 rgba(0, 0, 0, 0.1);
   // color: rgb(100, 100, 100);
   height: 100%;
@@ -566,7 +573,7 @@ button,
   position: fixed;
   text-align: left;
   top: 0;
-  width: 263px;
+  width: _size(header);
 
   .top {
     @include vendor("flex-grow", "1");
@@ -701,7 +708,7 @@ button,
   background-color: rgb(255, 255, 255);
   padding: 0em 0 0em 0;
   // box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.05), inset 0 0.1em 0.1em 0 rgba(0, 0, 0, 0.025);
-  margin-left: 375px;
+  margin-left: _size(header);
 
   ul.copyright {
     cursor: default;
@@ -729,7 +736,7 @@ button,
 /* Main */
 
 #main {
-  margin-left: 375px;
+  margin-left: _size(header);
   > section {
     text-align: center;
   }
@@ -858,19 +865,19 @@ button,
   /* Header */
 
   #header {
-    width: 263px;
+    width: _size(header);
   }
 
   /* Footer */
 
   #footer {
-    margin-left: 263px;
+    margin-left: _size(header);
   }
 
   /* Main */
 
   #main {
-    margin-left: 263px;
+    margin-left: _size(header);
   }
 }
 
@@ -946,7 +953,7 @@ button,
   /* Header */
 
   #header {
-    width: 20%;
+    width: _size(header);
     // max-width: 220px;
   }
 
@@ -983,13 +990,13 @@ button,
   /* Footer */
 
   #footer {
-    margin-left: 20%;
+    margin-left: _size(header);
   }
 
   /* Main */
 
   #main {
-    margin-left: 20%;
+    margin-left: _size(header);
   }
 }
 
@@ -1047,6 +1054,7 @@ button,
     @include vendor("backface-visibility", "hidden");
     @include vendor("transform", "translateX(#{_size(header) * -1})");
     @include vendor("transition", ("transform #{_duration(header)} ease"));
+
     -webkit-overflow-scrolling: touch;
     display: block;
     height: 100%;
@@ -1059,7 +1067,6 @@ button,
     width: _size(header);
     z-index: _misc(z-index-base) + 2;
     // background: #222729 url('images/overlay.png');
-    // box-shadow: inset -0.25em 0 0.25em 0 rgba(0, 0, 0, 0.125);
 
     .top {
       position: relative;
@@ -1137,17 +1144,29 @@ button,
 
   body {
     &.header-visible {
-      #main {
-        @include vendor("transform", "translateX(#{_size(header)})");
-      }
+      // #main {
+      //   @include vendor("transform", "translateX(#{_size(header)})");
+      // }
 
       #headerToggle {
         @include vendor("transform", "translateX(#{_size(header)})");
       }
 
-      #footer {
-        @include vendor("transform", "translateX(#{_size(header)})");
+      // #main-mask {
+      //   // position: absolute;
+      //   @include vendor("transition", "all #{_duration(header)} ease-in-out");
+      //   background: rgb(0, 0, 0);
+      //   opacity: 1;
+      //   z-index: 1000;
+      //   height: 100%;
+      //   width: 100%
+      // }
+      #header {
+        box-shadow: 1px 0 8px 0 rgba(0,0,0,0.35);;
       }
+      // #footer {
+      //   @include vendor("transform", "translateX(#{_size(header)})");
+      // }
 
       #header {
         @include vendor("transform", "translateX(0)");
