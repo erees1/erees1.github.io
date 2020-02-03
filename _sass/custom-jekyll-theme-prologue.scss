@@ -84,7 +84,7 @@
 /* Basic */
 
 :root {
-  --default-font-size: 15pt;
+  --default-font-size: 13pt;
 }
 
 body {
@@ -92,7 +92,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: var(--default-font-size);
   font-weight: 300;
-  line-height: 1.5em;
+  line-height: 2em;
   letter-spacing: 0.05em;
   color: rgb(32, 33, 36);
 
@@ -109,7 +109,7 @@ body {
   // position: aboslute;
   letter-spacing: 0em;
   p {
-    font-size: calc(var(--default-font-size) - 2pt);
+    font-size: var(--default-font-size);
   }
 }
 
@@ -146,12 +146,16 @@ h6 a {
 }
 
 h2 {
-  font-size: 1.7em;
-  letter-spacing: -1px;
+  font-size: 2em;
+  // letter-spacing: -1px;
 }
 
 h3 {
-  font-size: 1.3em;
+  font-size: 1.5em;
+}
+
+h4 {
+  font-size: 1.25em;
 }
 
 header {
@@ -536,7 +540,7 @@ button,
     text-align: left;
     margin: 0;
     padding: 1em;
-    font-size: 0.8em;
+    // font-size: 0.8em;
 
     h3 {
       font-size: 1em;
@@ -574,6 +578,7 @@ button,
   text-align: left;
   top: 0;
   width: _size(header);
+  font-size: 1.3em;
 
   .top {
     @include vendor("flex-grow", "1");
@@ -627,7 +632,7 @@ button,
   // Code for the top title
   h1 {
     color: rgb(32, 33, 36);
-    font-size: 1.1em;
+    font-size: 0.9em;
     font-weight: 400;
     position: relative;
     line-height: 1em;
@@ -653,6 +658,7 @@ button,
 }
 
 #nav {
+  font-family: "Futura PT Web";
   ul {
     list-style: none;
     margin-bottom: 0;
@@ -668,6 +674,7 @@ button,
         text-decoration: none;
         outline: 0;
         border: 0;
+        // font-size: 1.5em;
 
         span {
           position: relative;
@@ -969,7 +976,7 @@ button,
       list-style: none;
       li {
         a {
-          font-size: 1em;
+
           padding-top: 0.5em;
           padding-bottom: 0.5em;
 
