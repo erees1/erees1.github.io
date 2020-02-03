@@ -168,7 +168,7 @@
   height: 100%;
   width: 100%;
   opacity: 0;
-  transition: 0.45s ease;
+  @include vendor("transition", "all 0.3s ease-in-out");
   background-color: rgb(126, 126, 126);
 }
 
