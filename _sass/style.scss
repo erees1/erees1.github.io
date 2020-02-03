@@ -198,25 +198,28 @@
     margin-bottom: 0em;
     text-align: center;
   }
+
   td.divider {
     width: 20%;
     padding: 0 0 0 0;
     text-align: center;
   }
-  td.r-link {
-    width: 40%;
-    padding: 0 0 0 0;
-    text-align: left;
-    a {
-      color: white;
+  td {
+    &.l-link {
+      text-align: right;
     }
-  }
-  td.l-link {
-    width: 40%;
-    padding: 0 0 0 0;
-    text-align: right;
-    a {
-      color: white;
+    &.r-link {
+      text-align: left;
+    }
+
+    &.l-link,
+    &.r-link {
+      width: 40%;
+      padding: 0 0 0 0;
+      a {
+        color: white;
+        text-decoration: none;
+      }
     }
   }
 }
