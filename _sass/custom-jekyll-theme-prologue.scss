@@ -14,10 +14,10 @@
 
 @include skel-breakpoints(
   (
-    wide: "(min-width: 1001px) and (max-width: 1880px)",
-    normal: "(min-width: 1001px) and (max-width: 1620px)",
-    narrow: "(min-width: 1001px) and (max-width: 1320px)",
-    narrower: "(max-width: 1000px)",
+    wide: "(min-width: 1050px) and (max-width: 1880px)",
+    normal: "(min-width: 1050px) and (max-width: 1620px)",
+    narrow: "(min-width: 1050px) and (max-width: 1320px)",
+    narrower: "(max-width: 1050px)",
     mobile: "(max-width: 800px)"
   )
 );
