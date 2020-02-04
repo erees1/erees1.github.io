@@ -92,7 +92,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: var(--default-font-size);
   font-weight: 300;
-  line-height: 2em;
+  line-height: 1.6em;
   letter-spacing: 0.05em;
   color: rgb(32, 33, 36);
 
@@ -147,7 +147,7 @@ h6 a {
 
 h2 {
   font-size: 2em;
-  // letter-spacing: -1px;
+  letter-spacing: +1px;
 }
 
 h3 {
@@ -250,7 +250,7 @@ ul,
 ol,
 dl,
 table {
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
 }
 
 dl {
@@ -285,7 +285,7 @@ article {
   }
 
   .row {
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
   .row > * {
@@ -630,14 +630,14 @@ button,
   }
 
   // Code for the top title
-  h1 {
-    color: rgb(32, 33, 36);
-    font-size: 0.9em;
-    font-weight: 400;
-    position: relative;
-    line-height: 1em;
-    font-variant: small-caps;
-    font-family: "Times New Roman", "Times", "serif";
+  #title {
+      color: rgb(32, 33, 36);
+      font-size: 0.9em;
+      font-weight: 400;
+      position: relative;
+      line-height: 1em;
+      font-variant: small-caps;
+      font-family: "Times New Roman", "Times", "serif";
   }
 
   // Code for the sub title
@@ -976,7 +976,6 @@ button,
       list-style: none;
       li {
         a {
-
           padding-top: 0.5em;
           padding-bottom: 0.5em;
 
@@ -1169,7 +1168,7 @@ button,
       //   width: 100%
       // }
       #header {
-        box-shadow: 1px 0 8px 0 rgba(0,0,0,0.35);;
+        box-shadow: 1px 0 8px 0 rgba(0, 0, 0, 0.35);
       }
       // #footer {
       //   @include vendor("transform", "translateX(#{_size(header)})");
