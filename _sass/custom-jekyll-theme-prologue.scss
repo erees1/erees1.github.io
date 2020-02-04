@@ -33,10 +33,10 @@
       )
     ),
     conditionals: true,
-    containers: 1000px,
+    containers: 800px,
     breakpoints: (
       wide: (
-        containers: 1000px,
+        containers: 800px,
         grid: (
           gutters: (
             40px,
@@ -45,7 +45,7 @@
         )
       ),
       normal: (
-        containers: 960px,
+        containers: 800px,
         grid: (
           gutters: (
             40px,
@@ -54,11 +54,11 @@
         )
       ),
       narrow: (
-        containers: 100%,
+        containers: 800px,
         grid: (
           gutters: (
-            20px,
-            20px
+            40px,
+            40px
           )
         )
       ),
@@ -936,9 +936,9 @@ button,
     font-size: var(--default-font-size);
   }
 
-  .container {
-    padding: 0 2em 0 2em;
-  }
+  // .container {
+  //   padding: 0 2em 0 2em;
+  // }
 
   /* List */
 
@@ -1035,6 +1035,7 @@ button,
   }
 
   .container {
+    max-width: calc(800px + 4em);
     padding: 0 2em 0 2em;
   }
 
@@ -1164,7 +1165,7 @@ button,
       //   @include vendor("transition", "all #{_duration(header)} ease-in-out");
       //   background: rgb(0, 0, 0);
       //   opacity: 1;
-      //   z-index: 1000;
+      //   z-index: 100000;
       //   height: 100%;
       //   width: 100%
       // }
