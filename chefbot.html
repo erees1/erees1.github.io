@@ -60,7 +60,8 @@ order: 3
 </div>
 
 <div id="webchat"/>
-<script src="https://storage.googleapis.com/mrbot-cdn/webchat-latest.js"></script>
+<!-- <script src="https://storage.googleapis.com/mrbot-cdn/webchat-latest.js"></script> -->
+<script src="{{- 'assets/js/webchat.js' | relative_url -}}"></script>
 // Or you can replace latest with a specific version
 <script>
   WebChat.default.init({
