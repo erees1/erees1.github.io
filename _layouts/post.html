@@ -13,7 +13,7 @@ layout: default
         <header>
           <h2>{{- page.title -}}</h2>
           <p>
-            {% if page.author %}{{ page.author }}, {% endif %}{{- page.date |
+            {% if page.author %}{{ page.author }} | {% endif %}{{- page.date |
             date_to_long_string -}}
           </p>
         </header>
