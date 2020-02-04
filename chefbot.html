@@ -67,10 +67,17 @@ order: 3
     selector: "#webchat",
     initPayload: "/greet",
     customData: {"language": "en"}, // arbitrary custom data. Stay minimal as this will be added to the socket
-    socketUrl: "http://383c78f9.ngrok.io",
+    socketUrl: "https://cc4f0209.ngrok.io",
     title: "ChefBot",
     subtitle: "",
     hideWhenNotConnected: true,
   })
 </script>
 </div>
+
+<!-- <script>
+
+if (WebChat.isOpen()){
+  document.getElementsByClassName("toggle").className = "toggle MyClass";
+}
+</script> -->
