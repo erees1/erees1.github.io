@@ -17,7 +17,7 @@
  }
 
 .post-area {
-  padding: 40px;
+  padding: 40px 20px 40px 20px;
   width: 100%;
   min-height: 150px;
   background-color: white;
@@ -202,8 +202,12 @@ section.single-section{
   .container {
     width: 1000px;
   }
+}
 
-
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
 
 /*---------------------------------------------
 					Theme Edits Close
