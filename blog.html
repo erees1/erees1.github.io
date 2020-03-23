@@ -3,6 +3,7 @@ layout: page
 title: Blog
 permalink: /blog/
 ---
+
 <!-- Slider Start -->
 <!-- <section id="global-header">
   <div class="container">
@@ -16,20 +17,20 @@ permalink: /blog/
     </div>
   </div>
 </section> -->
-<section id='blog-posts'>
-<div class="container">
-{% for post in site.posts %}
-{% if post.draft == false}
+<section id="blog-posts">
+  <div class="container">
+    {% for post in site.posts %} {% if post.draft == false %}
 
-<div class="post-area">
-  <a href="{{ post.url | prepend: site.baseurl }}" class="bold">{{ post.title }}</a>
-  <p class="post-date">{{ post.date | date_to_long_string }}</p>
-  <p>
-    {{ post.content | strip_html | truncatewords: 50 }}
-  </p>
-</div>
+    <div class="post-area">
+      <a href="{{ post.url | prepend: site.baseurl }}" class="bold"
+        >{{ post.title }}</a
+      >
+      <p class="post-date">{{ post.date | date_to_long_string }}</p>
+      <p>
+        {{ post.content | strip_html | truncatewords: 50 }}
+      </p>
+    </div>
 
-{% endif %}
-{% endfor %}
-</div>
+    {% endif %} {% endfor %}
+  </div>
 </section>
