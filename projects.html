@@ -34,6 +34,7 @@ permalink: /projects/
                 <ul id="portfolio-contant-active">
                   {%- assign _projects = site.project_items | sort: 'order' -%}
                   {% for project in _projects %}
+                  {% if project.draft == false %}
 
                     <li class="mix {{project.category}}">
                       <div class="row">
@@ -59,6 +60,7 @@ permalink: /projects/
                         </div>
                     </div>
                   </li>
+                  {% endif %}
                   {% endfor %}
                 </ul>
               </div>
