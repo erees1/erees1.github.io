@@ -11,3 +11,15 @@ fields:
 - type: text
   name: layout
   label: layout
+- name: draft
+  type: select
+  default: []
+  config:
+    required: false
+    options: []
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: draft
