@@ -11,3 +11,19 @@ fields:
 - type: text
   name: layout
   label: layout
+- name: draft
+  type: select
+  default: ''
+  config:
+    required: false
+    options:
+    - 'true'
+    - 'false'
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: draft
+pages:
+- _posts/2020-03-23-advesarial.md
