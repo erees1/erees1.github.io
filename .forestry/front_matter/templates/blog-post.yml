@@ -13,10 +13,12 @@ fields:
   label: layout
 - name: draft
   type: select
-  default: []
+  default: ''
   config:
     required: false
-    options: []
+    options:
+    - 'true'
+    - 'false'
     source:
       type: simple
       section: 
