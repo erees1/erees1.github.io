@@ -4,7 +4,7 @@ title: Blog
 permalink: /blog/
 ---
 <!-- Slider Start -->
-<section id="global-header">
+<!-- <section id="global-header">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -15,8 +15,11 @@ permalink: /blog/
       </div>
     </div>
   </div>
-</section>
+</section> -->
+<section id='blog-posts'>
+<div class="container">
 {% for post in site.posts %}
+
 <div class="post-area">
   <a href="{{ post.url | prepend: site.baseurl }}" class="bold">{{ post.title }}</a>
   <p class="post-date">{{ post.date | date_to_long_string }}</p>
@@ -24,4 +27,7 @@ permalink: /blog/
     {{ post.content | strip_html | truncatewords: 50 }}
   </p>
 </div>
+
 {% endfor %}
+</div>
+</section>

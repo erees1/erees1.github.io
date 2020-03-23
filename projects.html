@@ -1,0 +1,69 @@
+---
+layout: page
+title: Projects
+permalink: /projects/
+---
+
+    <!-- Slider Start -->
+<!-- <section id="global-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block">
+                    <h1>Just some of our latest projects.</h1>
+                    <p>Don’t just take our word for it. Check out some of our latest work.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+    <!-- Portfolio Start -->
+<section id="portfolio-work">
+    <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="block">
+              <div class="portfolio-menu">
+                <ul>
+                    <li class="filter" data-filter="all">Everything</li>
+                    <li class="filter" data-filter=".computer-vision">Computer Vision</li>
+                    <li class="filter" data-filter=".nlp">NLP</li>
+                </ul>
+              </div>
+              <div class="portfolio-contant">
+                <ul id="portfolio-contant-active">
+                  {%- assign _projects = site.project_items | sort: 'order' -%}
+                  {% for project in _projects %}
+
+                    <li class="mix {{project.category}}">
+                      <div class="row">
+                        <div class="col-md-5 col-sm-5 col-xs-12">
+                          <a href="#"></a>
+                        <img src="{{ site.baseurl }}/{{project.image}}" alt="">
+                      </a>
+                      </div>
+                        <div class="col-md-7 col-sm-7 col-xs-12 fill-height">
+                          <h3>{{project.title}}</h3><i>{{project.content}}</i>
+                          <ul class='project-links'>
+                            {% if project.github_repo %}
+                            <li class='project-links'><a class='grey-links' href="{{site.github_url}}/{{project.github_repo}}"><i class="fa fa-lg fa-github"></i>  Github</a></li>
+                            {% endif %}
+                            {% if project.project_page %}
+                            <li class='project-links'><a class='grey-links' href="{{site.baseurl}}/{{project.project_page}}"><i class="fa fa-gear fa-lg"></i>  Demo</a></li>
+                            {% endif %}
+                            {% if project.blog_post %}
+                            <li class='project-links'><a class='grey-links' href="{{site.baseurl}}/{{project.blog_post}}"><i class="fa fa-pencil fa-lg"></i>  Blog</a></li>
+                            {% endif %}
+
+                          </ul>
+                        </div>
+                    </div>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</section>

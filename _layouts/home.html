@@ -1,0 +1,46 @@
+---
+layout: page
+---
+
+<!-- Slider Start -->
+<section id="slider">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-sm-5">
+        <div class="block center-mobile">
+          <img class="avatar animated fadeIn" src="img/site/er-avatar.png" alt="Img">
+        </div>
+      </div><!-- .col-md-5 close -->
+      <div class="col-md-7 col-sm-7">
+        <div class="block center-mobile">
+          <h1 class="animated fadeInUp">{{site.name}}</h1>
+          <p class="animated fadeInUp">{{site.job_title}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Wrapper Start -->
+{%- for section in site.sections -%}
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <div class="block">
+          <div class="section-title">
+            <h2>{{section.title}}</h2>
+            <p>{{section.subtitle}}</p>
+          </div>
+          <p>{{section.content}}</p>
+        </div>
+        
+      </div><!-- .col-md-7 close -->
+      <!-- <div class="col-md-5 col-sm-12"> -->
+        <!-- <div class="block"> -->
+          <!-- <img src="img/er-avatar.png" alt="Img"> -->
+        <!-- </div> -->
+      <!-- </div>.col-md-5 close -->
+    </div>
+  </div>
+</section>
+{%- endfor -%}
