@@ -27,7 +27,7 @@ permalink: /blog/
       >
       <p class="post-date">{{ post.date | date_to_long_string }}</p>
       <p>
-        {{ post.content | strip_html | truncatewords: 50 }}
+        {{ post.short_description | strip_html | truncatewords: 100 }}
       </p>
     </div>
 

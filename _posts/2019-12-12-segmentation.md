@@ -3,6 +3,7 @@ title: Old School Semantic Segmentation of Faces
 author: Edward Rees
 layout: post
 draft: false
+short_description: I have recently completed a data science course at General Assembly in London and for the past 5 weeks in the evenings I have been working on my final project. Cognisant of the rising tide of fake news / fake images and more recently deep fakes on the internet I decided to create an image classifier that could spot whether pictures of faces had been photoshopped or not.
 ---
 
 ## Table of Contents
