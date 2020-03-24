@@ -1,7 +1,7 @@
 ---
 title: "ChefBot"
 draft: false
-image : "img/projects/chefbot-cover.png"
+image : "img/projects/chefbot-cover.jpg"
 category: "nlp"
 github_repo: "recipe-chatbot"
 project_page: "chefbot"
