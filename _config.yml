@@ -23,6 +23,7 @@ url: "edward-rees.com" # the base hostname & protocol for your site
 # baseurl: "/the/subpath/of/your/site" # Set this value to "" if you want your site to be root
 baseurl: ""
 name: "Edward Rees"
+avatar_path: "img/site/er-avatar.png"
 job_title: "Machine Learning Engineer"
 github_url: "https://github.com/erees1"
 linkedin_url: "https://linkedin.com/in/Rees"
