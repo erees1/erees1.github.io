@@ -19,7 +19,9 @@ permalink: /blog/
 </section> -->
 <section id="blog-posts">
   <div class="container">
-    {% for post in site.posts %} {% if post.draft == false %}
+    {%- assign _posts = site.posts -%}
+    {%- assign posts = _posts | sort: 'date' | reverse -%}
+    {%- for post in site.posts %}
 
     <div class="post-area">
       <a href="{{ post.url | prepend: site.baseurl }}" class="bold"
@@ -31,6 +33,6 @@ permalink: /blog/
       </p>
     </div>
 
-    {% endif %} {% endfor %}
+    {% endfor -%}
   </div>
 </section>

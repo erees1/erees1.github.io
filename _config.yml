@@ -31,7 +31,8 @@ linkedin_url: "https://linkedin.com/in/Rees"
 # Build settings
 markdown: kramdown
 plugins:
- - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-seo-tag
 
 # Google analytics
 # ga_tracking_id: "UA-XXXX-1"
