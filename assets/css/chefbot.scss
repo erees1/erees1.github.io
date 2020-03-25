@@ -1,0 +1,75 @@
+---
+---
+
+#webchat {
+  .widget-container{
+    z-index: 1000001;
+  }
+    .image {
+      width: 100%;
+      height: auto;
+      margin: auto;
+    }
+    .image-details {
+      width: 100%;
+      padding-top: 60%;
+      overflow: hidden;
+      position: relative;
+      border-radius: 15px;
+  
+      .image-frame {
+        width: 100%;
+        height: auto;
+        margin: auto;
+        position: absolute;
+        top: -100%;
+        right: -100%;
+        bottom: -100%;
+        left: -100%;
+      }
+    }
+  
+    .response,
+    .client {
+      line-height: 1em;
+      min-height: 37px;
+      vertical-align: middle;
+      padding-top: 8pt;
+      padding-bottom: 8pt;
+    }
+  
+    .message-text,
+    p,
+    form.sender {
+      line-height: 1.3em;
+      font-size: 12pt;
+      font-family: "Open Sans", sans-serif;
+    }
+  
+    button.send {
+      margin-left: 2px;
+    }
+  }
+
+  // @media only screen and (max-width: 767px) {
+  //   #webchat {
+  //       .header {
+  //         .title {
+  //           // left: 0px;
+  //           // text-align: center;
+  //           // margin-left: auto;
+  //           // margin-right: auto;
+  //           // position: relative;
+  //           // left: 0px;
+  //           // margin-left: auto;
+  //           // margin-right: auto;
+  //         }
+
+  //         .conversation-container .response,.client{
+  //           max-width: 300px;
+  //         }
+    
+  //         // }
+  //       }
+  //     }
+  // }
