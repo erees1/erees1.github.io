@@ -221,3 +221,28 @@ max-width: 750px;
 /*---------------------------------------------
 					Theme Edits Close
 -----------------------------------------------*/
+
+/*---------------------------------------------
+					Webchat Close
+-----------------------------------------------*/
+
+#webchat .header {
+    text-align: center;
+}
+ #webchat .header .title {
+      left: 0px;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      left: 0px;
+      margin-left: auto;
+      margin-right: auto;
+}
+
+#webchat p{
+  line-height: 1.1em;
+}
+#webchat li {
+  line-height: 1.1em
+}
