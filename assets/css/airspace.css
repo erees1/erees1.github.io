@@ -110,11 +110,11 @@ font header .navbar-default .navbar-nav li a:hover {
 	Slider Start
 --*/
 #slider {
-  background: url("../img/site/slider-bg.jpg") no-repeat;
+  background: url("../../img/site/london-skyline.blur15.jpg") no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: 10% 0%;
-  padding: 200px 0 280px 0;
+  padding: 150px 0 100px 0;
   position: relative;
 }
 #slider:before {
@@ -126,15 +126,15 @@ font header .navbar-default .navbar-nav li a:hover {
   right: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, #2e2e40, #8b86a3);
-  opacity: 0.7;
+  background: linear-gradient(to right, #0d2b12f3, #636074);
+  opacity: 0.4;
 }
 #slider .block {
   color: #E3E3E4;
 }
 #slider .block h1 {
   font-family: 'Roboto', sans-serif;
-  font-weight: 100;
+  font-weight: 200;
   font-size: 45px;
   line-height: 60px;
   letter-spacing: 10px;

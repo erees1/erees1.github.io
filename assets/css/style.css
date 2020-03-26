@@ -45,13 +45,6 @@
   /* padding-bottom: 0px; */
 }
 
-#slider {
-  background: url("../../img/site/london-skyline.jpg") no-repeat;
-  padding: 120px 0 100px 0;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
 .avatar {
   height: 185px;
   padding-left: auto;
