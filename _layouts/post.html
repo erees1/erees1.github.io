@@ -1,7 +1,10 @@
 ---
 layout: page
 ---
+
 {% include mathjax.html %}
+<script src="{{ site.baseurl }}/assets/js/code-theme.js"></script>
+
 <div class="post">
   <!-- Wrapper Start -->
   <section id="post" style="border: 1px dotted #ddd;">
@@ -9,18 +12,25 @@ layout: page
       <div class="row">
         <div>
           <div class="block">
-            <div class='blog-title'>
-            <h1>{{ page.title }}</h1>
-            <div class="post-info-wrapper">
-              <p class="italic">By <span class="bold">{{ page.author }}</span> on <span class="bold">{{ page.date | date: "%B %-d, %Y" }}</span></p>
+            <div class="blog-title">
+              <h1>{{ page.title }}</h1>
+              <div class="post-info-wrapper" id="add_after_me">
+                <p class="italic">
+                  By <span class="bold">{{ page.author }}</span> on
+                  <span class="bold">{{ page.date | date: "%B %-d, %Y" }}</span>
+                </p>
+              </div>
+              <hr />
             </div>
-            <hr />
+            <div class="blog-content">
+              {{ content }}
+              <script>
+                addToggleButton();
+              </script>
+            </div>
           </div>
-          <div class='blog-content'>
-            {{ content }}
-          </div>
-          </div>
-        </div><!-- .col-md-7 close -->
+        </div>
+        <!-- .col-md-7 close -->
       </div>
     </div>
   </section>

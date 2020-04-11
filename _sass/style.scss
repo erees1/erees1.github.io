@@ -210,7 +210,31 @@ max-width: 750px;
   margin-right: auto;
 }
 
+pre.highlight{
+  border-radius: 5px;
+  padding: 20px;
+  padding-top: 0px;
+  padding-bottom: 25px;
+}
 
+// button.theme-switcher{
+//   position: absolute;
+//   right: 10px;
+//   top: 10px;
+// }
+
+.button-wrapper{
+  width:100%;
+  text-align: right;
+  padding-top: 7px;
+  padding-right: 25px;
+}
+
+button.code-toggle{
+  border: None;
+  background-color: inherit;
+  padding: 0px;
+}
 /*---------------------------------------------
 					Theme Edits Close
 -----------------------------------------------*/
