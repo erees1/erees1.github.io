@@ -178,6 +178,11 @@ section.single-section {
 #TOC ul {
   padding-left: 10px;
   list-style: none;
+  
+  li {
+    line-height: 1em;
+    margin: 0.5em;
+  }
 }
 
 .image.blog {
@@ -205,12 +210,6 @@ section.single-section {
   margin-left: 0px;
 }
 
-#post div.container {
-max-width: 750px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 pre.highlight{
   border-radius: 5px;
   padding: 20px;
@@ -218,12 +217,9 @@ pre.highlight{
   padding-bottom: 25px;
 }
 
-// button.theme-switcher{
-//   position: absolute;
-//   right: 10px;
-//   top: 10px;
-// }
-
+/*--
+	Code Toggle Start
+--*/
 .button-wrapper{
   width:100%;
   text-align: right;
@@ -237,5 +233,5 @@ button.code-toggle{
   padding: 0px;
 }
 /*---------------------------------------------
-					Theme Edits Close
+					Theme Additions Close
 -----------------------------------------------*/

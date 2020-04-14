@@ -160,7 +160,7 @@ In order to evaluate the benefit of using the beam search algorithm over a greed
 
 $$
 p(4 \vert 1,2,3) = p(4 \vert 0,3,4) \quad \text{wheras}, \quad p(4\vert 1,2,3) \neq p(4\vert 1,0,3)
-$
+$$
 
 Given the generated distribution it is possible to calculate the conditional probability distribution of the next word in the sequence and calculate the probability of an entire sequence.
 

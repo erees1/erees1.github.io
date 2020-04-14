@@ -5,13 +5,12 @@ layout: post
 short_description: I have recently completed a data science course at General Assembly in London and for the past 5 weeks in the evenings I have been working on my final project. Cognisant of the rising tide of fake news / fake images and more recently deep fakes on the internet I decided to create an image classifier that could spot whether pictures of faces had been photoshopped or not.
 ---
 
-## Table of Contents
+<h2> Table of Contents </h2>
 
 <div id='TOC' markdown="1">
 
 <!-- TOC depthFrom:2 depthTo:2 -->
 
-- [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
 - [Data cleaning / preparation](#data-cleaning--preparation)
 - [Feature Creation](#feature-creation)
