@@ -16,11 +16,11 @@ Consider the problems of: English to French translation, question answering and 
 
 > *What is the most likely sequence of words given some input?*
 
-Note that these sorts of problems are not restricted to just words, one could, for example be trying to predict a sequence of numbers (such as stock prices), but for simplicity I assume a sequence of words here.
+Note that these sorts of problems are not restricted to just words, one could, for example be trying to predict a sequence of numbers (such as stock prices), but for simplicity I assume only a sequence of words here.
 
 To create a conditional language model capable of answering the above question we usually want to find the most likely sequence of words given the input or *conditioning context*, although as we shall see finding the **most** likely sequence is usually intractable.
 
-Mathematically the probability of a sequence of words $ \boldsymbol{w} $ given the conditioning context $ \boldsymbol{x} $ is given by the likelihood $p(\boldsymbol{w} \vert  \boldsymbol{x})$. In language modelling it is usual to decompose this probability into a series of conditionals using the chain rule. Omitting the conditional for brevity, $p(\boldsymbol{w})$ is given by:
+Mathematically, the probability of a sequence of words $ \boldsymbol{w} $ given the conditioning context $ \boldsymbol{x} $ is given by the likelihood $p(\boldsymbol{w} \vert  \boldsymbol{x})$. In language modelling it is usual to decompose this probability into a series of conditionals using the chain rule. Omitting the conditional for brevity, $p(\boldsymbol{w})$ is given by:
 
 $$
 \begin{align*}
@@ -90,7 +90,7 @@ A better solution is the beam search algorithm, used for example in [1]. The ide
 
 1. For each beam predict a probability distribution over all words in the vocabulary of length $v$ given the preceding words in that beam
 2. Then find the $b$ most likely sequences (i.e. the probability of the sequence of words in each beam multiplied by the probability of the next word) from the potential candidates across all of the beams (there are $b \times v$ to choose from)
-3. Update the beam sequences with the $b$ most likely sequences and repeat until the stopping condition is meet (either a special end of sentance token is predicted of we reach some maximum length)
+3. Update the beam sequences with the $b$ most likely sequences and repeat until the stopping condition is meet (either a special end of sentence token is predicted or we reach some maximum length)
 
 The key difference is that in step 2, instead of finding the $\text{argmax}$ as in greedy search, we are instead finding:
 
@@ -159,8 +159,8 @@ def beam_search(model, beam_width):
 In order to evaluate the benefit of using the beam search algorithm over a greedy search I ran a series of experiments. Rather than training a sequence model on data, in these experiments I used a randomly created conditional probability distribution over a set vocabulary length to simulate a language model with a specified memory, where memory determines the maximum distance between words in a sequence where there is still conditional dependence. Thus under a model with memory of 2:
 
 $$
-p(4 \vert 1,2,3) = p(4 \vert 0,3,4) \quad \text{wheras}, \quad p(4\vert 1,2,3) = p(4\vert 1,0,3)
-$$
+p(4 \vert 1,2,3) = p(4 \vert 0,3,4) \quad \text{wheras}, \quad p(4\vert 1,2,3) \neq p(4\vert 1,0,3)
+$
 
 Given the generated distribution it is possible to calculate the conditional probability distribution of the next word in the sequence and calculate the probability of an entire sequence.
 
@@ -197,9 +197,9 @@ In the first experiment the computational expense of finding the actual optimal 
     <b>Figure 2</b> - Ratio of probability defined as $\frac{p(\boldsymbol{\widetilde{w}}_{beam})}{p(\boldsymbol{\widetilde{w}}_{greed})}$
 </div>
 
-In this second experiment the temperature of the underlying conditional probability distribution was modified, this was performed by generating $v$ uniformly distributed random numbers in the range (0, 1), multiplying each of these with the temperature parameter and feeding the result through a soft-max function. The effect of increasing the temperature is to skew the distribution towards more likely outputs. A distribution with a higher temperature is likely to better represent the actual probability distribution over words as some words (e.g. the word *the*) appear much more regularly than others.
-
 In this second experiment it was found that using a beam search algorithm over a greedy search gave a boost of 1-5% in decoded likelihood. Additionally under these conditions the performance boost of increasing the beam width seems to plateau around a beam width of 7/9. The benefit of using a beam search decoder also seemed to increase with the temperature of the underlying sequence distributions.
+
+This modification of the temperature of the distribution was performed by generating $v$ uniformly distributed random numbers in the range (0, 1), multiplying each of these with the temperature parameter and feeding the result through a soft-max function. The effect of increasing the temperature is to skew the distribution towards more likely outputs. A distribution with a higher temperature is likely to better represent the actual probability distribution over words as some words (e.g. the word *the*) appear much more regularly than others.
 
 ### References
 
