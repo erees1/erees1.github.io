@@ -33,11 +33,13 @@ function makeGPChart(ctx) {
         {
           label: "Observations",
           data: [],
-          pointStyle: "cross",
+          pointStyle: "circle",
           radius: 5,
-          borderColor: "rgba(0,33,71,1)",
+          borderColor: "rgba(0,57,115,1)",
+          backgroundColor: "rgba(0,57,115,0.4)",
           fill: false,
           showLine: false,
+          borderRadius: 3,
         },
         {
           label: "Mean",
