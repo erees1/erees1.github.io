@@ -163,3 +163,7 @@ button.kernel-button.activated{
 .max-width{
   max-width: 500px;
 }
+
+.center-text{
+  text-align: center;
+}
