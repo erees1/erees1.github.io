@@ -3,7 +3,7 @@ title: "Interactive Gaussian Process"
 draft: false
 image : "img/projects/gp-cover.jpeg"
 category: "statistics"
-github_repo: "https://github.com/erees1/js-GP"
+github_repo: "js-GP"
 project_page: "interactive-gp"
 blog_post: 
 order: -4
