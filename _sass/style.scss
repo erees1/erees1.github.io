@@ -3,6 +3,9 @@
  * To find the original style.css that ships with Airspace, read airspace.css
  *
  */
+/*--
+	simple modifers start
+--*/
 
 .italic {
   font-style: italic;
@@ -16,6 +19,26 @@
   text-align: center;
 }
 
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+/*--
+	Page width modifers start
+--*/
+@media (min-width: 1200px) {
+  .container {
+    width: 1000px;
+  }
+}
+
+/*=============================================*/
+/*---------------------------------------------
+Theme Edits
+-----------------------------------------------*/
+/*--
+	Post area - (list of blog posts)
+--*/
 .post-area {
   padding: 20px 20px 20px 20px;
   width: 100%;
@@ -34,17 +57,10 @@
   color: #0d0017;
 }
 
-/*=============================================*/
-/*---------------------------------------------
-					 Theme Edits
------------------------------------------------*/
 
-.navbar-header a {
-  /* bottom: 0; */
-  font-size: 35px;
-  /* padding-bottom: 0px; */
-}
-
+/*--
+	Home page start
+--*/
 .avatar {
   height: 185px;
   padding-left: auto;
@@ -73,15 +89,12 @@ footer {
   width: 100%;
   overflow: hidden;
 }
-/*--
-	sticky footer start
---*/
+
 /*--
 	Header start
 --*/
-
 header {
-  border-top: 4px;
+  border-top: 5px;
   border-bottom: 1px;
   border-right: 0px;
   border-left: 0px;
@@ -89,6 +102,12 @@ header {
   padding: 0px 0;
   border-style: solid;
   font-family: "Roboto", "sans-serif";
+}
+
+.navbar-header a {
+  /* bottom: 0; */
+  font-size: 35px;
+  /* padding-bottom: 0px; */
 }
 
 /* The sticky class is added to the header with JS when it reaches its scroll position */
@@ -116,12 +135,16 @@ header {
     text-align: center;
   }
 }
-/*--
- Header end
---*/
 
+/*--
+ Portfolio page start
+--*/
 a.grey-links {
   color: white;
+}
+
+a.grey-links:hover {
+  color: rgb(51, 51, 51);
 }
 
 ul.project-links {
@@ -140,12 +163,11 @@ ul.project-links {
   margin-left: 0px;
 }
 
+/*--
+ Image modifiers start
+--*/
 .fill-height {
   height: 100%;
-}
-
-a.grey-links:hover {
-  color: rgb(51, 51, 51);
 }
 
 img.image-fit {
@@ -161,12 +183,26 @@ img.image-icon {
   width: 20%;
 }
 
+.image.blog {
+  text-align: center;
+  display: block;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media only screen and (max-width: 767px) {
   img.image-icon {
     width: 30%;
   }
+  .image.blog {
+    width: 100%;
+  }
 }
 
+/*--
+ Single page start
+--*/
 .single-title {
   margin-bottom: 30px;
 }
@@ -175,6 +211,9 @@ section.single-section {
   padding-top: 20px;
 }
 
+/*--
+ Table of contents start
+--*/
 #TOC ul {
   padding-left: 10px;
   list-style: none;
@@ -185,31 +224,9 @@ section.single-section {
   }
 }
 
-.image.blog {
-  text-align: center;
-  display: block;
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media only screen and (max-width: 767px) {
-  .image.blog {
-    width: 100%;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    width: 1000px;
-  }
-}
-
-.row {
-  margin-right: 0px;
-  margin-left: 0px;
-}
-
+/*--
+	Code start
+--*/
 pre.highlight{
   border-radius: 5px;
   padding: 20px;
@@ -217,9 +234,6 @@ pre.highlight{
   padding-bottom: 25px;
 }
 
-/*--
-	Code Toggle Start
---*/
 .button-wrapper{
   width:100%;
   text-align: right;

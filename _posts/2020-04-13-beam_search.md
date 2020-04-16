@@ -20,11 +20,11 @@ Note that these sorts of problems are not restricted to just words, one could, f
 
 To create a conditional language model capable of answering the above question we usually want to find the most likely sequence of words given the input or *conditioning context*, although as we shall see finding the **most** likely sequence is usually intractable.
 
-Mathematically, the probability of a sequence of words $ \boldsymbol{w} $ given the conditioning context $ \boldsymbol{x} $ is given by the likelihood $p(\boldsymbol{w} \vert  \boldsymbol{x})$. In language modelling it is usual to decompose this probability into a series of conditionals using the chain rule. Omitting the conditional for brevity, $p(\boldsymbol{w})$ is given by:
+Mathematically, the probability of a sequence of words $ \mathbf{w} $ given the conditioning context $ \mathbf{x} $ is given by the likelihood $p(\mathbf{w} \vert  \mathbf{x})$. In language modelling it is usual to decompose this probability into a series of conditionals using the chain rule. Omitting the conditional for brevity, $p(\mathbf{w})$ is given by:
 
 $$
 \begin{align*}
-p(\boldsymbol{w}) &= p(w_1, w_2, w_3, \dots w_{l})
+p(\mathbf{w}) &= p(w_1, w_2, w_3, \dots w_{l})
 \\
 &= p(w_1)\times p(w_2|w_1)\times p(w_3|w_1,w_2)\times \dots \times p(w_l|w_1, w_2,\dots w_{l-1})
 \\
@@ -32,21 +32,21 @@ p(\boldsymbol{w}) &= p(w_1, w_2, w_3, \dots w_{l})
 \end{align*}
 $$
 
-where $l$ is the length of the sequence of words $\boldsymbol{w}$. Adding back in the conditional context $\boldsymbol{x}$, we obtain:
+where $l$ is the length of the sequence of words $\mathbf{w}$. Adding back in the conditional context $\mathbf{x}$, we obtain:
 
 $$
-p(\boldsymbol{w}|\boldsymbol{x}) = \prod_{n=1}^{l}p(w_n|\boldsymbol{x}, w_1, w_2,\dots w_{n-1}).
+p(\mathbf{w}|\mathbf{x}) = \prod_{n=1}^{l}p(w_n|\mathbf{x}, w_1, w_2,\dots w_{n-1}).
 $$
 
-Decomposing the probability distribution $p(\boldsymbol{w} \vert  \boldsymbol{x})$ in this manner is instructive as this is precisely how common sequence models such as Recurrent Neural Networks work - given a sequence up to a point they will output the probability of the next word as a probability distribution over each word in the vocabulary.
+Decomposing the probability distribution $p(\mathbf{w} \vert  \mathbf{x})$ in this manner is instructive as this is precisely how common sequence models such as Recurrent Neural Networks work - given a sequence up to a point they will output the probability of the next word as a probability distribution over each word in the vocabulary.
 
 Whilst the sequence model can calculate the probability of the next word in a sequence of words it is the task of the *decoder* to transform these probability distributions into a final output (e.g. our translated sentence).
 
-In an ideal world we would want to find the most probable sequence of words $\boldsymbol{w^\star}$ which would be given by:
+In an ideal world we would want to find the most probable sequence of words $\mathbf{w^\star}$ which would be given by:
 
 $$
 \DeclareMathOperator*{\argmax}{argmax}
-\boldsymbol{w^\star}= \argmax_{\boldsymbol{w}} p(\boldsymbol{w}|\boldsymbol{x})
+\mathbf{w^\star}= \argmax_{\mathbf{w}} p(\mathbf{w}|\mathbf{x})
 $$
 
 however as the vocabulary length can be many thousands or even millions of words long and an exhaustive search is exponential in sequence length this is usually an intractable problem.
@@ -55,17 +55,17 @@ however as the vocabulary length can be many thousands or even millions of words
 
 ### Greedy Search
 
-The simplest solution to this intractable problem is to perform a greedy search. This approximates finding the most probable sequence $\boldsymbol{w^\star}$ by iteratively finding the most likely word $\widetilde{w}_i$ given the previous words such that:
+The simplest solution to this intractable problem is to perform a greedy search. This approximates finding the most probable sequence $\mathbf{w^\star}$ by iteratively finding the most likely word $\widetilde{w}_i$ given the previous words such that:
 
 $$
-\boldsymbol{\widetilde{w}} = \widetilde{w}_1, \widetilde{w}_2, \widetilde{w}_3, \dots, \widetilde{w}_n
+\mathbf{\widetilde{w}} = \widetilde{w}_1, \widetilde{w}_2, \widetilde{w}_3, \dots, \widetilde{w}_n
 $$
 
 where:
 
 $$
 \DeclareMathOperator*{\argmax}{argmax}
-\widetilde{w}_i = \argmax_{w_i} p(w_i|\boldsymbol{x}, \widetilde{w}_1,\dots, \widetilde{w}_{i-1} )
+\widetilde{w}_i = \argmax_{w_i} p(w_i|\mathbf{x}, \widetilde{w}_1,\dots, \widetilde{w}_{i-1} )
 $$
 
 This is obviously non-optimal but is very simple to implement. The code below shows a possible implementation that returns the decoded sequence and its log probability. Here `model` could be a recurrent neural network or some other sequence model that predicts the next word `x` given a previous series of word `X`.
@@ -96,16 +96,16 @@ The key difference is that in step 2, instead of finding the $\text{argmax}$ as 
 
 $$
 \DeclareMathOperator*{\kargmax}{kargmax}
-\kargmax_{w_i, \beta} p(w_i|\boldsymbol{x}, w_1^{\beta},\dots, w_{i-1}^{\beta} ) \times p(beam_\beta)
+\kargmax_{w_i, \beta} p(w_i|\mathbf{x}, w_1^{\beta},\dots, w_{i-1}^{\beta} ) \times p(beam_\beta)
 $$
 
 where $\text{kargmax}$ is the $\text{argmax}$ function extented to the top $k$ arguments and $p(beam_\beta)$ is the probability of the sequence of words in beam $\beta$ given by:
 
 $$
 \begin{align*}
-p(beam_\beta) &= p(w_1^{\beta}, w_2^{\beta},\dots w_{i-1}^{\beta}|\boldsymbol{x})
+p(beam_\beta) &= p(w_1^{\beta}, w_2^{\beta},\dots w_{i-1}^{\beta}|\mathbf{x})
 \\
-&= \prod_{1}^{i-1}p(w_{i-1}^\beta|\boldsymbol{x}, w_1^{\beta}, w_2^{\beta},\dots w_{i-2}^{\beta})
+&= \prod_{1}^{i-1}p(w_{i-1}^\beta|\mathbf{x}, w_1^{\beta}, w_2^{\beta},\dots w_{i-2}^{\beta})
 \end{align*}
 $$
 
@@ -170,19 +170,19 @@ The full code used to run these experiments can be found [here](https://github.c
 
  First I evaluated how close both a beam search and a greedy search come to decoding the most likely solution.
 
-Calculating the actual most likely solution $\boldsymbol{w}^\star$ involves performing a very expensive exhaustive search as discussed previously, therefore it was only possible to perform this evaluation for very small vocabulary sizes.
+Calculating the actual most likely solution $\mathbf{w}^\star$ involves performing a very expensive exhaustive search as discussed previously, therefore it was only possible to perform this evaluation for very small vocabulary sizes.
 
 <span class="image blog">
     <img src="{{ "img/blog/beam-search/decoder-accuracy.png" | relative_url }}" alt="feature-importance" />
-    **Figure 1** - A comparison of beam and greedy search (decoder accuracy defined as $\frac{p(\boldsymbol{\widetilde{w}})}{p(\boldsymbol{w}^\star)}$
+    **Figure 1** - A comparison of beam and greedy search (decoder accuracy defined as $\frac{p(\mathbf{\widetilde{w}})}{p(\mathbf{w}^\star)}$
 </span>
 
-Figure 1 was produced by randomly generating 64 probability distributions with a memory of 2 and a sequence length of 3 and then taking the average ratio of the probability of the decoded sequence $p(\boldsymbol{\widetilde{w}})$to the probability of the optimal sequence $p(\boldsymbol{w}^\star)$ for both beam and greedy search decoders (using the code above). This process was then repeated for a number of vocab lengths. As shown the beam search was able to come much closer to the optimal solution than the greedy decoder and seemed to offer a c. 10% bump in sequence likelihood over the greedy decoder.
+Figure 1 was produced by randomly generating 64 probability distributions with a memory of 2 and a sequence length of 3 and then taking the average ratio of the probability of the decoded sequence $p(\mathbf{\widetilde{w}})$to the probability of the optimal sequence $p(\mathbf{w}^\star)$ for both beam and greedy search decoders (using the code above). This process was then repeated for a number of vocab lengths. As shown the beam search was able to come much closer to the optimal solution than the greedy decoder and seemed to offer a c. 10% bump in sequence likelihood over the greedy decoder.
 
 
 #### Experiment 2
 
-In the first experiment the computational expense of finding the actual optimal sequence $p(\boldsymbol{w}^\star)$ limited the comparison to very small vocab lengths. In order to investigate a larger vocab length I instead compared the probabilities of the sequences generated by beam search and greedy search directly. This was done in the same manner as the above with the exception that 32 probability distributions were generated for each vocab length with a memory of 1 (to enable faster computation).
+In the first experiment the computational expense of finding the actual optimal sequence $p(\mathbf{w}^\star)$ limited the comparison to very small vocab lengths. In order to investigate a larger vocab length I instead compared the probabilities of the sequences generated by beam search and greedy search directly. This was done in the same manner as the above with the exception that 32 probability distributions were generated for each vocab length with a memory of 1 (to enable faster computation).
 
 <span class="image blog">
     <img src="{{ "img/blog/beam-search/ratio-of-beam-to-greedy-temp1.png" | relative_url }}" alt="feature-importance" />
@@ -194,7 +194,7 @@ In the first experiment the computational expense of finding the actual optimal 
     **b)**
 </span>
 <div class="image blog">
-    <b>Figure 2</b> - Ratio of probability defined as $\frac{p(\boldsymbol{\widetilde{w}}_{beam})}{p(\boldsymbol{\widetilde{w}}_{greed})}$
+    <b>Figure 2</b> - Ratio of probability defined as $\frac{p(\mathbf{\widetilde{w}}_{beam})}{p(\mathbf{\widetilde{w}}_{greed})}$
 </div>
 
 In this second experiment it was found that using a beam search algorithm over a greedy search gave a boost of 1-5% in decoded likelihood. Additionally under these conditions the performance boost of increasing the beam width seems to plateau around a beam width of 7/9. The benefit of using a beam search decoder also seemed to increase with the temperature of the underlying sequence distributions.

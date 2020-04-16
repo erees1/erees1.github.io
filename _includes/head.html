@@ -21,22 +21,17 @@
 <!-- Js -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-<script src="{{ site.baseurl }}/assets/js/bootstrap.min.js"></script>
+<script src="{{ site.baseurl }}/assets/js/vendor/bootstrap.min.js"></script>
 <script src="{{ site.baseurl }}/assets/js/owl.carousel.min.js"></script>
 <script src="{{ site.baseurl }}/assets/js/plugins.js"></script>
 <script src="{{ site.baseurl }}/assets/js/min/waypoints.min.js"></script>
 <script src="{{ site.baseurl }}/assets/js/jquery.counterup.js"></script>
-
-
 <script src="{{ site.baseurl }}/assets/js/main.js"></script>
 
-<!--
-/*
- * Airspace
- * Ported to Jekyll by Andrew Lee
- * https://github.com/ndrewtl/airspace-jekyll
- * Designed and Developed by ThemeFisher
- * https://themefisher.com/
- *
- */
--->
+
+<!-- Custom scripts added by individual pages -->
+{% include custom-scripts.html %}
+
+<!-- Mathjax - is only importanted if mathjax: true in front matter -->
+{% include mathjax.html %}
+
