@@ -16,7 +16,7 @@
 body {
   font-family: "-apple-system", "Helvetica Neue",Helvetica, "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
-  font-size: 15px;
+  font-size: 17px;
 }
 h1,
 h2,
@@ -31,17 +31,35 @@ h1 {
 }
 h2 {
   font-size: 30px;
-  font-weight: 400;
+  font-weight: 500;
 }
 h3 {
-  font-size: 26px;
-  font-weight: 300;
+  font-size: 24px;
+  font-weight: 400;
 }
+h4 {
+  font-size: inherit;
+  font-weight: bold;
+}
+  h2,
+  h3,
+  h4 {
+    margin-top: 1.2em;
+    margin-bottom: 0.5em;
+  }
 ul,
 ol {
   padding-left: 0px;
   margin: 0;
 }
+p,
+li {
+  font-size: 17px;
+  line-height: 1.7em;
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+
 a,
 a:active,
 a:focus,
@@ -143,23 +161,21 @@ font header .navbar-default .navbar-nav li a:hover {
 	content Start
 --*/
 .content-container {
-  p,
-  li {
-    font-size: 17px;
-    line-height: 1.75em;
+  blockquote {
     margin-top: 1em;
     margin-bottom: 1em;
-  }
-}
-.content-container {
-  blockquote {
-    margin-top: 0.8em;
-    margin-bottom: 0.8em;
+    padding-top: 1em;
+    padding-bottom: 1em;
     border-left: 5px solid var(--highlight-dark);
   }
+  blockquote p:first-child{
+    margin-top: 0px
+  }
+  blockquote p:last-child{
+    margin-bottom: 0px;
+  }
   blockquote p{
-    margin-top: 0.2em;
-    margin-bottom: 0.2em;
+    margin: inherit;
     font-size: 1.15em;
   }
 }
@@ -173,20 +189,11 @@ font header .navbar-default .navbar-nav li a:hover {
     margin: 0;
   }
 }
-// .content-container li{
-//   margin-top: 5px;
-//   margin-bottom: 5px;
-//   line-height: inherit;
-// }
-.content-container .block {
-  h2,
-  h3,
-  h4 {
-    padding-top: 0.6em;
-    padding-bottom: 0.3em;
-    margin: 0;
+  .content-container {
+    li {
+      padding-left: 10px;
+    }
   }
-}
 
 /*--
 	post Start
@@ -209,7 +216,7 @@ font header .navbar-default .navbar-nav li a:hover {
   padding-top: 20px;
 }
 #post div.container {
-  max-width: 850px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -355,14 +362,9 @@ font header .navbar-default .navbar-nav li a:hover {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-#portfolio-work .block .portfolio-contant ul li a p {
-  font-size: 15px;
+#portfolio-work .block .portfolio-contant ul li h3 {
+  margin-top: 0px;
 }
-// #portfolio-work .block .portfolio-contant ul li a span {
-//   font-style: italic;
-//   font-size: 13px;
-//   color: #655e7a;
-// }
 #portfolio-work .block .portfolio-contant ul img {
   width: 100%;
   height: auto;

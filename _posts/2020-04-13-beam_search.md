@@ -14,25 +14,31 @@ In this post I aim to discuss the beam search algorithm in the context of langua
 
 Consider the problems of: English to French translation, question answering and image captioning. These problems all belong to a class of similar natural language problems which can be addressed using conditional language modelling. In essence tackling any of these problems involves answering the same question:
 
-> *What is the most likely sequence of words given some input?*
+> _What is the most likely sequence of words given some input?_
 
 Note that these sorts of problems are not restricted to just words, one could, for example be trying to predict a sequence of numbers (such as stock prices), but for simplicity I assume only a sequence of words here.
 
-To create a conditional language model capable of answering the above question we usually want to find the most likely sequence of words given the input or *conditioning context*, although as we shall see finding the **most** likely sequence is usually intractable.
+To create a conditional language model capable of answering the above question we usually want to find the most likely sequence of words given the input or _conditioning context_, although as we shall see finding the **most** likely sequence is usually intractable.
 
-Mathematically, the probability of a sequence of words $ \mathbf{w} $ given the conditioning context $ \mathbf{x} $ is given by the likelihood $p(\mathbf{w} \vert  \mathbf{x})$. In language modelling it is usual to decompose this probability into a series of conditionals using the chain rule. Omitting the conditional for brevity, $p(\mathbf{w})$ is given by:
+Ignoring the conditioning context for now if we let a sequence of words of length $l$ be denoted as $ \mathbf{w}$ then the probability of that sequence is given simply as:
 
 $$
-\begin{align*}
-p(\mathbf{w}) &= p(w_1, w_2, w_3, \dots w_{l})
-\\
-&= p(w_1)\times p(w_2|w_1)\times p(w_3|w_1,w_2)\times \dots \times p(w_l|w_1, w_2,\dots w_{l-1})
-\\
-&= \prod_{n=1}^{l}p(w_n|w_1, w_2,\dots w_{n-1})
-\end{align*}
+p(\mathbf{w}) = p(w_1, w_2, w_3, \dots w_{l})
 $$
 
-where $l$ is the length of the sequence of words $\mathbf{w}$. Adding back in the conditional context $\mathbf{x}$, we obtain:
+In language modelling it is usual to decompose this probability into a series of conditionals using the chain rule such that the probability of the next word depends upon the words preceding it:
+
+$$
+p(\mathbf{w}) = p(w_1)\times p(w_2|w_1)\times p(w_3|w_1,w_2)\times \dots \times p(w_l|w_1, w_2,\dots w_{l-1})
+$$
+
+condensing the notation gives:
+
+$$
+p(\mathbf{w}) = \prod_{n=1}^{l}p(w_n|w_1, w_2,\dots w_{n-1})
+$$
+
+If we are solving a conditional language problem such as thoose given above we need to condition this probability on the conditioning context $ \mathbf{x} $ to obtain the likelihood $p(\mathbf{w} \vert  \mathbf{x})$, simply giving:
 
 $$
 p(\mathbf{w}|\mathbf{x}) = \prod_{n=1}^{l}p(w_n|\mathbf{x}, w_1, w_2,\dots w_{n-1}).
@@ -40,7 +46,7 @@ $$
 
 Decomposing the probability distribution $p(\mathbf{w} \vert  \mathbf{x})$ in this manner is instructive as this is precisely how common sequence models such as Recurrent Neural Networks work - given a sequence up to a point they will output the probability of the next word as a probability distribution over each word in the vocabulary.
 
-Whilst the sequence model can calculate the probability of the next word in a sequence of words it is the task of the *decoder* to transform these probability distributions into a final output (e.g. our translated sentence).
+Whilst the sequence model can calculate the probability of the next word in a sequence of words it is the task of the _decoder_ to transform these probability distributions into a final output (e.g. our translated sentence).
 
 In an ideal world we would want to find the most probable sequence of words $\mathbf{w^\star}$ which would be given by:
 
@@ -81,12 +87,12 @@ def greedy_search(model):
         x = np.squeeze(x)
         p += np.log(distribution[x])
         X.append(x)
-    return X, p 
+    return X, p
 ```
 
 ### Beam Search
 
-A better solution is the beam search algorithm, used for example in [1]. The idea is that instead of taking only the most likely word at each decoding iteration, we instead take the $b$ most likely, where $b$ is termed the *beam width*. As you can see below the implementation is a little more involved but the algorithm essentially amounts to:
+A better solution is the beam search algorithm, used for example in [1]. The idea is that instead of taking only the most likely word at each decoding iteration, we instead take the $b$ most likely, where $b$ is termed the _beam width_. As you can see below the implementation is a little more involved but the algorithm essentially amounts to:
 
 1. For each beam predict a probability distribution over all words in the vocabulary of length $v$ given the preceding words in that beam
 2. Then find the $b$ most likely sequences (i.e. the probability of the sequence of words in each beam multiplied by the probability of the next word) from the potential candidates across all of the beams (there are $b \times v$ to choose from)
@@ -168,38 +174,37 @@ The full code used to run these experiments can be found [here](https://github.c
 
 #### Experiment 1
 
- First I evaluated how close both a beam search and a greedy search come to decoding the most likely solution.
+First I evaluated how close both a beam search and a greedy search come to decoding the most likely solution.
 
 Calculating the actual most likely solution $\mathbf{w}^\star$ involves performing a very expensive exhaustive search as discussed previously, therefore it was only possible to perform this evaluation for very small vocabulary sizes.
 
-<span class="image blog">
+<div class="image blog">
     <img src="{{ "img/blog/beam-search/decoder-accuracy.png" | relative_url }}" alt="feature-importance" />
-    **Figure 1** - A comparison of beam and greedy search (decoder accuracy defined as $\frac{p(\mathbf{\widetilde{w}})}{p(\mathbf{w}^\star)}$
-</span>
+    <b>Figure 1</b> - A comparison of beam and greedy search (decoder accuracy defined as $\frac{p(\mathbf{\widetilde{w}})}{p(\mathbf{w}^\star)}$
+</div>
 
 Figure 1 was produced by randomly generating 64 probability distributions with a memory of 2 and a sequence length of 3 and then taking the average ratio of the probability of the decoded sequence $p(\mathbf{\widetilde{w}})$to the probability of the optimal sequence $p(\mathbf{w}^\star)$ for both beam and greedy search decoders (using the code above). This process was then repeated for a number of vocab lengths. As shown the beam search was able to come much closer to the optimal solution than the greedy decoder and seemed to offer a c. 10% bump in sequence likelihood over the greedy decoder.
-
 
 #### Experiment 2
 
 In the first experiment the computational expense of finding the actual optimal sequence $p(\mathbf{w}^\star)$ limited the comparison to very small vocab lengths. In order to investigate a larger vocab length I instead compared the probabilities of the sequences generated by beam search and greedy search directly. This was done in the same manner as the above with the exception that 32 probability distributions were generated for each vocab length with a memory of 1 (to enable faster computation).
 
-<span class="image blog">
+<div class="image blog">
     <img src="{{ "img/blog/beam-search/ratio-of-beam-to-greedy-temp1.png" | relative_url }}" alt="feature-importance" />
-    **a)**
-</span>
+    <b>a)</b>
+</div>
 
-<span class="image blog">
+<div class="image blog">
     <img src="{{ "img/blog/beam-search/ratio-of-beam-to-greedy-temp10.png" | relative_url }}" alt="feature-importance" />
-    **b)**
-</span>
+    <b>b)</b>
+</div>
 <div class="image blog">
     <b>Figure 2</b> - Ratio of probability defined as $\frac{p(\mathbf{\widetilde{w}}_{beam})}{p(\mathbf{\widetilde{w}}_{greed})}$
 </div>
 
 In this second experiment it was found that using a beam search algorithm over a greedy search gave a boost of 1-5% in decoded likelihood. Additionally under these conditions the performance boost of increasing the beam width seems to plateau around a beam width of 7/9. The benefit of using a beam search decoder also seemed to increase with the temperature of the underlying sequence distributions.
 
-This modification of the temperature of the distribution was performed by generating $v$ uniformly distributed random numbers in the range (0, 1), multiplying each of these with the temperature parameter and feeding the result through a soft-max function. The effect of increasing the temperature is to skew the distribution towards more likely outputs. A distribution with a higher temperature is likely to better represent the actual probability distribution over words as some words (e.g. the word *the*) appear much more regularly than others.
+This modification of the temperature of the distribution was performed by generating $v$ uniformly distributed random numbers in the range (0, 1), multiplying each of these with the temperature parameter and feeding the result through a soft-max function. The effect of increasing the temperature is to skew the distribution towards more likely outputs. A distribution with a higher temperature is likely to better represent the actual probability distribution over words as some words (e.g. the word _the_) appear much more regularly than others.
 
 ### References
 

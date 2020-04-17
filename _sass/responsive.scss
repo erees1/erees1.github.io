@@ -165,11 +165,8 @@ px      68    160    252    */
   .heading {
     padding-left: 0px;
   }
-  h2 {
-    font-size: 18px;
-  }
   p {
-    font-size: 13px;
+    font-size: 15px;
   }
   /* header .navbar-default .navbar-toggle {
     margin-top: 20px;
@@ -309,6 +306,11 @@ px      68    160    252    */
     padding-top: 15px;
     padding-right: 5px;
   }
+  #portfolio-work .block .portfolio-contant ul li {
+    h1, h2, h3 {
+    margin-top: 0.5em;
+  }
+}
   /*--
 	wrapper Start 
 --*/

@@ -60,6 +60,7 @@ button.gp-button{
   color: white;
   margin-left: 10px;
   margin-right: 10px;
+  font-size: 0.83em;
 }
 
 button:hover{
@@ -97,6 +98,7 @@ button.kernel-button.activated{
 }
 .kernel-header{
   margin-bottom: 15px;
+  font-size: 1.3em;
 }
 .kernel-header .kernel-equation {
   padding-top: 5px;
@@ -167,3 +169,4 @@ button.kernel-button.activated{
 .center-text{
   text-align: center;
 }
+

@@ -1,0 +1,170 @@
+
+
+:root {
+
+  pre{
+    border: 0px;
+  }
+
+  code.highlighter-rouge{
+    background-color: rgb(239,241, 242);
+    color: #2f3e45;
+  }
+
+  div.highlighter-rouge {
+    color: None;
+  }
+
+  pre.highlight {
+    color: #758080;
+    background: rgb(239,241, 242);
+  }
+
+  button:hover{
+    color: rgb(7, 54, 66);
+  }
+
+  .highlight .emphasized,
+  .highlight .gs {
+    font-weight: bold;
+  }
+
+  .highlight .linenos {
+    color: #93a1a1;
+  }
+
+  .highlight .err {
+    color: #dc322f;
+  }
+
+  .highlight .c,
+  .highlight .c1,
+  .highlight .cm,
+  .highlight .cp,
+  .highlight .cs {
+    color: #93a1a1;
+    font-style: italic;
+  }
+
+  .highlight .k,
+  .highlight .kc,
+  .highlight .kd,
+  .highlight .kp,
+  .highlight .kr,
+  .highlight .kt,
+  .highlight .kn,
+  .highlight .nb,
+  .highlight .ow {
+    color: #268bd2;
+  }
+
+  .highlight .il,
+  .highlight .m,
+  .highlight .mf,
+  .highlight .mh,
+  .highlight .mi,
+  .highlight .mo {
+    color: #d33682;
+  }
+
+  .highlight .nf {
+    color: #11994a;
+  }
+
+  .highlight .n,
+  .highlight .na,
+  .highlight .nc,
+  .highlight .ne,
+  .highlight .ni,
+  .highlight .nl,
+  .highlight .nn,
+  .highlight .nt,
+  .highlight .nv,
+  .highlight .vc,
+  .highlight .vg,
+  .highlight .vi,
+  .highlight .bp {
+    color: #2f3e45;
+  }
+
+  .highlight .no {
+    color: #b58900;
+  }
+
+  .highlight .p,
+  .highlight .o {
+    color: #586e75;
+  }
+
+  .highlight .s,
+  .highlight .s1,
+  .highlight .s2,
+  .highlight .sb,
+  .highlight .sc,
+  .highlight .sd,
+  .highlight .se,
+  .highlight .sh,
+  .highlight .si,
+  .highlight .ss,
+  .highlight .sx {
+    color: #b58900;
+  }
+
+  .highlight .sr {
+    color: #859900;
+  }
+
+  .highlight .w {
+    color: #eee8d5;
+  }
+
+  .highlight .gd .x {
+    color: #657b83;
+    background-color: #d33682;
+  }
+
+  .highlight .gd {
+    color: #657b83;
+    background-color: #d33682;
+  }
+
+  .highlight .ge {
+    font-style: italic;
+  }
+
+  .highlight .gh {
+    color: #93a1a1;
+  }
+
+  .highlight .gi .x {
+    color: #657b83;
+    background-color: #eee8d5;
+  }
+
+  .highlight .gi {
+    color: #859900;
+    background-color: #eee8d5;
+  }
+
+  .highlight .go {
+    color: #657b83;
+  }
+
+  .highlight .gp {
+    color: #586e75;
+  }
+
+  .highlight .gr {
+    color: #dc322f;
+    background-color: #eee8d5;
+  }
+
+  .highlight .gt {
+    color: #dc322f;
+    background-color: #eee8d5;
+  }
+
+  .highlight .gu {
+    color: #586e75;
+  }
+}

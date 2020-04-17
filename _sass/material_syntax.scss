@@ -1,15 +1,17 @@
 
 
 [code-theme="dark"]{
+
+
+    pre{
+      border: 0px;
+    }
     button{
         color: rgba(255, 255, 255, 0.7)
     }
-
     button:hover{
         color: #fff;
       }
-
-
     .highlight .hll { background-color: #49483e }
     pre.highlight  { background: rgb(44, 57, 64); color: #EFFCFC }
     .highlight .c { color: #617985 } /* Comment */

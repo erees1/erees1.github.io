@@ -110,6 +110,10 @@ header {
   padding: 0px 0;
   border-style: solid;
   font-family: "Roboto", "sans-serif";
+  li{
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
 }
 
 .navbar-header a {
@@ -167,6 +171,7 @@ div.project-link-cont {
   display: inline-block;
   margin-right: 15px;
   text-align: left;
+  font-size: 0.85em;
 }
 a.grey-links {
   color: inherit;
@@ -240,8 +245,12 @@ section.single-section {
 /*--
 	Code start
 --*/
+pre{
+  font-size: 0.8em;
+  line-height: inherit;
+}
 pre.highlight {
-  border-radius: 5px;
+  border-radius: 0px;
   padding: 20px;
   padding-top: 0px;
   padding-bottom: 25px;
@@ -250,7 +259,7 @@ pre.highlight {
 .button-wrapper {
   width: 100%;
   text-align: right;
-  padding-top: 7px;
+  padding-top: 10px;
   padding-right: 25px;
 }
 
