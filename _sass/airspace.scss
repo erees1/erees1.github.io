@@ -151,6 +151,18 @@ font header .navbar-default .navbar-nav li a:hover {
     margin-bottom: 1em;
   }
 }
+.content-container {
+  blockquote {
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+    border-left: 5px solid var(--highlight-dark);
+  }
+  blockquote p{
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    font-size: 1.15em;
+  }
+}
 .content-container ul {
   list-style: "dot";
 }
