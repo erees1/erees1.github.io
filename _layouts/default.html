@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html class="no-js">
   <head>
-
+    {% if jekyll.environment != 'test' %}
+    {% include analytics.html %}
+    {% endif %}
     {% include head.html %}
 
   </head>
