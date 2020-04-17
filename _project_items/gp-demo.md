@@ -9,4 +9,4 @@ blog_post:
 order: -4
 ---
 
-Created an implementation of a gaussian process in javascript to create an interactive demonstration that runs right in the browser.
+An implementation of a gaussian process in javascript with functionality to switch between kernels and options - used to create an interactive demo that runs in the browser.
