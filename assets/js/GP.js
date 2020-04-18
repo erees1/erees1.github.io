@@ -138,7 +138,7 @@ function makeGPChart(ctx) {
 
 function resetObservations() {
   observations = [[], []];
-  calculateGP(selected_kernel, x_s);
+  calculateGP(activeKernels, x_s);
   replaceData(gpChart, 0, [], []);
 }
 function addData(chart, x, y) {
@@ -294,7 +294,7 @@ function pairwise_diffenerence(matrix1, matrix2) {
 }
 
 // --------------------
-// Gaussain Process Implementation
+// Gaussian Process Implementation
 // --------------------
 
 class LinearKernel {
@@ -389,12 +389,31 @@ class RBF {
     return this.calculate(this.example_points, this.example_points);
   }
 }
+class ActiveKernels {
+  constructor(kernels, method){
+    this.kernels = kernels
+    this.method = method
+  }
+  calculate(xs, ys) {
+    var results = this.kernels[0].calculate(xs, ys);
+    var i;
+    for (i = 1; i < this.kernels.length; i++) {
+      if (method == 'add'){
+        results = math.add(results, this.kernels[i].calculate(xs, ys))
+      }
+      else {
+        results = math.multiply(results, this.kernels[i].calculate(xs, ys))
+      }
+    }
+    return results
+  }
+}
 function calculateGP(kernel, x_s) {
   var x_obs = observations[0];
   var y_obs = observations[1];
 
   if (len(observations[0]) == 0) {
-    std = math.multiply(kernel.sigma, math.ones(len(x_s)));
+    std = math.multiply(kernel.kernels[0].sigma, math.ones(len(x_s)));
     mu_s = m(x_s);
   } else {
 
@@ -445,7 +464,7 @@ function updateFromSlider(slider, output, updateAtrFunc, kernel, heatmapDiv) {
     // Update graphs
     kernelviz = kernel.getVisualization();
     updateHeatMapData(heatmapDiv, kernelviz._data);
-    calculateGP(selected_kernel, x_s);
+    calculateGP(activeKernels, x_s);
   };
 }
 
@@ -454,16 +473,31 @@ function updateFromSlider(slider, output, updateAtrFunc, kernel, heatmapDiv) {
 // --------------------
 
 function makeActive(kernel, buttonId) {
-  selected_kernel = kernel;
   buttons = document.getElementsByClassName("kernel-button");
-
-  for (i = 0; i < buttons.length; i++) {
-    buttons[i].classList.remove("activated");
-  }
+  var i;
+  var n_activated = 0;
   var button = document.getElementById(buttonId);
-  button.classList.add("activated");
 
-  calculateGP(selected_kernel, x_s);
+  // Check how many active buttons there are
+  for (i = 0; i < buttons.length; i++) {
+    n_activated += buttons[i].classList.contains("activated");
+  }
+
+  // Deactivate if active (and more than one currently active)
+  if (button.classList.contains("activated") && (n_activated > 1) ){
+    button.classList.remove("activated")
+    var index = activeKernels.kernels.indexOf(kernel)
+    activeKernels.kernels.splice(index, 1);
+  }
+
+  // Activate if not active
+  else if (! button.classList.contains("activated")) {
+    button.classList.add("activated")
+    activeKernels.kernels.push(kernel)
+  }
+
+
+  calculateGP(activeKernels, x_s);
 }
 
 // --------------------
@@ -596,14 +630,14 @@ x_s = makexPoints(50);
 rbfkernelviz = rbf.getVisualization();
 linearkernelviz = linear.getVisualization();
 periodicviz = pdk.getVisualization();
-selected_kernel = rbf;
+activeKernels = new ActiveKernels([rbf], method='add')
 makeHeatMap("rbf-heatmap", rbfkernelviz._data, 1);
 makeHeatMap("linear-heatmap", linearkernelviz._data, 1);
 makeHeatMap("periodic-heatmap", periodicviz._data, 1);
-calculateGP(selected_kernel, x_s);
+calculateGP(activeKernels, x_s);
 
 // Listen for mouse clicks and update graphs
 canvas.addEventListener("mousedown", function (e) {
   addDataPointAtCursor(canvas, gpChart, e);
-  calculateGP(selected_kernel, x_s);
+  calculateGP(activeKernels, x_s);
 });
