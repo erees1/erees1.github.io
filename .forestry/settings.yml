@@ -7,7 +7,6 @@ sections:
 - type: document
   path: gp.html
   label: GP Demo
-  match: "**/*"
 - type: jekyll-pages
   label: Pages
   create: all
