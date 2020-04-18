@@ -1,11 +1,14 @@
 ---
-title: The Beam Search Algorithm
+title: Experimental Evaluation of The Beam Search Algorithm
 author: Edward Rees
 layout: post
 mathjax: true
-short_description: In this post I aim to discuss the beam search algorithm in the context of language modelling. First I will set out more generally the problem that beam search algorithm tries to solve and then I discuss some experiments that compare the effectiveness of the beam search algorithm to a greedy search.
----
+short_description: In this post I aim to discuss the beam search algorithm in the
+  context of language modelling. First I will set out more generally the problem that
+  beam search algorithm tries to solve and then I discuss some experiments that compare
+  the effectiveness of the beam search algorithm to a greedy search.
 
+---
 ## Introduction
 
 In this post I aim to discuss the beam search algorithm in the context of language modelling. First I will set out more generally the problem that beam search algorithm tries to solve and then I discuss some experiments that compare the effectiveness of the beam search algorithm to a greedy search.
