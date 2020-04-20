@@ -2,19 +2,20 @@
 layout: page
 title: Gaussian Processes - Interactive Demo
 custom-javascript-list:
-  - "https://cdn.plot.ly/plotly-latest.min.js"
-  - "https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.6.3/math.min.js"
-  - "https://d3js.org/d3.v5.min.js"
-  - "https://cdn.jsdelivr.net/npm/chart.js@2.8.0"
+- https://cdn.plot.ly/plotly-latest.min.js
+- https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.6.3/math.min.js
+- https://d3js.org/d3.v5.min.js
+- https://cdn.jsdelivr.net/npm/chart.js@2.8.0
 custom-css-list:
-  - "assets/css/GP.css"
+- assets/css/GP.css
 mathjax: true
+
 ---
 <p>
   This is an interactive implementation of a gaussian process written in javascript that runs right in the browser. 
   To use simply click on the main chart to add <i>'observations'</i> and watch the model update its predictions! 
   Three of the most common kernels are implemented: the radial basis function kernel, the linear kernel and the periodic kernel. It is possible to switch between them using the toggles 
-  above the chart. It is also possible to select multiple kernels - in the kernels are combined (using addition).  Adjusting the kernel parameters will adjust both the kernel visualization and the main plot. 
+  above the chart. It is also possible to select multiple kernels - in this case the kernels are combined (using addition).  Adjusting the kernel parameters will adjust both the kernel visualization and the main plot. 
   I hope you enjoy seeing this vizualization!
 </p>
 
@@ -235,4 +236,3 @@ mathjax: true
       <script src="{{site.baseurl}}/assets/js/GP.js"></script>
     </div>
   </div>
-
