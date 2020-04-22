@@ -162,11 +162,11 @@ px      68    160    252    */
   /*---------------------------------------------
 					Index Start 
 -----------------------------------------------*/
+  body {
+    font-size: 15px;
+  }
   .heading {
     padding-left: 0px;
-  }
-  p {
-    font-size: 15px;
   }
   /* header .navbar-default .navbar-toggle {
     margin-top: 20px;
@@ -181,10 +181,10 @@ px      68    160    252    */
     padding-left: 0px;
   }
   #slider .block h1 {
-    font-size: 20px;
+    font-size: 27px;
   }
   #slider .block p {
-    font-size: 13px;
+    font-size: 16px;
   }
   /*--
 	wrapper Start 

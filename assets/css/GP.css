@@ -77,7 +77,7 @@ button.kernel-button.activated{
 .kernel-options{
   width: 80%;
   text-align: center;
-  font-size: 13px;
+  font-size: 0.76em;
   margin-right: auto;
   margin-left: auto;
 }
@@ -103,7 +103,8 @@ button.kernel-button.activated{
 .kernel-header .kernel-equation {
   padding-top: 5px;
   font-size: 16px;
-  min-height: 40px;
+  min-height: 50px;
+  line-height: 50px;
 }
 
 .box {

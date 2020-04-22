@@ -7,7 +7,7 @@ short_description: In this post I aim to discuss the beam search algorithm in th
   context of language modelling. First I will set out more generally the problem that
   beam search algorithm tries to solve and then I discuss some experiments that compare
   the effectiveness of the beam search algorithm to a greedy search.
-
+permalink: beam-search
 ---
 ## Introduction
 
