@@ -13,8 +13,13 @@ keep_files:
   - ".gitignore"
 
 collections:
-  - project_items
-  - sections
+  project_items:
+    output: false
+  sections:
+    output: false
+  pages:
+    output: true
+    permalink: /:path/
 
 # Site settings
 title: Edward Rees
