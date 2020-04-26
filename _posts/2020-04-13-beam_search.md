@@ -217,7 +217,7 @@ This modification of the temperature of the distribution was performed by genera
 
 ## Conclusion
 
-We have seen here that using the beam-search algorithm is a computationally cheap way of improving the decoded sequences from a language model.  Although the performance improvement from using the beam search algorithm varies depending on the setting, in all cases investigated here, the improvement seemed to plateau at a beam width between 7-9 suggesting that this width gives you the most bang for you buck. It would be interesting to see how the performance of the beam-search algorithm fares as the vocab length is pushed much higher, although unfortunately I currently lack the compute required for such an investigation!
+We have seen here that using the beam-search algorithm is a computationally cheap way of improving the decoded sequences from a language model.  Although the performance improvement from using the beam search algorithm varies depending on the setting, in all cases investigated here, the improvement seemed to plateau at a beam width between 7-9 suggesting that this width gives you the most "bang for your buck"! It would be interesting to see how the performance of the beam-search algorithm fares as the vocab length is pushed much higher, although unfortunately I currently lack the compute required for such an investigation!
 
 One problem with the beam-search algorithm not touched upon here is that it's outputs tend to lack diversity. This has lead researchers in recent years to move away from them in favour of more complex approaches that generates samples with both high likelihood and diversity.
 
