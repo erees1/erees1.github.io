@@ -9,4 +9,4 @@ blog_post:
 order: -4
 ---
 
-An implementation of a gaussian process in javascript with functionality to switch between kernels and options - used to create an interactive demo that runs in the browser.
+Implementation of gaussian process regression model in Javascript with functionality to switch between kernels and options - used to create an interactive demo that runs in the browser.

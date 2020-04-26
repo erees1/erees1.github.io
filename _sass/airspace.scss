@@ -346,6 +346,23 @@ font header .navbar-default .navbar-nav li a:hover {
   padding-bottom: 20px;
   position: relative;
 }
+#portfolio-work .block .portfolio-contant > ul > li > .project-area {
+  padding: 0px 20px 20px 20px;
+  width: 100%;
+  min-height: 150px;
+  background-color: white;
+  border-bottom: 1px dotted #ddd;
+
+  h1, h2, h3, h4 {
+    margin-top: 0px;
+    font-weight: bold;
+    }
+
+  p {
+    margin-top: 0px;
+  }
+
+}
 #portfolio-work .block .portfolio-contant ul li:hover .overly {
   opacity: 1;
 }
@@ -362,9 +379,9 @@ font header .navbar-default .navbar-nav li a:hover {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-#portfolio-work .block .portfolio-contant ul li h3 {
-  margin-top: 0px;
-}
+// #portfolio-work .block .portfolio-contant ul li {
+
+// }
 #portfolio-work .block .portfolio-contant ul img {
   width: 100%;
   height: auto;

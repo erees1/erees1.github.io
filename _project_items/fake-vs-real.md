@@ -9,4 +9,4 @@ blog_post:
 order: -1
 ---
 
-Implemented a convolulational neural network to detect photoshoped images using Tensorflow. Tried various forms of transfer learning and implemented the final model into a game.
+Detecting photoshopped images using deep learning.
