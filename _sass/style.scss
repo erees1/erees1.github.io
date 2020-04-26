@@ -9,6 +9,7 @@
 :root {
   --highlight-dark: rgb(63, 63, 72);
   --highlight-light: rgb(70, 132, 153);
+  --text-grey: rgb(54, 54, 54);
 }
 
 /*--
@@ -194,6 +195,14 @@ a.grey-links:hover {
 /*--
  Image modifiers start
 --*/
+.caption{
+  margin-top: 1em;
+  margin-bottom: 1em;
+  // color: var(--text-grey);
+  margin-right: 2em;
+  margin-left: 2em
+}
+
 .fill-height {
   height: 100%;
 }
