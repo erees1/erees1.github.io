@@ -390,22 +390,21 @@ class RBF {
   }
 }
 class ActiveKernels {
-  constructor(kernels, method){
-    this.kernels = kernels
-    this.method = method
+  constructor(kernels, method) {
+    this.kernels = kernels;
+    this.method = method;
   }
   calculate(xs, ys) {
     var results = this.kernels[0].calculate(xs, ys);
     var i;
     for (i = 1; i < this.kernels.length; i++) {
-      if (method == 'add'){
-        results = math.add(results, this.kernels[i].calculate(xs, ys))
-      }
-      else {
-        results = math.multiply(results, this.kernels[i].calculate(xs, ys))
+      if (method == "add") {
+        results = math.add(results, this.kernels[i].calculate(xs, ys));
+      } else {
+        results = math.multiply(results, this.kernels[i].calculate(xs, ys));
       }
     }
-    return results
+    return results;
   }
 }
 function calculateGP(kernel, x_s) {
@@ -416,7 +415,6 @@ function calculateGP(kernel, x_s) {
     std = math.multiply(kernel.kernels[0].sigma, math.ones(len(x_s)));
     mu_s = m(x_s);
   } else {
-
     // Calculate kernel components
     var K = kernel.calculate(x_obs, x_obs);
     // Measurement noise
@@ -484,18 +482,17 @@ function makeActive(kernel, buttonId) {
   }
 
   // Deactivate if active (and more than one currently active)
-  if (button.classList.contains("activated") && (n_activated > 1) ){
-    button.classList.remove("activated")
-    var index = activeKernels.kernels.indexOf(kernel)
+  if (button.classList.contains("activated") && n_activated > 1) {
+    button.classList.remove("activated");
+    var index = activeKernels.kernels.indexOf(kernel);
     activeKernels.kernels.splice(index, 1);
   }
 
   // Activate if not active
-  else if (! button.classList.contains("activated")) {
-    button.classList.add("activated")
-    activeKernels.kernels.push(kernel)
+  else if (!button.classList.contains("activated")) {
+    button.classList.add("activated");
+    activeKernels.kernels.push(kernel);
   }
-
 
   calculateGP(activeKernels, x_s);
 }
@@ -510,130 +507,156 @@ const canvas = document.querySelector("canvas");
 var ctx = document.getElementById("myChart").getContext("2d");
 var gpChart = makeGPChart(ctx);
 
+// Default slider values, for time being the ranges are set in the html
+
+// Variance, Length
+var rbfDefaults = [0.8, 1];
+
+// Variance_a, Variance_b, offset
+var linearDefaults = [0.5, 0.5, 0];
+
+// Variance, length, periodicity
+var periodicDefaults = [0.5, 1, 3.14];
+
+// rbf object, set initial values from defaults
+rbf = new RBF(rbfDefaults[0], rbfDefaults[1]);
+
+// periodic object, set intial values from defaults
+pdk = new PeriodicKernel(
+  periodicDefaults[0],
+  periodicDefaults[1],
+  periodicDefaults[2]
+);
+
+// linear object, set initial values from defaults
+linear = new LinearKernel(
+  linearDefaults[0],
+  linearDefaults[1],
+  linearDefaults[2]
+);
+
 // Set Up slider listeners
 // ---------------------
 
-// RBF Options
-var rbfSigmaSlider = document.getElementById("rbfSigmaSlider");
-var rbfSigmaOutput = document.getElementById("rbfSigmaOuput");
-rbfSigmaOutput.innerHTML = rbfSigmaSlider.value; // Display the default slider value
+// Test object to see if we are on kernel settings page
+var kernel_settings = document.getElementById("rbfSigmaSlider");
 
-var rbfLengthSlider = document.getElementById("rbfLengthSlider");
-var rbfLengthOutput = document.getElementById("rbfLengthOuput");
-rbfLengthOutput.innerHTML = rbfLengthSlider.value; // Display the default slider value
+if (typeof kernel_settings != "undefined" && kernel_settings != null) {
+  // RBF Options
+  var rbfSigmaSlider = document.getElementById("rbfSigmaSlider");
+  var rbfSigmaOutput = document.getElementById("rbfSigmaOuput");
+  rbfSigmaSlider.value = rbfDefaults[0];
+  rbfSigmaOutput.innerHTML = rbfSigmaSlider.value; // Display the default slider value
 
-// rbf object, set intial values from slider defaults
-rbf = new RBF(rbfSigmaSlider.value, rbfLengthSlider.value);
+  var rbfLengthSlider = document.getElementById("rbfLengthSlider");
+  var rbfLengthOutput = document.getElementById("rbfLengthOuput");
+  rbfLengthSlider.value = rbfDefaults[1];
+  rbfLengthOutput.innerHTML = rbfLengthSlider.value; // Display the default slider value
 
-updateFromSlider(
-  rbfSigmaSlider,
-  rbfSigmaOutput,
-  rbf.updateSigma.bind(rbf),
-  rbf,
-  "rbf-heatmap"
-);
-updateFromSlider(
-  rbfLengthSlider,
-  rbfLengthOutput,
-  rbf.updateL.bind(rbf),
-  rbf,
-  "rbf-heatmap"
-);
+  updateFromSlider(
+    rbfSigmaSlider,
+    rbfSigmaOutput,
+    rbf.updateSigma.bind(rbf),
+    rbf,
+    "rbf-heatmap"
+  );
+  updateFromSlider(
+    rbfLengthSlider,
+    rbfLengthOutput,
+    rbf.updateL.bind(rbf),
+    rbf,
+    "rbf-heatmap"
+  );
 
-// Linear Options
-var linearSigmaASlider = document.getElementById("linearSigmaASlider");
-var linearSigmaAOutput = document.getElementById("linearSigmaAOuput");
-linearSigmaAOutput.innerHTML = linearSigmaASlider.value; // Display the default slider value
+  // Linear Options
+  var linearSigmaASlider = document.getElementById("linearSigmaASlider");
+  var linearSigmaAOutput = document.getElementById("linearSigmaAOuput");
+  linearSigmaASlider.value = linearDefaults[0];
+  linearSigmaAOutput.innerHTML = linearSigmaASlider.value; // Display the default slider value
 
-var linearSigmaBSlider = document.getElementById("linearSigmaBSlider");
-var linearSigmaBOutput = document.getElementById("linearSigmaBOuput");
-linearSigmaBOutput.innerHTML = linearSigmaBSlider.value; // Display the default slider value
+  var linearSigmaBSlider = document.getElementById("linearSigmaBSlider");
+  var linearSigmaBOutput = document.getElementById("linearSigmaBOuput");
+  linearSigmaBSlider.value = linearDefaults[1];
+  linearSigmaBOutput.innerHTML = linearSigmaBSlider.value; // Display the default slider value
 
-var linearOffsetSlider = document.getElementById("linearOffsetSlider");
-var linearOffsetOutput = document.getElementById("linearOffsetOuput");
-linearOffsetOutput.innerHTML = linearOffsetSlider.value; // Display the default slider value
+  var linearOffsetSlider = document.getElementById("linearOffsetSlider");
+  var linearOffsetOutput = document.getElementById("linearOffsetOuput");
+  linearOffsetSlider.value = linearDefaults[2];
+  linearOffsetOutput.innerHTML = linearOffsetSlider.value; // Display the default slider value
 
-// linear object, set intial values from slider defaults
-linear = new LinearKernel(
-  linearSigmaASlider.value,
-  linearSigmaBSlider.value,
-  linearOffsetSlider.value
-);
+  updateFromSlider(
+    linearSigmaASlider,
+    linearSigmaAOutput,
+    linear.updateSigmaA.bind(linear),
+    linear,
+    "linear-heatmap"
+  );
+  updateFromSlider(
+    linearSigmaBSlider,
+    linearSigmaBOutput,
+    linear.updateSigmaB.bind(linear),
+    linear,
+    "linear-heatmap"
+  );
+  updateFromSlider(
+    linearOffsetSlider,
+    linearOffsetOutput,
+    linear.updateC.bind(linear),
+    linear,
+    "linear-heatmap"
+  );
 
-updateFromSlider(
-  linearSigmaASlider,
-  linearSigmaAOutput,
-  linear.updateSigmaA.bind(linear),
-  linear,
-  "linear-heatmap"
-);
-updateFromSlider(
-  linearSigmaBSlider,
-  linearSigmaBOutput,
-  linear.updateSigmaB.bind(linear),
-  linear,
-  "linear-heatmap"
-);
-updateFromSlider(
-  linearOffsetSlider,
-  linearOffsetOutput,
-  linear.updateC.bind(linear),
-  linear,
-  "linear-heatmap"
-);
+  // Periodic Options
+  var periodicSigmaSlider = document.getElementById("periodicSigmaSlider");
+  var periodicSigmaOutput = document.getElementById("periodicSigmaOuput");
+  periodicSigmaSlider.value = periodicDefaults[0];
+  periodicSigmaOutput.innerHTML = periodicSigmaSlider.value; // Display the default slider value
 
-// Periodic Options
-var periodicSigmaSlider = document.getElementById("periodicSigmaSlider");
-var periodicSigmaOutput = document.getElementById("periodicSigmaOuput");
-periodicSigmaOutput.innerHTML = periodicSigmaSlider.value; // Display the default slider value
+  var periodicLengthSlider = document.getElementById("periodicLengthSlider");
+  var periodicLengthOutput = document.getElementById("periodicLengthOuput");
+  periodicLengthSlider.value = periodicDefaults[1];
+  periodicLengthOutput.innerHTML = periodicLengthSlider.value; // Display the default slider value
 
-var periodicLengthSlider = document.getElementById("periodicLengthSlider");
-var periodicLengthOutput = document.getElementById("periodicLengthOuput");
-periodicLengthOutput.innerHTML = periodicLengthSlider.value; // Display the default slider value
+  var periodicPSlider = document.getElementById("periodicPSlider");
+  var periodicPOutput = document.getElementById("periodicPOuput");
+  periodicPSlider.value = periodicDefaults[2];
+  periodicPOutput.innerHTML = periodicPSlider.value; // Display the default slider value
+  console.log(periodicPOutput.innerHTML);
 
-var periodicPSlider = document.getElementById("periodicPSlider");
-var periodicPOutput = document.getElementById("periodicPOuput");
-periodicPOutput.innerHTML = periodicPSlider.value; // Display the default slider value
-console.log(periodicPOutput.innerHTML);
-
-// periodic object, set intial values from slider defaults
-pdk = new PeriodicKernel(
-  periodicSigmaSlider.value,
-  periodicLengthSlider.value,
-  periodicPSlider.value
-);
-
-updateFromSlider(
-  periodicSigmaSlider,
-  periodicSigmaOutput,
-  pdk.updateSigma.bind(pdk),
-  pdk,
-  "periodic-heatmap"
-);
-updateFromSlider(
-  periodicLengthSlider,
-  periodicLengthOutput,
-  pdk.updateL.bind(pdk),
-  pdk,
-  "periodic-heatmap"
-);
-updateFromSlider(
-  periodicPSlider,
-  periodicPOutput,
-  pdk.updateP.bind(pdk),
-  pdk,
-  "periodic-heatmap"
-);
-
+  updateFromSlider(
+    periodicSigmaSlider,
+    periodicSigmaOutput,
+    pdk.updateSigma.bind(pdk),
+    pdk,
+    "periodic-heatmap"
+  );
+  updateFromSlider(
+    periodicLengthSlider,
+    periodicLengthOutput,
+    pdk.updateL.bind(pdk),
+    pdk,
+    "periodic-heatmap"
+  );
+  updateFromSlider(
+    periodicPSlider,
+    periodicPOutput,
+    pdk.updateP.bind(pdk),
+    pdk,
+    "periodic-heatmap"
+  );
+}
 // Initialise GP and HeatMap
 x_s = makexPoints(50);
 rbfkernelviz = rbf.getVisualization();
 linearkernelviz = linear.getVisualization();
 periodicviz = pdk.getVisualization();
-activeKernels = new ActiveKernels([rbf], method='add')
-makeHeatMap("rbf-heatmap", rbfkernelviz._data, 1);
-makeHeatMap("linear-heatmap", linearkernelviz._data, 1);
-makeHeatMap("periodic-heatmap", periodicviz._data, 1);
+activeKernels = new ActiveKernels([rbf], (method = "add"));
+
+if (typeof kernel_settings != "undefined" && kernel_settings != null) {
+  makeHeatMap("rbf-heatmap", rbfkernelviz._data, 1);
+  makeHeatMap("linear-heatmap", linearkernelviz._data, 1);
+  makeHeatMap("periodic-heatmap", periodicviz._data, 1);
+}
 calculateGP(activeKernels, x_s);
 
 // Listen for mouse clicks and update graphs

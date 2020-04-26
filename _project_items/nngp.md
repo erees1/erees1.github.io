@@ -1,7 +1,7 @@
 ---
 title: "NNGP"
 draft: false
-image : "img/projects/nngp-cover2.png"
+image : "img/projects/nngp-cover3.jpg"
 category: "statistics"
 github_repo: "nngp"
 project_page:

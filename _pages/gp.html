@@ -9,8 +9,8 @@ custom-javascript-list:
 custom-css-list:
 - assets/css/GP.css
 mathjax: true
-
 ---
+
 <p>
   This is an interactive implementation of a gaussian process written in javascript that runs right in the browser. 
   To use simply click on the main chart to add <i>'observations'</i> and watch the model update its predictions! 
@@ -230,9 +230,6 @@ mathjax: true
           Reset Chart
         </button>
       </div>
-      <canvas id="myChart" width="400" height="180"></canvas>
-
-
-      <script src="{{site.baseurl}}/assets/js/GP.js"></script>
+      {% include gp-demo/gp-chart.html %}
     </div>
   </div>
