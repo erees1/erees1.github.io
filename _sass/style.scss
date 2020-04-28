@@ -28,12 +28,8 @@
   text-align: center;
 }
 
-// img { 
-//   border:1px solid rgb(180, 180, 181);
-// }
-
 /*--
-	Page width modifers start
+	Page width & Bootstrap modifers start
 --*/
 @media (min-width: 768px) {
   .container {
@@ -49,6 +45,13 @@
   .container {
     width: 970px;
   }
+}
+
+.no-padding{
+  padding: 0px;
+}
+.no-margin{
+  margin: 0px;
 }
 
 /*=============================================*/

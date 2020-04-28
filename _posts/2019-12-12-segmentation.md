@@ -1,8 +1,8 @@
 ---
-title: Old School Semantic Segmentation of Faces
+title: Semantic Segmentation Without Deep Learning
 author: Edward Rees
 layout: post
-short_description: I have recently completed a data science course at General Assembly in London and for the past 5 weeks in the evenings I have been working on my final project. Cognisant of the rising tide of fake news / fake images and more recently deep fakes on the internet I decided to create an image classifier that could spot whether pictures of faces had been photoshopped or not.
+short_description: These days no one would dream about performing a segmentation task without using deep learning. However that is exactly what I set out to do in this project, to see how far you can get with a small dataset, random forests and no TensorFLow!
 ---
 
 <h2> Table of Contents </h2>
@@ -24,6 +24,10 @@ short_description: I have recently completed a data science course at General As
 </div>
 
 ## Introduction
+
+These days no one would dream about performing a segmentation task without using deep learning. However that is exactly what I set out to do in this project, to see how far you can get with a small dataset and no TensorFLow!
+
+### Background
 
 I have recently completed a data science course at General Assembly in London and for the past 5 weeks in the evenings I have been working on my final project. Cognisant of the rising tide of fake news / fake images and more recently deep fakes on the internet I decided to create an image classifier that could spot whether pictures of faces had been photoshopped or not.
 
