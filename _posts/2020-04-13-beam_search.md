@@ -185,7 +185,7 @@ Calculating the actual most likely solution $\mathbf{w}^\star$ involves performi
 </div> -->
 
 <div class='row'>
-    <div class='col-md-10 col-sm-12 center-block center-text'>
+    <div class='col-md-10 col-sm-10 col-xs-12 center-block center-text'>
     {% include html-charts/beam-search/decoder-accuracy.html %}
     </div>
 </div>
