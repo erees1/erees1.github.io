@@ -2,7 +2,7 @@
 title: Semantic Segmentation Without Deep Learning
 author: Edward Rees
 layout: post
-short_description: These days no one would dream about performing a segmentation task without using deep learning. However that is exactly what I set out to do in this project, to see how far you can get with a small dataset, random forests and no TensorFLow!
+short_description: These days no one would dream about performing a segmentation task without using deep learning. However that is exactly what I set out to do in this project, to see how far you can get with a small dataset, random forests and no TensorFlow!
 ---
 
 <h2> Table of Contents </h2>
@@ -25,7 +25,7 @@ short_description: These days no one would dream about performing a segmentation
 
 ## Introduction
 
-These days no one would dream about performing a segmentation task without using deep learning. However that is exactly what I set out to do in this project, to see how far you can get with a small dataset and no TensorFLow!
+These days no one would dream about performing a segmentation task without using deep learning. However that is exactly what I set out to do in this project, to see how far you can get with a small dataset and no TensorFlow!
 
 ### Background
 
