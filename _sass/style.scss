@@ -3,14 +3,7 @@
  * To find the original style.css that ships with Airspace, read airspace.css
  *
  */
-/*--
-	Colors
---*/
-:root {
-  --highlight-dark: rgb(63, 63, 72);
-  --highlight-light: rgb(70, 132, 153);
-  --text-grey: rgb(54, 54, 54);
-}
+ @import "colours.scss";
 
 /*--
 	simple modifers start
@@ -114,43 +107,9 @@ footer {
 /*--
 	Header start
 --*/
-header {
-  border-top: 5px;
-  border-bottom: 1px;
-  border-right: 0px;
-  border-left: 0px;
-  border-color: #002147 red #e7e7e7 red;
-  padding: 0px 0;
-  border-style: solid;
-  font-family: "Roboto", "sans-serif";
-  li{
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-}
-
-.navbar-header a {
-  /* bottom: 0; */
-  font-size: 35px;
-  /* padding-bottom: 0px; */
-}
-
-/* The sticky class is added to the header with JS when it reaches its scroll position */
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000000;
-}
-
-/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
-.sticky + .content {
-  padding-top: 102px;
-}
-
-.header-social-icons {
-  font-size: 1.32em;
-}
+// .header-social-icons {
+//   font-size: 1.32em;
+// }
 
 @media only screen and (max-width: 768px) {
   li.header-social-icons {

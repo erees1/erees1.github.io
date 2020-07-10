@@ -6,15 +6,17 @@
  * 
  */
 
-@import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600);
-@import url(//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700);
-@import url(//fonts.googleapis.com/css?family=Volkhov:400italic);
+@import url("//fonts.googleapis.com/css?family=Open+Sans:400,300,600");
+@import url("//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700");
+@import url("//fonts.googleapis.com/css?family=Volkhov:400italic");
+@import "colours.scss";
 /* var text-decoration */
 /*--
 	Common Css
 --*/
 body {
-  font-family: "-apple-system", "Helvetica Neue",Helvetica, "Open Sans", sans-serif;
+  font-family: "-apple-system", "Helvetica Neue", Helvetica, "Open Sans",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   font-size: 17px;
 }
@@ -24,7 +26,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "-apple-system", "Helvetica Neue",Helvetica, "Roboto", sans-serif;
+  font-family: "-apple-system", "Helvetica Neue", Helvetica, "Roboto",
+    sans-serif;
 }
 h1 {
   font-weight: bold;
@@ -41,12 +44,12 @@ h4 {
   font-size: inherit;
   font-weight: bold;
 }
-  h2,
-  h3,
-  h4 {
-    margin-top: 1.2em;
-    margin-bottom: 0.5em;
-  }
+h2,
+h3,
+h4 {
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+}
 ul,
 ol {
   padding-left: 0px;
@@ -85,33 +88,45 @@ section {
 /*--
 	Header Start
 --*/
-header {
+header .navbar-default {
   background: rgb(247, 247, 247);
-  padding: 0px 0;
-}
-header .navbar {
   margin-bottom: 0px;
   border: 0px;
+  border-top: 5px solid #002147;
+  border-bottom: 1px solid rgb(231, 231, 231);
+  font-family: "Roboto", "sans-serif";
+
+  // ul {
+  //   padding-top: 10px;
+  // }
+  li {
+    margin: 0px 26px 0px 0px;
+    a {
+      color: rgb(92, 92, 92);
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight: 500;
+      line-height: 1em;
+      padding-bottom: 6px;
+    }
+    a:hover {
+      color: var(--dark-link-hover);
+    }
+  }
 }
-header .navbar-brand {
-  padding-top: 5px;
+header .navbar-nav {
+  margin-top: 6px;
 }
-header .navbar-default {
-  background: none;
-  border: 0px;
+header .navbar-toggler.hamburger {
+  padding-top: 6px;
+  margin: 2px 0
 }
-header .navbar-default .navbar-nav {
-  padding-top: 10px;
-}
-header .navbar-default .navbar-nav li a {
-  color: rgb(92, 92, 92);
-  padding: 10px 26px;
-  font-size: 14px;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-font header .navbar-default .navbar-nav li a:hover {
-  color: #000;
+header .hamburger:hover {
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    background-color: var(--dark-link-hover);
+  }
 }
 /*---------------------------------------------
 					Index Start
@@ -126,6 +141,7 @@ font header .navbar-default .navbar-nav li a:hover {
   background-position: 10% 0%;
   padding: 150px 0 100px 0;
   position: relative;
+  margin-top: 40px;
 }
 #slider:before {
   content: "";
@@ -168,13 +184,13 @@ font header .navbar-default .navbar-nav li a:hover {
     padding-bottom: 1em;
     border-left: 5px solid var(--highlight-dark);
   }
-  blockquote p:first-child{
-    margin-top: 0px
+  blockquote p:first-child {
+    margin-top: 0px;
   }
-  blockquote p:last-child{
+  blockquote p:last-child {
     margin-bottom: 0px;
   }
-  blockquote p{
+  blockquote p {
     margin: inherit;
     font-size: 1.15em;
   }
@@ -189,11 +205,11 @@ font header .navbar-default .navbar-nav li a:hover {
     margin: 0;
   }
 }
-  .content-container {
-    li {
-      padding-left: 10px;
-    }
+.content-container {
+  li {
+    padding-left: 10px;
   }
+}
 
 /*--
 	post Start
@@ -351,17 +367,19 @@ font header .navbar-default .navbar-nav li a:hover {
   width: 100%;
   min-height: 150px;
   background-color: white;
-  border-bottom: 1px dotted #ddd;
+  // border-bottom: 1px dotted #ddd;
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     margin-top: 0px;
     font-weight: bold;
-    }
+  }
 
   p {
     margin-top: 0px;
   }
-
 }
 #portfolio-work .block .portfolio-contant ul li:hover .overly {
   opacity: 1;

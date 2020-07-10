@@ -4,7 +4,10 @@
 @import "airspace";
 @import "style";
 @import "chefbot";
-@import "light_syntax2";
-@import "material_syntax";
+@import "syntax/light_syntax2";
+@import "syntax/material_syntax";
 @import "responsive";
 
+// Settings for the hamburger
+@import "hamburger_settings";
+@import "hamburgers/hamburgers.scss";
