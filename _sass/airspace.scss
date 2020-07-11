@@ -17,6 +17,29 @@
 /*---------------------------------------------
 					Common CSS
 -----------------------------------------------*/
+/*--
+	Page width & Bootstrap modifers start
+--*/
+@include media-breakpoint-up(sm) {
+  .container {
+    width: 97.78%;
+  }
+}
+@include media-breakpoint-up(md) {
+  .container {
+    width: 970px;
+  }
+}
+@include media-breakpoint-up(lg) {
+  .container {
+    width: 970px;
+  }
+}
+@include media-breakpoint-up(xlg) {
+  .container {
+    width: 970px;
+  }
+}
 body {
   font-family: "-apple-system", "Helvetica Neue", Helvetica, "Open Sans",
     sans-serif;
