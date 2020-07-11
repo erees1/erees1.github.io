@@ -23,6 +23,7 @@ collections:
 
 sass:
   sass_dir: _sass
+  style: compressed
 
 # Site settings
 title: Edward Rees
