@@ -4,7 +4,10 @@
  *
  */
  @import "colours.scss";
-
+ @import "buttons.scss";
+ @import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins/_breakpoints";
 /*--
 	simple modifers start
 --*/
@@ -24,17 +27,22 @@
 /*--
 	Page width & Bootstrap modifers start
 --*/
-@media (min-width: 768px) {
+@include media-breakpoint-up(sm) {
   .container {
     width: 97.78%;
   }
 }
-@media (min-width: 992px) {
+@include media-breakpoint-up(md) {
   .container {
     width: 970px;
   }
 }
-@media (min-width: 1200px) {
+@include media-breakpoint-up(lg) {
+  .container {
+    width: 970px;
+  }
+}
+@include media-breakpoint-up(xlg) {
   .container {
     width: 970px;
   }
@@ -51,26 +59,6 @@
 /*---------------------------------------------
 Theme Edits
 -----------------------------------------------*/
-/*--
-	Post area - (list of blog posts)
---*/
-.post-area {
-  padding: 20px 20px 20px 20px;
-  width: 100%;
-  min-height: 150px;
-  background-color: white;
-  border-bottom: 1px dotted #ddd;
-}
-
-.post-area a:link,
-.post-area a:visited {
-  font-size: 30px;
-  color: #333;
-}
-
-.post-area a:hover {
-  color: #0d0017;
-}
 
 /*--
 	Home page start
@@ -102,22 +90,6 @@ footer {
   height: 70px;
   width: 100%;
   overflow: hidden;
-}
-
-/*--
-	Header start
---*/
-// .header-social-icons {
-//   font-size: 1.32em;
-// }
-
-@media only screen and (max-width: 768px) {
-  li.header-social-icons {
-    display: inline-block;
-  }
-  #bs-example-navbar-collapse-1 > ul.nav.navbar-nav {
-    text-align: center;
-  }
 }
 
 /*--
@@ -208,13 +180,6 @@ img.image-icon {
 /*--
  Single page start
 --*/
-.single-title {
-  margin-bottom: 30px;
-}
-section.single-section {
-  padding-top: 20px;
-  padding-top: 20px;
-}
 
 /*--
  Table of contents start
@@ -255,79 +220,6 @@ button.code-toggle {
   background-color: inherit;
   padding: 2px;
 }
-/*--
-	Buttons / Links start
---*/
-.cta-style-1 {
-  border-radius: 4px;
-  background: var(--highlight-dark) !important;
-  border: none;
-  color: white !important;
-  text-align: center;
-  text-transform: uppercase;
-  padding: 7px 20px;
-  width: 200px;
-  transition: all 0.4s;
-  cursor: pointer;
-  margin: 5px;
-}
-.cta-style-1 span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.4s;
-}
-.cta-style-1 span:after {
-  content: "\00bb";
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-.cta-style-1:hover span {
-  padding-right: 25px;
-}
-.cta-style-1:hover span:after {
-  opacity: 1;
-  right: 0;
-}
-.cta-style-2 {
-  color: #fff !important;
-  text-transform: uppercase;
-  text-decoration: none;
-  background: var(--highlight-light);
-  padding: 5px 15px;
-  border-radius: 6px;
-  display: inline-block;
-  border: none;
-  transition: all 0.4s ease 0s;
-}
-.cta-style-2:hover {
-  background: var(--highlight-dark);
-  letter-spacing: 1px;
-  -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-  -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-  box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
-  transition: all 0.4s ease 0s;
-}
-.cta-style-3 {
-  color: var(--highlight-light) !important;
-  text-transform: uppercase;
-  background: #ffffff;
-  padding: 3px 12px;
-  border: 2px solid var(--highlight-light) !important;
-  border-radius: 6px;
-  display: inline-block;
-  transition: all 0.5s ease 0s;
-}
-.cta-style-3:hover {
-  color: var(--highlight-dark) !important;
-  border-radius: 20px;
-  border-color: var(--highlight-dark) !important;
-  transition: all 0.5s ease 0s;
-}
-
 /*---------------------------------------------
 					Theme Additions Close
 -----------------------------------------------*/
