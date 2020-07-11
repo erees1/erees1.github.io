@@ -21,6 +21,9 @@ collections:
     output: true
     permalink: /:path/
 
+sass:
+  sass_dir: _sass
+
 # Site settings
 title: Edward Rees
 # subtitle: "A free HTML5 agency template"
