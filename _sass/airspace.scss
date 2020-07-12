@@ -20,6 +20,9 @@
 /*--
 	Page width & Bootstrap modifers start
 --*/
+html {
+  overflow-y: scroll;
+}
 @include media-breakpoint-up(lg) {
   .container {
     width: 970px;
@@ -305,13 +308,22 @@ footer .footer-manu ul li a:hover {
   border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 5px;
   margin: 5px;
+  display: inline-block;
+  // padding: 5px 20px;
+  cursor: pointer;
+  // font-size: 15px;
+  font-weight: 600;
+  color: #333333;
+  text-transform: capitalize;
+  position: relative;
+  background-color: white;
 }
 .filter.active {
   background-color: var(--filter-selected);
+  color: white;
 }
 .filter:hover {
   border: 1px solid var(--filter-selected);
-  // background-color: red;
 }
 /*---------------------------------------------
 					Index Start
@@ -419,21 +431,6 @@ footer .footer-manu ul li a:hover {
   /* border: 1px solid #999999; */
   display: inline-block;
   margin-bottom: 40px;
-}
-#portfolio-work .block .portfolio-menu ul li {
-  display: inline-block;
-  padding: 0px 25px;
-  cursor: pointer;
-  font-size: 15px;
-  line-height: 32px;
-  font-weight: 600;
-  color: #333333;
-  text-transform: capitalize;
-  position: relative;
-}
-#portfolio-work .block .portfolio-menu ul .active {
-  position: relative;
-  color: white;
 }
 #portfolio-work .block .portfolio-contant > ul > li {
   float: center;

@@ -20,12 +20,12 @@ permalink: /projects/
     <div class="block">
       <div class="portfolio-menu">
         <ul>
-          <li class="filter" data-filter="all">Show All</li>
-          <li class="filter" data-filter=".computer-vision">
+          <button class="filter btn-sm" data-filter="all">Show All</button>
+          <button class="filter btn-sm" data-filter=".computer-vision">
             Computer Vision
-          </li>
-          <li class="filter" data-filter=".nlp">NLP</li>
-          <li class="filter" data-filter=".statistics">Statistics</li>
+          </button>
+          <button class="filter btn-sm" data-filter=".nlp">NLP</button>
+          <button class="filter btn-sm" data-filter=".statistics">Statistics</button>
         </ul>
       </div>
       <div class="portfolio-contant">
@@ -35,7 +35,7 @@ permalink: /projects/
             project in _projects %} {% if project.draft == false %}
             <div class="col-lg-6 col-md-6 col-sm-12 mix {{project.category}}">
               <div class="project-area">
-                <div class="card mb-4 shadow-md project-card">
+                <div class="card mb-4 shadow-sm project-card">
                   <div class="row no-gutters">
                     <div class="col-lg-12 col-md-12">
                       <div class="card-img">
