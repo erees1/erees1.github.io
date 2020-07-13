@@ -1,0 +1,28 @@
+---
+label: Project Item
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: title
+- type: file
+  name: image
+  label: image
+- type: text
+  name: category
+  label: category
+- type: text
+  name: github_repo
+  label: github_repo
+- type: text
+  name: project_page
+  label: project_page
+- type: text
+  name: date
+  label: date
+- type: text
+  name: blog_post
+  label: blog_post
+- type: number
+  name: order
+  label: order
