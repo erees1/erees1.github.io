@@ -25,9 +25,10 @@ html {
 }
 @include media-breakpoint-up(lg) {
   .container {
-    width: 970px;
+    width: 1040px;
   }
 }
+
 body {
   font-family: "-apple-system", "Helvetica Neue", Helvetica, "Open Sans",
     sans-serif;
@@ -104,7 +105,7 @@ a:active {
   margin-top: 0px;
 }
 .page-title {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   text-align: center;
 }
 section {
@@ -424,7 +425,7 @@ footer .footer-manu ul li a:hover {
   overflow: hidden;
 }
 #portfolio-work .block .portfolio-menu {
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   text-align: center;
 }
 #portfolio-work .block .portfolio-menu ul {

@@ -10,4 +10,4 @@ order: -9
 date: Feb 2020
 ---
 
-Implementation of gaussian process regression model in Javascript with functionality to switch between kernels and options - used to create an interactive demo that runs in the browser.
+Interactive demo of gaussian process regression model with functionality to switch between kernels and options, written in Javascript.
