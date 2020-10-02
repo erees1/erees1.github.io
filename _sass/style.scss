@@ -7,24 +7,11 @@
  */
 
 @import "colours.scss";
-@import "bootstrap/functions";
-@import "bootstrap/variables";
-@import "bootstrap/mixins/_breakpoints";
 /* var text-decoration */
 /*---------------------------------------------
 					Common CSS
 -----------------------------------------------*/
-/*--
-	Page width & Bootstrap modifers start
---*/
-html {
-  overflow-y: scroll;
-}
-@include media-breakpoint-up(lg) {
-  .container {
-    width: 1040px;
-  }
-}
+
 /*--
 	Header Start
 --*/
