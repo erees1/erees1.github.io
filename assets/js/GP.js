@@ -89,6 +89,7 @@ function makeGPChart(ctx) {
               drawOnChartArea: false,
             },
             ticks: {
+              display: false,
               min: -5,
               max: 5,
             },

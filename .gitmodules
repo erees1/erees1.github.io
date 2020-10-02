@@ -1,6 +1,3 @@
-[submodule "base-style"]
-	path = _sass/base-style
-	url = https://github.com/erees1/base-style
 [submodule "_sass/base-style"]
 	path = _sass/base-style
 	url = https://github.com/erees1/base-style

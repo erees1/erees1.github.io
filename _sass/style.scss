@@ -1,160 +1,266 @@
 /*
- * This css file includes styles added in the jekyll port of this theme.
- * To find the original style.css that ships with Airspace, read airspace.css
- *
+ * This is the main css file that ships with the airspace theme.
+ * In airspace, it is called style.css
+ * However, style.css now holds additional styles for this jekyll port. (Not written by ThemeFisher)
+ * The original style.css is now called airspace.css
+ * 
  */
- @import "colours.scss";
- @import "buttons.scss";
 
-.italic {
-  font-style: italic;
+@import "colours.scss";
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins/_breakpoints";
+/* var text-decoration */
+/*---------------------------------------------
+					Common CSS
+-----------------------------------------------*/
+/*--
+	Page width & Bootstrap modifers start
+--*/
+html {
+  overflow-y: scroll;
 }
-
-.bold {
-  font-weight: bold;
+@include media-breakpoint-up(lg) {
+  .container {
+    width: 1040px;
+  }
 }
-
-.center-text {
+/*--
+	Header Start
+--*/
+header .navbar-default {
+  background: rgb(247, 247, 247);
+  margin-bottom: 0px;
+  border: 0px;
+  border-top: 5px solid #002147;
+  border-bottom: 1px solid rgb(231, 231, 231);
+  font-family: "Roboto", "sans-serif";
+  li {
+    margin: 0px 26px 0px 0px;
+    a {
+      color: rgb(92, 92, 92);
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight: 500;
+      line-height: 1em;
+      padding-bottom: 6px;
+    }
+    a:hover {
+      color: var(--dark-link-hover);
+    }
+  }
+}
+header .navbar-nav {
+  margin-top: 6px;
+}
+header .nav-bar-icons {
+  flex-direction: row;
+}
+header .navbar-toggler.hamburger {
+  padding-top: 7px;
+  margin: 2px 0;
+}
+header .hamburger:hover {
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    background-color: var(--dark-link-hover);
+  }
+}
+div.dummy-header-spacing {
+  height: 57px;
+}
+/*--
+	footer Start
+--*/
+footer {
+  background: rgb(247, 247, 247);
   text-align: center;
+  padding-top: 20px;
+  padding-bottom: 25px;
 }
-
-.no-padding{
+footer p {
+  font-size: 13px;
+  line-height: 25px;
+  color: #919191;
+}
+footer a {
+  color: #595959;
+}
+footer .footer-manu {
+  padding-bottom: 25px;
+}
+footer .footer-manu ul {
+  margin: 0px;
   padding: 0px;
 }
-.no-margin{
-  margin: 0px;
+footer .footer-manu ul li {
+  display: inline-block;
+  padding: 0px 20px;
 }
-
-/*=============================================*/
-/*---------------------------------------------
-Theme Edits
------------------------------------------------*/
-
+footer .footer-manu ul li a {
+  display: inline-block;
+  color: #494949;
+}
+footer .footer-manu ul li a:hover {
+  color: #000;
+}
 /*--
-	Home page start
+	Content Start (Any page that holds info)
+--*/
+.content-container {
+  blockquote {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    border-left: 5px solid var(--highlight-dark);
+  }
+  blockquote p:first-child {
+    margin-top: 0px;
+  }
+  blockquote p:last-child {
+    margin-bottom: 0px;
+  }
+  blockquote p {
+    margin: inherit;
+    font-size: 1.15em;
+  }
+}
+.content-container ul {
+  list-style: "dot";
+}
+.content-container {
+  ul,
+  ol {
+    padding-left: 40px;
+    margin: 0;
+  }
+}
+.content-container {
+  li {
+    padding-left: 10px;
+  }
+}
+/*--
+	Global-header (banner at top of every page)
+--*/
+#global-header {
+  background: url("../img/site/slider-bg.jpg") no-repeat;
+  background-size: cover;
+  padding-top: 150px;
+  padding-bottom: 107px;
+  position: relative;
+  background-attachment: fixed;
+}
+#global-header:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to left, #928dab, #1f1c2c 70%);
+  opacity: 0.8;
+}
+#global-header .block {
+  color: #e3e3e4;
+  margin: 0 auto;
+  padding-left: 90px;
+  text-align: center;
+}
+#global-header .block h1 {
+  font-weight: 100;
+  font-size: 45px;
+  letter-spacing: 6px;
+  padding-bottom: 15px;
+  margin-top: 0;
+  text-transform: capitalize;
+}
+#global-header .block p {
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  word-spacing: 3px;
+}
+// Filters
+.filter {
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  margin: 5px;
+  display: inline-block;
+  // padding: 5px 20px;
+  cursor: pointer;
+  // font-size: 15px;
+  font-weight: 600;
+  color: #333333;
+  text-transform: capitalize;
+  position: relative;
+  background-color: white;
+}
+.filter.active {
+  background-color: var(--filter-selected);
+  color: white;
+}
+.filter:hover {
+  border: 1px solid var(--filter-selected);
+}
+/*---------------------------------------------
+					Index Start
+-----------------------------------------------*/
+/*--
+	Slider Start (slider is banner on home page)
 --*/
 .avatar {
   height: 185px;
   padding-left: auto;
   padding-right: auto;
 }
-
-/*--
-	sticky footer start
---*/
-
-html {
+#slider {
+  background: url("../../img/site/london-skyline.blur15.jpg") no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 10% 0%;
+  padding: 100px 0 100px 0;
   position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin: 0 0 70px;
-  /* bottom = footer height */
-}
-
-footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 70px;
-  width: 100%;
-  overflow: hidden;
-}
-
-/*--
- Portfolio page start
---*/
-
-ul.project-links {
-  margin-left: 0px;
-  padding-left: 0px;
-}
-div.project-link-cont {
-  color: white;
-  // width: 120px;
-  height: 100%;
-  background-color: rgb(180, 180, 185);
-  border-radius: 25px;
-  line-height: 30px;
-  text-align: center;
-  margin-right: 0px;
-  margin-left: 0px;
-}
-#portfolio-work .block .portfolio-contant li.project-links {
-  display: inline-block;
-  margin-right: 15px;
-  text-align: left;
-  font-size: 0.85em;
-  margin-top: 0px;
-}
-a.grey-links {
-  color: inherit;
-}
-
-a.grey-links:hover {
-  color: var(--highlight-dark);
-}
-
-/*--
- Image modifiers start
---*/
-.caption{
-  margin-top: 1em;
-  margin-bottom: 1em;
-  // color: var(--text-grey);
-  margin-right: 2em;
-  margin-left: 2em
-}
-
-.fill-height {
-  height: 100%;
-}
-
-img.image-fit {
-  width: 100%;
-}
-
-div.center-image-container {
-  width: 100%;
-  text-align: center;
-}
-
-img.img-page-icon {
-  width: 20%;
   margin-bottom: 20px;
 }
-
-.image.blog {
-  text-align: center;
-  display: block;
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
+#slider:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #0d2b12f3, #636074);
+  opacity: 0.4;
 }
-
-.center-block {
-    margin-left: auto;
-    margin-right: auto;
-    float: None;
+#slider .block {
+  color: #e3e3e4;
 }
-
-@media only screen and (max-width: 768px) {
-  img.image-icon {
-    width: 30%;
-  }
-  .image.blog {
-    width: 100%;
-  }
+#slider .block h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 200;
+  font-size: 45px;
+  line-height: 60px;
+  letter-spacing: 10px;
+  padding-bottom: 15px;
 }
-
-/*--
- Single page start
---*/
-
-/*--
- Table of contents start
---*/
+#slider .block p {
+  font-size: 23px;
+  line-height: 40px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+/*---------------------------------------------
+					Posts List Page Start
+-----------------------------------------------*/
 #TOC ul {
   padding-left: 10px;
   list-style: none;
@@ -164,33 +270,167 @@ img.img-page-icon {
     margin: 0.5em;
   }
 }
-
-/*--
-	Code start
---*/
-pre{
-  font-size: 0.8em;
-  line-height: inherit;
-}
-pre.highlight {
-  border-radius: 0px;
-  padding: 20px;
-  padding-top: 0px;
-  padding-bottom: 25px;
-}
-
-.button-wrapper {
+.post-area {
+  padding: 20px 20px 20px 20px;
   width: 100%;
-  text-align: right;
-  padding-top: 10px;
-  padding-right: 25px;
+  border-bottom: 1px dotted #ddd;
 }
 
-button.code-toggle {
-  border: None;
-  background-color: inherit;
-  padding: 2px;
+.post-area a:link,
+.post-area a:visited {
+  // font-size: 22px;
+
+  color: var(--text-blue);
+}
+
+.post-area a:hover {
+  color: #0d0017;
 }
 /*---------------------------------------------
-					Theme Additions Close
+					Post Page Start
 -----------------------------------------------*/
+#post {
+  padding: 80px 0;
+  border-bottom: 1px dotted #ddd;
+}
+#post .block p ul {
+  color: #7b7b7b;
+  padding-top: 20px;
+}
+#post .block img {
+  padding-left: 0px;
+  width: 100%;
+}
+#post .section-title {
+  margin-bottom: 0px;
+}
+#post .section-title p {
+  padding-top: 20px;
+}
+#post div.container {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/*---------------------------------------------
+					Projects Start
+-----------------------------------------------*/
+/*--
+	portfolio-work Start
+--*/
+#portfolio-work {
+  overflow: hidden;
+}
+#portfolio-work .block .portfolio-menu {
+  padding-bottom: 20px;
+  text-align: center;
+}
+#portfolio-work .block .portfolio-menu ul {
+  /* border: 1px solid #999999; */
+  display: inline-block;
+  margin-bottom: 40px;
+}
+#portfolio-work .block .portfolio-contant > ul > li {
+  float: center;
+  width: 100%;
+  overflow: hidden;
+  margin: 0px;
+  padding-bottom: 20px;
+  position: relative;
+}
+#portfolio-work .block .portfolio-contant li.project-links {
+  display: inline-block;
+  margin-right: 15px;
+  text-align: left;
+  font-size: 0.85em;
+  margin-top: 0px;
+}
+#portfolio-work .block .portfolio-contant-extra {
+  div, ul, p, h5 {
+    display: inline;
+  };
+  ul {
+    list-style-type: none ;
+  }
+}
+#portfolio-work .block .portfolio-contant > ul > li > .project-area {
+  padding: 0px 20px 20px 20px;
+  // width: 100%;
+  min-height: 150px;
+  background-color: white;
+  // border-bottom: 1px dotted #ddd;
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin-top: 0px;
+    font-weight: bold;
+  }
+
+  p {
+    margin-top: 0px;
+  }
+}
+#portfolio-work .block .portfolio-contant ul li:hover .overly {
+  opacity: 1;
+}
+#portfolio-work .block .portfolio-contant ul li:hover .position-center {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0%, -50%);
+  -moz-transform: translate(0%, -50%);
+  -ms-transform: translate(0%, -50%);
+  transform: translate(0%, -50%);
+}
+#portfolio-work .block .portfolio-contant ul li a h2 {
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+#portfolio-work .block .portfolio-contant .overly {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.9);
+  opacity: 0;
+  -webkit-transition: 0.3s all;
+  -o-transition: 0.3s all;
+  transition: 0.3s all;
+  text-align: center;
+}
+#portfolio-work .block .portfolio-contant .position-center {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  -webkit-transform: translate(0%, 50%);
+  -moz-transform: translate(0%, 50%);
+  -ms-transform: translate(0%, 50%);
+  transform: translate(0%, 50%);
+  -webkit-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  transition: 0.5s all;
+}
+#portfolio-work .block .mix {
+  display: none;
+}
+// Only required if projects go sideways
+// @include media-breakpoint-up(lg) {
+//   .project-img {
+//     height: 100%;
+//   }
+//   .stick-bottom {
+//     width: 100%;
+//     position: absolute;
+//     bottom: 0;
+//   }
+//   .card-body {
+//     height: 100%;
+//   }
+//   .body-wrapper {
+//     position: relative;
+//     height: 100%;
+//   }
+// }
