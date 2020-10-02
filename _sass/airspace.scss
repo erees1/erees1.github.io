@@ -88,21 +88,14 @@ a {
 }
 a:hover {
   color: var(--blue-links);
-}
-a,
-a:active,
-a:focus,
-a:active {
-  text-decoration: none !important;
+  text-decoration: underline;
 }
 .section-title {
-  margin-bottom: 40px;
+  margin-bottom: 0px;
 }
 .section-title h2 {
-  text-transform: uppercase;
   font-size: 1.65em;
-  font-weight: 600;
-  margin-top: 0px;
+  font-weight: 500;
 }
 .page-title {
   margin-bottom: 30px;
@@ -116,8 +109,8 @@ section {
   margin-bottom: 30px;
 }
 section.sub-section {
-  padding-top: 20px;
-  padding-top: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 /*--
 	Header Start
@@ -339,6 +332,7 @@ footer .footer-manu ul li a:hover {
   background-position: 10% 0%;
   padding: 100px 0 100px 0;
   position: relative;
+  margin-bottom: 20px;
 }
 #slider:before {
   content: "";
@@ -440,6 +434,14 @@ footer .footer-manu ul li a:hover {
   margin: 0px;
   padding-bottom: 20px;
   position: relative;
+}
+#portfolio-work .block .portfolio-contant-extra {
+  div, ul, p, h5 {
+    display: inline;
+  };
+  ul {
+    list-style-type: none ;
+  }
 }
 #portfolio-work .block .portfolio-contant > ul > li > .project-area {
   padding: 0px 20px 20px 20px;

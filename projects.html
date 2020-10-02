@@ -9,17 +9,21 @@ permalink: /projects/
   <div class="container">
     <div class="page-title">
       <h1>Projects</h1>
-      <p class="subtitle">
-        This is a selection of some of the projects and paper (re)implmentaitons that I have completed or am
-        working on outside of my professional career. Check out my
-        <a href="https://github.com/erees1">Github</a> for a more exhaustive /
-        up to date list. Some projects have an asscociate page - click 'Demo' to
-        see more!
-      </p>
     </div>
     <div class="block">
+
+      <section class="sub-section">
+        <p>This is a selection of some of the projects and paper (re)implmentaitons that I have completed or am
+          working on outside of my professional career, I work on these primarily out of interest but also
+          to help me understand new topics in ML and develop my software engineering skils . Check out my
+          <a href="https://github.com/erees1">Github</a> for a more exhaustive /
+          up to date list.</p>
+      </section>
+
+      {% if site.show_project_filter == true %}
       <div class="portfolio-menu">
         <ul>
+
           <button class="filter btn-sm" data-filter="all">Show All</button>
           <button class="filter btn-sm" data-filter=".computer-vision">
             Computer Vision
@@ -33,143 +37,62 @@ permalink: /projects/
           </button>
         </ul>
       </div>
-      <div class="portfolio-contant">
-        <ul id="portfolio-contant-active">
-          <div class="row">
-            {%- assign _projects = site.project_items | sort: 'order' -%} {% for
-            project in _projects %} {% if project.draft == false %} {% if
-            project.paper_implementation != true %}
-            <div class="col-lg-4 col-md-6 col-sm-12 mix {{project.category}}">
-              <div class="project-area">
-                <div class="card mb-4 shadow-sm project-card">
-                  <div class="row no-gutters">
-                    <div class="col-lg-12 col-md-12">
-                      <div class="card-img">
-                        <img
-                          class="card-img-top project-img"
-                          src="{{ site.baseurl }}/{{project.image}}"
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                    <div class="col-lg-12" col-md-12>
-                      <div class="card-body">
-                        <div class="body-wrapper">
-                          <h5 class="card-title">{{project.title}}</h5>
-                          <p class="card-text">{{project.content}}</p>
-                          <div class="stick-bottom">
-                            <div
-                              class="d-flex justify-content-between align-items-center"
-                            >
-                              <div>
-                                {% if project.github_repo %}
-                                <a
-                                  role="button"
-                                  class="btn btn-sm btn-outline-secondary"
-                                  href="{{site.github_url}}/{{project.github_repo}}"
-                                >
-                                  <i class="fa fa-lg fa-github"></i> Github
-                                </a>
-                                {% endif %} {% if project.project_page %}
-                                <a
-                                  role="button"
-                                  class="btn btn-sm btn-outline-secondary"
-                                  href="{{site.baseurl}}/{{project.project_page}}"
-                                >
-                                  <i class="fa fa-lg fa-eye"></i> Demo
-                                </a>
-                                {% endif %} {% if project.blog_post %}
-                                <a
-                                  role="button"
-                                  class="btn btn-sm btn-outline-secondary"
-                                  href="{{site.baseurl}}/{{project.blog_post}}"
-                                >
-                                  <i class="fa fa-pencil fa-lg"></i> Post
-                                </a>
-                                {% endif %}
-                              </div>
-                              <small class="text-muted">
-                                {% if project.date %} {{project.date | date:
-                                "%b-%y" }} {% endif %}</small
-                              >
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {% endif %} {% endif %} {% endfor %}
-          </div>
-        </ul>
-      </div>
-    </div>
-    <div>
-      <!-- <section class="sub-section">
-        <div class="sub-section-title center-text">
-          <h3>Paper (Re)implementations</h3>
+      {% endif %}
+
+      <section class="sub-section">
+        <div class="section-title">
+          <h2>Demos</h2>
         </div>
         <div class="portfolio-contant">
           <ul id="portfolio-contant-active">
             <div class="row">
-              {%- assign _projects = site.project_items | sort: 'order' -%} {%
-              for project in _projects %} {% if project.draft == false %} {% if
-              project.paper_implementation == true %}
+              {%- assign _projects = site.project_items | sort: 'order' -%} {% for
+            project in _projects %} {% if project.draft == false %} {% if
+            project.demo == true %}
+              {% if site.show_project_filter == true %}
               <div class="col-lg-4 col-md-6 col-sm-12 mix {{project.category}}">
-                <div class="project-area">
-                  <div class="card mb-4 shadow-sm project-card">
-                    <div class="row no-gutters">
-                      <div class="col-lg-12 col-md-12">
-                        <div class="card-img">
-                          <img
-                            class="card-img-top project-img"
-                            src="{{ site.baseurl }}/{{project.image}}"
-                            alt=""
-                          />
+                {% elsif site.show_project_filter == false %}
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                  {% endif %}
+                  <div class="project-area">
+                    <div class="card mb-4 shadow-sm project-card">
+                      <div class="row no-gutters">
+                        <div class="col-lg-12 col-md-12">
+                          <div class="card-img">
+                            <a href="{{site.baseurl}}/{{project.project_page}}">
+                              <img class="card-img-top project-img" src="{{ site.baseurl }}/{{project.image}}" alt="" />
+                            </a>
+                          </div>
                         </div>
-                      </div>
-                      <div class="col-lg-12" col-md-12>
-                        <div class="card-body">
-                          <div class="body-wrapper">
-                            <h5 class="card-title">{{project.title}}</h5>
-                            <p class="card-text">{{project.content}}</p>
-                            <div class="stick-bottom">
-                              <div
-                                class="d-flex justify-content-between align-items-center"
-                              >
-                                <div>
-                                  {% if project.github_repo %}
-                                  <a
-                                    role="button"
-                                    class="btn btn-sm btn-outline-secondary"
-                                    href="{{site.github_url}}/{{project.github_repo}}"
-                                  >
-                                    <i class="fa fa-lg fa-github"></i> Github
-                                  </a>
-                                  {% endif %} {% if project.project_page %}
-                                  <a
-                                    role="button"
-                                    class="btn btn-sm btn-outline-secondary"
-                                    href="{{site.baseurl}}/{{project.project_page}}"
-                                  >
-                                    <i class="fa fa-lg fa-eye"></i> Demo
-                                  </a>
-                                  {% endif %} {% if project.blog_post %}
-                                  <a
-                                    role="button"
-                                    class="btn btn-sm btn-outline-secondary"
-                                    href="{{site.baseurl}}/{{project.blog_post}}"
-                                  >
-                                    <i class="fa fa-pencil fa-lg"></i> Post
-                                  </a>
-                                  {% endif %}
+                        <div class="col-lg-12" col-md-12>
+                          <div class="card-body">
+                            <div class="body-wrapper">
+                              <h5 class="card-title">{{project.title}}</h5>
+                              <p class="card-text">{{project.content}}</p>
+                              <div class="stick-bottom">
+                                <div class="d-flex justify-content-between align-items-center">
+                                  <div>
+                                    {% if project.github_repo %}
+                                    <a role="button" class="btn btn-sm btn-outline-secondary"
+                                      href="{{site.github_url}}/{{project.github_repo}}">
+                                      <i class="fa fa-lg fa-github"></i> Github
+                                    </a>
+                                    {% endif %} {% if project.project_page %}
+                                    <a role="button" class="btn btn-sm btn-outline-secondary"
+                                      href="{{site.baseurl}}/{{project.project_page}}">
+                                      <i class="fa fa-lg fa-eye"></i> Demo
+                                    </a>
+                                    {% endif %} {% if project.blog_post %}
+                                    <a role="button" class="btn btn-sm btn-outline-secondary"
+                                      href="{{site.baseurl}}/{{project.blog_post}}">
+                                      <i class="fa fa-pencil fa-lg"></i> Post
+                                    </a>
+                                    {% endif %}
+                                  </div>
+                                  <small class="text-muted">
+                                    {% if project.date %} {{project.date | date:
+                                "%b-%y" }} {% endif %}</small>
                                 </div>
-                                <small class="text-muted">
-                                  {% if project.date %} {{project.date | date:
-                                  "%b-%y" }} {% endif %}</small
-                                >
                               </div>
                             </div>
                           </div>
@@ -178,12 +101,44 @@ permalink: /projects/
                     </div>
                   </div>
                 </div>
+                {% endif %} {% endif %} {% endfor %}
               </div>
-              {% endif %} {% endif %} {% endfor %}
-            </div>
           </ul>
         </div>
-      </section> -->
+      </section>
+
+      <section class="sub-section">
+        <div class="section-title">
+          <h2>Other / Open Source</h2>
+        </div>
+        <div class="portfolio-contant-extra">
+          <ul id="portfolio-contant-active">
+            {%- assign _projects = site.project_items | sort: 'order' -%} {%
+              for project in _projects %} {% if project.draft == false %} {% if
+              project.demo != true %}
+            <li>
+              <div mix {{project.category}}">
+                <b>{{project.title}}</b>
+                <p> - {{project.content}}</p>
+                {% if project.github_repo %}
+                <a role="button" href="{{site.github_url}}/{{project.github_repo}}">
+                  Github
+                </a>
+                {% endif %} {% if project.project_page %}
+                <a role="button" href="{{site.baseurl}}/{{project.project_page}}">
+                  Demo
+                </a>
+                {% endif %} {% if project.blog_post %}
+                <a role="button" href="{{site.baseurl}}/{{project.blog_post}}">
+                  Post
+                </a>
+                {% endif %}
+              </div>
+            </li>
+            {% endif %} {% endif %} {% endfor %}
+          </ul>
+        </div>
+      </section>
+
     </div>
-  </div>
 </section>
