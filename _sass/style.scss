@@ -15,20 +15,20 @@
 /*--
 	Header Start
 --*/
-header .navbar-default {
+#site-header .navbar-default {
   background: rgb(247, 247, 247);
   margin-bottom: 0px;
   border: 0px;
   border-top: 5px solid #002147;
   border-bottom: 1px solid rgb(231, 231, 231);
-  font-family: "Roboto", "sans-serif";
+  font-family: "Helvetica", "sans-serif";
   li {
     margin: 0px 26px 0px 0px;
     a {
       color: rgb(92, 92, 92);
       font-size: 14px;
       text-transform: uppercase;
-      font-weight: 500;
+      font-weight: 600 !important;
       line-height: 1em;
       padding-bottom: 6px;
     }
