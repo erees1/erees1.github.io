@@ -63,13 +63,21 @@ div.dummy-header-spacing {
 footer {
   background: rgb(247, 247, 247);
   text-align: center;
-  padding-top: 20px;
-  padding-bottom: 25px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  overflow: hidden;
 }
 footer p {
   font-size: 13px;
-  line-height: 25px;
+  line-height: 50px;
   color: #919191;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 footer a {
   color: #595959;
@@ -92,6 +100,19 @@ footer .footer-manu ul li a {
 footer .footer-manu ul li a:hover {
   color: #000;
 }
+/*--
+	sticky footer start
+--*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin: 0 0 50px;
+  /* bottom = footer height */
+}
+
 /*--
 	Content Start (Any page that holds info)
 --*/
