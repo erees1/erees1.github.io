@@ -6,11 +6,24 @@
  * 
  */
 
-@import "colours.scss";
+// @import "colours.scss";
 /* var text-decoration */
 /*---------------------------------------------
 					Common CSS
 -----------------------------------------------*/
+.page-content{
+  section:first-of-type{
+    :first-child{
+      margin-top: 0px;
+    }
+    :first-child{
+      margin-top: 0px;
+      :first-child{
+        margin-top: 0px;
+      }
+    }
+  }
+}
 
 /*--
 	Header Start
@@ -61,7 +74,7 @@ div.dummy-header-spacing {
 	footer Start
 --*/
 footer {
-  background: rgb(247, 247, 247);
+  // background: rgb(247, 247, 247);
   text-align: center;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -116,7 +129,12 @@ body {
 /*--
 	Content Start (Any page that holds info)
 --*/
-.content-container {
+#main{
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+.page-content {
   blockquote {
     margin-top: 1em;
     margin-bottom: 1em;
@@ -136,17 +154,14 @@ body {
     font-size: 1.15em;
   }
 }
-.content-container ul {
-  list-style: "dot";
-}
-.content-container {
+.page-content {
   ul,
   ol {
     padding-left: 40px;
     margin: 0;
   }
 }
-.content-container {
+.page-content {
   li {
     padding-left: 10px;
   }
@@ -223,7 +238,8 @@ body {
 	Slider Start (slider is banner on home page)
 --*/
 .avatar {
-  height: 185px;
+  // height: 185px;
+  width: 80%;
   padding-left: auto;
   padding-right: auto;
 }
@@ -279,7 +295,7 @@ body {
   }
 }
 .post-area {
-  padding: 20px 20px 20px 20px;
+  padding: 40px 0px 0px 0px;
   width: 100%;
   border-bottom: 1px dotted #ddd;
 }
@@ -298,7 +314,7 @@ body {
 					Post Page Start
 -----------------------------------------------*/
 #post {
-  padding: 80px 0;
+  padding: 0px 0;
   border-bottom: 1px dotted #ddd;
 }
 #post .block p ul {
@@ -315,7 +331,7 @@ body {
 #post .section-title p {
   padding-top: 20px;
 }
-#post div.container {
+#post .container {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
@@ -326,39 +342,22 @@ body {
 /*--
 	portfolio-work Start
 --*/
-#portfolio-work {
-  overflow: hidden;
-}
-#portfolio-work .block .portfolio-menu {
-  padding-bottom: 20px;
-  text-align: center;
-}
-#portfolio-work .block .portfolio-menu ul {
-  /* border: 1px solid #999999; */
-  display: inline-block;
-  margin-bottom: 40px;
-}
-#portfolio-work .block .portfolio-contant > ul > li {
-  float: center;
-  width: 100%;
-  overflow: hidden;
-  margin: 0px;
-  padding-bottom: 20px;
-  position: relative;
-}
-#portfolio-work .block .portfolio-contant li.project-links {
-  display: inline-block;
-  margin-right: 15px;
-  text-align: left;
-  font-size: 0.85em;
-  margin-top: 0px;
-}
-#portfolio-work .block .portfolio-contant-extra {
+#portfolio-work .portfolio-contant-extra{
   div, ul, p, h5 {
     display: inline;
   };
   ul {
+    padding-left: 0;
     list-style-type: none ;
+  }
+  li {
+    padding-left: 0;
+    margin-top: 20px;
+  }
+}
+#portfolio-work .portfolio-contant {
+  ul {
+    padding-left: 0;
   }
 }
 #portfolio-work .block .portfolio-contant > ul > li > .project-area {
@@ -380,65 +379,92 @@ body {
     margin-top: 0px;
   }
 }
-#portfolio-work .block .portfolio-contant ul li:hover .overly {
-  opacity: 1;
+
+/*---------------------------------------------
+					Sidebar Start
+-----------------------------------------------*/
+#sidebar {
+  margin: 0px 20px 20px 20px;
+  position: sticky;
+  top: 117px;
 }
-#portfolio-work .block .portfolio-contant ul li:hover .position-center {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translate(0%, -50%);
-  -moz-transform: translate(0%, -50%);
-  -ms-transform: translate(0%, -50%);
-  transform: translate(0%, -50%);
+.user-info{
+  margin-top: 1em;
+  .user-name{
+    font-size: 1.2em;
+    font-weight: 700;
+  }
 }
-#portfolio-work .block .portfolio-contant ul li a h2 {
-  font-size: 22px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.sidebar-social ul {
+  font-size: 0.85em;
+  margin-top: 10px;
+  list-style: none;
+  padding-left: 0;
+  p{
+    margin: 0;
+  }
+  li {
+    margin-top: 0;
+    margin-bottom: 0.3em;
+    i.fa{
+      margin-right: 0.5em;
+    }
+  }
 }
-#portfolio-work .block .portfolio-contant .overly {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.9);
-  opacity: 0;
-  -webkit-transition: 0.3s all;
-  -o-transition: 0.3s all;
-  transition: 0.3s all;
-  text-align: center;
+.social-link-name{
+  display: inline-block;
+  text-decoration: inherit;
 }
-#portfolio-work .block .portfolio-contant .position-center {
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  -webkit-transform: translate(0%, 50%);
-  -moz-transform: translate(0%, 50%);
-  -ms-transform: translate(0%, 50%);
-  transform: translate(0%, 50%);
-  -webkit-transition: 0.5s all;
-  -o-transition: 0.5s all;
-  transition: 0.5s all;
+
+
+@media(max-width: 992px) {
+  #sidebar {
+    margin: 0px 0px 30px 0px;
+    position: relative;
+    top: 0;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+  }
+  .sidebar-left{
+    display: flex;
+    align-items: center;
+  }
+  .avatar-container{
+    vertical-align: top;
+    display: inline-block;
+    margin-right: 30px;
+  }
+  .avatar {
+    display: inline-block;
+    width: 100px;
+  }
+  .user-info{
+    margin-top: 0px;
+    display: inline-block;
+  }
+  .sidebar-social {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: 20px;
+
+    ul{
+      margin-top: 0px;
+      font-size: 1.3em;
+      li{
+        display: inline-block;
+        margin-bottom: 0;
+        i.fa{
+          margin-right: 1em;
+        }
+      };
+      li.sidebar-location{
+        display: none;
+      };
+    }
+  }
+  .social-link-name{
+    display: none;
+  }
 }
-#portfolio-work .block .mix {
-  display: none;
-}
-// Only required if projects go sideways
-// @include media-breakpoint-up(lg) {
-//   .project-img {
-//     height: 100%;
-//   }
-//   .stick-bottom {
-//     width: 100%;
-//     position: absolute;
-//     bottom: 0;
-//   }
-//   .card-body {
-//     height: 100%;
-//   }
-//   .body-wrapper {
-//     position: relative;
-//     height: 100%;
-//   }
-// }

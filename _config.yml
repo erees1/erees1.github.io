@@ -26,17 +26,18 @@ sass:
   style: compressed
 
 # Site settings
-title: Edward Rees
-# subtitle: "A free HTML5 agency template"
+show_project_filter: false
 url: "edward-rees.com" # the base hostname & protocol for your site
-# baseurl: "/the/subpath/of/your/site" # Set this value to "" if you want your site to be root
 baseurl: ""
+
+# User information
+title: Edward Rees
 name: "Edward Rees"
-avatar_path: "img/site/er-avatar.png"
-job_title: "Machine Learning Engineer | PhD Candidate at UCL"
+avatar_path: "https://edward-rees.com/img/site/er-avatar.png"
+job_title: "PhD Candidate at UCL"
 github_url: "https://github.com/erees1"
 linkedin_url: "https://linkedin.com/in/Rees"
-show_project_filter: false
+location: "London, UK"
 
 # Build settings
 markdown: kramdown

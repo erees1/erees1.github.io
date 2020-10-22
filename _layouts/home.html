@@ -1,41 +1,14 @@
 ---
-layout: default
+layout: sidebar
 ---
 
-<!-- Slider Start -->
-<section id="slider">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-5 col-sm-5">
-        <div class="block center-mobile">
-          <img class="avatar animated fadeIn" src="{{site.avatar_path}}" alt="Img">
-        </div>
-      </div>
-      <div class="col-md-7 col-sm-7">
-        <div class="block center-mobile">
-          <h1 class="animated fadeInUp">{{site.name}}</h1>
-          <p class="animated fadeInUp">{{site.job_title}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Wrapper Start -->
-{%- for section in site.sections -%}
-<section class='sub-section'>
-  <div class="container content-container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12">
-        <div class="block">
-          <div class="section-title">
-            <h2>{{section.title}}</h2>
-            <p>{{section.subtitle}}</p>
-          </div>
-          <p>{{section.content}}</p>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-</section>
-{%- endfor -%}
+<div class='page-content block'>
+  {%- for section in site.sections -%}
+  {%- if section.draft != true -%}
+  <section class='no-padding'>
+    <h2>{{section.title}}</h2>
+    <p>{{section.content}}</p>
+  </section>
+  {%- endif -%}
+  {%- endfor -%}
+</div>

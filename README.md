@@ -1,1 +1,1 @@
-Source code for my website [edward-rees.com](https://edward-rees.com)
+Source code for my website [edward-rees.com](https://edward-rees.com). Stylistically inspired by [academic pages](https://github.com/academicpages/academicpages.github.io).

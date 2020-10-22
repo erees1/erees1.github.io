@@ -1,11 +1,14 @@
 ---
-layout: default
+layout: sidebar
 title: Posts
 permalink: /posts/
 ---
 
-<section id="blog-posts">
-  <div class="container">
+<div class='page-content' id="blog-posts">
+  <section class='no-padding'>
+    <h1>Posts</h1>
+
+
     {%- assign _posts = site.posts -%} {%- assign posts = _posts | sort: 'date'
     | reverse -%} {%- for post in site.posts %}
 
@@ -19,10 +22,10 @@ permalink: /posts/
 
       <p>
         <a href="{{ post.url | prepend: site.baseurl }}">
-          {{ post.short_description | strip_html | truncatewords: 100 }}</a
-        >
+          {{ post.short_description | strip_html | truncatewords: 100 }}</a>
       </p>
     </div>
     {% endfor -%}
-  </div>
-</section>
+
+  </section>
+</div>

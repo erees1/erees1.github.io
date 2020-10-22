@@ -1,0 +1,33 @@
+<div id='sidebar' class='sticky-top'>
+    <div class='sidebar-left'>
+        <a class="avatar-container" href="/">
+            <img class="avatar" src="{{site.avatar_path}}" alt="Img">
+        </a>
+        <div class="user-info">
+            <div class="user-name">
+                {{site.name}}
+            </div>
+            <div class="user-desc">
+                {{site.job_title}}
+            </div>
+
+            <div class='sidebar-social'>
+                <ul class="">
+
+                    <li class="sidebar-location">
+                        <p class="grey-links"><i class="fa fa-md fa-location-arrow"></i><span>{{ site.location }}</span>
+                        </p>
+                    </li>
+                    <li><a class="sidebar-links grey-links" href="{{ site.github_url }}"><i
+                                class="fa fa-md fa-github"></i><span class='social-link-name'>Github</span>
+                        </a>
+                    </li>
+                    <li><a class="sidebar-links grey-links" href="{{ site.linkedin_url }}"><i
+                                class="fa fa-md fa-linkedin"></i><span class='social-link-name'>LinkedIn</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
