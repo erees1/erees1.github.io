@@ -1,29 +1,13 @@
-/*		Default Layout: 992px. 
-		Gutters: 24px.
-		Outer margins: 48px.
-		Leftover space for scrollbars @1024px: 32px.
--------------------------------------------------------------------------------
-cols    1     2      3      4      5      6      7      8      9      10
-px      68    160    252    344    436    528    620    712    804    896    */
+/*		
+Bootstrap breakpoints:
+--breakpoint-xs:0;
+--breakpoint-sm:576px;
+--breakpoint-md:820px;
+--breakpoint-lg:992px;
+--breakpoint-xl:1200px
+    */
 
-
-/*		Tablet Layout: 768px.
-		Gutters: 24px.
-		Outer margins: 28px.
-		Inherits styles from: Default Layout.
------------------------------------------------------------------
-cols    1     2      3      4      5      6      7      8
-px      68    160    252    344    436    528    620    712    */
-
-
-/*		Mobile Layout: 320px.
-		Gutters: 24px.
-		Outer margins: 34px.
-		Inherits styles from: Default Layout.
----------------------------------------------
-cols    1     2      3
-px      68    160    252    */
-@media only screen and (max-width: 820px) {
+@media only screen and (max-width: 819px) {
   body {
     font-size: 15px;
   }
@@ -50,21 +34,4 @@ px      68    160    252    */
     font-size: 16px;
   }
 }
-  /*---------------------------------------------
-					Index Close 
------------------------------------------------*/
 
-  /*=============================================*/
-/*		Wide Mobile Layout: 480px.
-		Gutters: 24px.
-		Outer margins: 22px.
-		Inherits styles from: Default Layout, Mobile Layout.
-------------------------------------------------------------
-
-
-cols    1     2      3      4      5
-px      68    160    252    344    436    */
-/*	Retina media query.
-	Overrides styles for devices with a 
-	device-pixel-ratio of 2+, such as iPhone 4.
------------------------------------------------    */
