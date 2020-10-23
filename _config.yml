@@ -17,6 +17,8 @@ collections:
     output: false
   sections:
     output: false
+  timeline:
+    output: false
   pages:
     output: true
     permalink: /:path/

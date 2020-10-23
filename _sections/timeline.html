@@ -1,0 +1,31 @@
+---
+title: "Timeline/CV"
+subtitle:
+draft: false
+---
+
+
+<div class="row">
+	<div class="col-md-12 offset-md-12">
+
+		<ul class="timeline">
+			{%- assign _timeline = site.timeline | sort: 'order' | reverse -%}
+			{% for item in _timeline %}
+			<li>
+				<div class='row'>
+					<div class="col-2">
+						<a href="{{ item.link }}"><img class='timeline-logo'src='img/logos/{{ item.logo }}'></a>
+					</div>
+					<div class="col-10">
+						<a target="_blank" class='timeline-title' href="{{ item.link }}">{{ item.title }}</a>
+						<div class="float-right timeline-date">{{ item.start }} - {{ item.end }}</div>
+						<div class=timeline-subtitle>{{ item.subtitle }}</div>
+						<p>{{ item.content }}</p>
+					</div>
+				</div>
+			</li>
+
+			{% endfor %}
+		</ul>
+	</div>
+</div>
