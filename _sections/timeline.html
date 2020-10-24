@@ -13,13 +13,19 @@ draft: false
 			{% for item in _timeline %}
 			<li>
 				<div class='row'>
-					<div class="col-2">
-						<a href="{{ item.link }}"><img class='timeline-logo'src='img/logos/{{ item.logo }}'></a>
+					<div class="col-sm-2 col-3 timeline-logo-col">
+						<a href="{{ item.link }}"><img class='timeline-logo' src='img/logos/{{ item.logo }}'></a>
 					</div>
-					<div class="col-10">
-						<a target="_blank" class='timeline-title' href="{{ item.link }}">{{ item.title }}</a>
-						<div class="float-right timeline-date">{{ item.start }} - {{ item.end }}</div>
-						<div class=timeline-subtitle>{{ item.subtitle }}</div>
+					<div class="col-sm-10 col-9">
+						<div class='row'>
+							<div class="col-sm-7 col-12">
+								<a target="_blank" class='timeline-title' href="{{ item.link }}">{{ item.title }}</a>
+								<div class=timeline-subtitle>{{ item.subtitle }}</div>
+							</div>
+							<div class="col-sm-5 col-12">
+								<div class="timeline-date">{{ item.start }} - {{ item.end }}</div>
+							</div>
+						</div>
 						<p>{{ item.content }}</p>
 					</div>
 				</div>

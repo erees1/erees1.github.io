@@ -32,6 +32,7 @@ ul.timeline-list {
     list-style: disc;
 }
 img.timeline-logo{
+    max-width: 60px;
     width: 100%;
     margin-left: auto;
     margin-right: auto
@@ -48,4 +49,16 @@ img.timeline-logo{
     font-size: 1em;
     font-style: italic;
     color: var(--subtitle-text)
+}
+.timeline-date{
+    text-align: right;
+}
+.timeline-logo-col{
+    text-align: center;
+}
+
+@media only screen and (max-width: 575px) {
+    .timeline-date{
+        text-align: left;
+    }
 }
