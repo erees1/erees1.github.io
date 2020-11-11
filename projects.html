@@ -1,6 +1,7 @@
 ---
 layout: sidebar
 title: Projects
+order: 2
 permalink: /projects/
 ---
 
@@ -116,20 +117,22 @@ permalink: /projects/
             <div mix {{project.category}}">
               <b>{{project.title}}</b>
               <p> - {{project.content}}</p>
-              {% if project.github_repo %}
-              <a role="button" href="{{site.github_url}}/{{project.github_repo}}">
-                Github
-              </a>
-              {% endif %} {% if project.project_page %}
-              <a role="button" href="{{site.baseurl}}/{{project.project_page}}">
-                Demo
-              </a>
-              {% endif %} {% if project.blog_post %}
-              <a role="button" href="{{site.baseurl}}/{{project.blog_post}}">
-                Post
-              </a>
-              {% endif %}
-            </div>
+              <div class='non-demo-project-links'>
+                {% if project.github_repo %}
+                <button class="btn btn-xs btn-outline-secondary" href="{{site.github_url}}/{{project.github_repo}}">
+                  Github
+                </button>
+                {% endif %} {% if project.project_page %}
+                <button class="btn btn-xs btn-outline-secondary" href="{{site.baseurl}}/{{project.project_page}}">
+                  Demo
+                </button>
+                {% endif %} {% if project.blog_post %}
+                <button class="btn btn-xs btn-outline-secondary" href="{{site.baseurl}}/{{project.blog_post}}">
+                  Post
+                </button>
+                {% endif %}
+              </div>
+          </div>
           </li>
           {% endif %} {% endif %} {% endfor %}
         </ul>

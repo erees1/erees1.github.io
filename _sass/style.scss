@@ -364,10 +364,8 @@ body {
 }
 #portfolio-work .block .portfolio-contant > ul > li > .project-area {
   padding: 0px 20px 20px 20px;
-  // width: 100%;
   min-height: 150px;
   background-color: white;
-  // border-bottom: 1px dotted #ddd;
 
   h1,
   h2,
@@ -380,6 +378,9 @@ body {
   p {
     margin-top: 0px;
   }
+}
+#portfolio-work div.non-demo-project-links {
+  display: inline-block;
 }
 
 /*---------------------------------------------

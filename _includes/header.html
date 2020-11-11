@@ -1,46 +1,6 @@
 <header id='site-header'>
-  <nav class="navbar navbar-expand-sm fixed-top navbar-default">
-    <div class="container-lg">
-      <button
-        class="hamburger hamburger--collapse navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarCollapse"
-        aria-controls="navbarCollapse"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="hamburger-box">
-          <span class="hamburger-inner"></span>
-        </span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{{ site.baseurl }}/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ site.baseurl }}/projects">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ site.baseurl }}/posts">Posts</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+{% include nav.html %}
 </header>
 <!-- Header does take up any space so this pushes content down -->
 <div class='dummy-header-spacing'>
 </div>
-<script>
-// Look for .hamburger
-var hamburger = document.querySelector(".hamburger");
-// On click
-hamburger.addEventListener("click", function () {
-  console.log("hamburger pressed");
-  // Toggle class "is-active"
-  hamburger.classList.toggle("is-active");
-  // Do something else, like open/close menu
-});
-</script>
