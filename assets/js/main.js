@@ -16,4 +16,13 @@ $(document).ready(function () {
     delay: 10,
     time: 1000,
   });
+
+  // Card hover
+  $( ".card" ).hover(
+    function() {
+      $(this).addClass('shadow-lg'); 
+    }, function() {
+      $(this).removeClass('shadow-lg');
+    }
+  );
 });
