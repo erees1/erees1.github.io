@@ -48,5 +48,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
+exclude: assets
+
 # Google analytics
 # ga_tracking_id: "UA-XXXX-1"
