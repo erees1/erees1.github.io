@@ -1,13 +1,11 @@
 ---
 layout: sidebar
-title: Posts
-order: 3
-permalink: /posts/
 ---
 
 <div class='page-content' id="blog-posts">
   <section class='no-padding'>
-    <h1>Posts</h1>
+    <h1>{{page.title}}</h1>
+    {{page.content}}
 
 
     {%- assign _posts = site.posts -%} {%- assign posts = _posts | sort: 'date'
