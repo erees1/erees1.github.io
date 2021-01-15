@@ -12,17 +12,17 @@ layout: sidebar
     | reverse -%} {%- for post in site.posts %}
 
     <div class="post-area">
-      <h3>
+      <h4>
         <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-      </h3>
+      </h4>
       <p class="post-date subtitle">
         {{ post.date | date_to_long_string }}
       </p>
 
-      <p>
+      <!-- <p>
         <a href="{{ post.url | prepend: site.baseurl }}">
           {{ post.short_description | strip_html | truncatewords: 100 }}</a>
-      </p>
+      </p> -->
     </div>
     {% endfor -%}
 
