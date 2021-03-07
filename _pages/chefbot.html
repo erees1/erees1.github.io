@@ -49,10 +49,29 @@ github-link: https://github.com/erees1/recipe-chatbot
     selector: "#webchat",
     initPayload: "/greet",
     customData: { "language": "en" }, // arbitrary custom data. Stay minimal as this will be added to the socket
-    socketUrl: "https://922536c4497c.ngrok.io/socketio",
+    socketUrl: "http://localhost:5005/socketio",
     title: "ChefBot",
     subtitle: "",
     hideWhenNotConnected: false,
   })
 </script>
 </div>
+<!-- <script>!(function () { -->
+<!--   let e = document.createElement("script"), -->
+<!--     t = document.head || document.getElementsByTagName("head")[0]; -->
+<!--   (e.src = -->
+<!--     "https://cdn.jsdelivr.net/npm/rasa-webchat/lib/index.js"), -->
+<!--     (e.async = !0), -->
+<!--     (e.onload = () => { -->
+<!--       window.WebChat.default( -->
+<!--         { -->
+<!--           customData: { language: "en" }, -->
+    socketUrl: "http://localhost:5005/socketio",
+<!--           // add other props here -->
+<!--         }, -->
+<!--         null -->
+<!--       ); -->
+<!--     }), -->
+<!--     t.insertBefore(e, t.firstChild); -->
+<!-- })(); -->
+<!-- </script> -->
