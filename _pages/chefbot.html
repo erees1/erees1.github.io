@@ -42,36 +42,17 @@ github-link: https://github.com/erees1/recipe-chatbot
   </div>
 </section>
 
-<div id="webchat" />
+<div id="webchat" >
 <script src="{{- 'assets/js/webchat.js' | relative_url -}}"></script>
 <script>
   WebChat.default.init({
     selector: "#webchat",
     initPayload: "/greet",
     customData: { "language": "en" }, // arbitrary custom data. Stay minimal as this will be added to the socket
-    socketUrl: "http://localhost:5005/socketio",
+    socketUrl: "http://localhost:8080",
     title: "ChefBot",
     subtitle: "",
-    hideWhenNotConnected: false,
+    hideWhenNotConnected: true,
   })
 </script>
 </div>
-<!-- <script>!(function () { -->
-<!--   let e = document.createElement("script"), -->
-<!--     t = document.head || document.getElementsByTagName("head")[0]; -->
-<!--   (e.src = -->
-<!--     "https://cdn.jsdelivr.net/npm/rasa-webchat/lib/index.js"), -->
-<!--     (e.async = !0), -->
-<!--     (e.onload = () => { -->
-<!--       window.WebChat.default( -->
-<!--         { -->
-<!--           customData: { language: "en" }, -->
-    socketUrl: "http://localhost:5005/socketio",
-<!--           // add other props here -->
-<!--         }, -->
-<!--         null -->
-<!--       ); -->
-<!--     }), -->
-<!--     t.insertBefore(e, t.firstChild); -->
-<!-- })(); -->
-<!-- </script> -->
