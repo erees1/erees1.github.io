@@ -242,9 +242,12 @@ body {
 --*/
 .avatar {
   // height: 185px;
-  width: 80%;
+  width: 90%;
   padding-left: auto;
   padding-right: auto;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: var(--light-grey);
 }
 #slider {
   background: url("../../img/site/london-skyline.blur15.jpg") no-repeat;

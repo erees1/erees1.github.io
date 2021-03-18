@@ -35,7 +35,7 @@ baseurl: ""
 # User information
 title: Edward Rees
 name: "Edward Rees"
-avatar_path: "https://edward-rees.com/img/site/er-avatar.png"
+avatar_path: "/img/site/ga-cartoon-2.png"
 job_title: "PhD Candidate at UCL"
 github_url: "https://github.com/erees1"
 linkedin_url: "https://linkedin.com/in/Rees"
