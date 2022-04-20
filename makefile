@@ -1,6 +1,31 @@
-#
+VENDOR_DIR = ./vendor
+BOOTSTRAP_DIR = ./_sass/vendor/bootstrap
+
 #Serve Website in test environment
+.PHONY: serve
 serve:
-	JEKYLL_ENV=test bundle exec jekyll serve --drafts
+	npx rollup -c --watch & JEKYLL_ENV=development bundle exec jekyll serve --drafts
+
+.PHONY: view_prod
+view_prod: build
+	bundle exec jekyll serve --skip-initial-build
+
+.PHONY: build
+build: bootstrap
+	npx rollup -c
+	./build.sh
+
+.PHONY: bootstrap
+bootstrap: $(BOOTSTRAP_DIR)
+
+$(BOOTSTRAP_DIR): bundle
+	mkdir -p $(BOOTSTRAP_DIR)
+	cp -r $(VENDOR_DIR)/bundle/ruby/2.7.0/gems/bootstrap-5.0.2/assets/stylesheets $(BOOTSTRAP_DIR)
+
+bundle: Gemfile.lock Gemfile
+	bundle install
+
+.PHONY: clean
 clean:
-	rm -rf _site .jekyll-cache .sass-cache 
+	rm -rf _site .jekyll-cache .sass-cache
+	rm -rf assets/js

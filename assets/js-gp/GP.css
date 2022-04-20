@@ -1,5 +1,6 @@
-canvas{
+canvas {
   margin-top: 0px;
+  cursor: pointer;
 }
 
 .slidecontainer {
@@ -46,53 +47,44 @@ canvas{
   display: inline-block;
 }
 
-.button-container{
+.button-container {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-button.gp-button{
-  border-radius: 5px;
-  border: None;
-  /* background-color: #b4b4b9; */
-  
-  margin-left: 5px;
-  margin-right: 5px;
+button.gp-button {
+  margin: 5px 5px;
   font-size: 0.83em;
 }
 
-button.reset-button{
+button.reset-button {
   background-color: #c98984;
-  border-radius: 5px;
-  border: None;
-  color: inherit;
   margin-left: 5px;
   margin-right: 5px;
   font-size: 0.83em;
-}
-
-button:hover{
-  color: #333333;
-  -webkit-transition: all 0.1s ease-in-out;
-  -o-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
-}
-button.kernel-button.activated{
-  background-color: #484852;
   color: white;
 }
+button.kernel-button:hover {
+  background-color: var(--accent3);
+  border-color: var(--accent3);
+}
+button.kernel-button.activated {
+  background-color: var(--accent3);
+  color: white;
+  border-color: var(--accent3);
+}
 
-.kernel-options{
-  width: 95%;
+.kernel-options {
+  width: 100%;
   text-align: center;
   font-size: 0.76em;
   margin-right: auto;
   margin-left: auto;
 }
-.kernel-options p{
-    margin-bottom: 1px;
-    margin-top: 3px;
-    font-size: inherit;
+.kernel-options p {
+  margin-bottom: 1px;
+  margin-top: 3px;
+  font-size: inherit;
 }
 
 .kernel-heatmap {
@@ -101,10 +93,10 @@ button.kernel-button.activated{
   margin-left: auto;
   margin-right: auto;
 }
-.kernels-container{
+.kernels-container {
   margin-bottom: 30px;
 }
-.kernel-header{
+.kernel-header {
   margin-bottom: 15px;
   font-size: 1.3em;
 }
@@ -117,10 +109,8 @@ button.kernel-button.activated{
 
 .box {
   position: relative;
-  width: 90%;
-  float: left;
+  width: 100%;
   font-size: 12px;
-  margin: 0 5% 15px 5%;
 }
 
 .box:before {
@@ -161,21 +151,16 @@ button.kernel-button.activated{
   color: #fff;
 }
 
-.grey-border{
+.grey-border {
   border: solid rgb(220, 220, 220);
   border-width: 1px 1px 1px 1px;
 }
 
-.center-align{
+.center-align {
   margin-left: auto;
   margin-right: auto;
 }
 
-.max-width{
+.max-width {
   max-width: 500px;
 }
-
-.center-text{
-  text-align: center;
-}
-

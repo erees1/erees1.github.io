@@ -1,85 +1,524 @@
-
-
-
-
-
 <html lang="en">
-  
   <head>
-    
-      <meta charset="utf-8">
-      <title>Figure(id=&#39;9292&#39;, ...)</title>
-      
-      
-        
-          
-        
-        
-          
-        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.0.1.min.js" integrity="sha384-JpP8FXbgAZLkfur7LiK3j9AGBhHNIvF742meBJrjO2ShJDhCG2I1uVvW+0DUtrmc" crossorigin="anonymous"></script>
-        <script type="text/javascript">
-            Bokeh.set_log_level("info");
-        </script>
-        
-      
-      
-    
+    <meta charset="utf-8" />
+    <title>Figure(id=&#39;9292&#39;, ...)</title>
+
+    <script
+      type="text/javascript"
+      src="https://cdn.bokeh.org/bokeh/release/bokeh-2.0.1.min.js"
+      integrity="sha384-JpP8FXbgAZLkfur7LiK3j9AGBhHNIvF742meBJrjO2ShJDhCG2I1uVvW+0DUtrmc"
+      crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      Bokeh.set_log_level("info");
+    </script>
   </head>
-  
-  
+
   <body>
-    
-      
-        
-          
-          
-            
-              <div class="bk-root" id="ffdbe7a5-3dff-4870-b386-6c7fd154cb64" data-root-id="9292"></div>
-            
-          
-        
-      
-      
-        <script type="application/json" id="9659">
-          {"4a98b9d2-5cd5-4c65-84ee-37d5c2ae6e17":{"roots":{"references":[{"attributes":{"axis_label":"Vocab Length","formatter":{"id":"9320"},"ticker":{"id":"9304"}},"id":"9303","type":"LinearAxis"},{"attributes":{"source":{"id":"9312"}},"id":"9316","type":"CDSView"},{"attributes":{"label":{"value":"Beam Width - 1"},"renderers":[{"id":"9315"}]},"id":"9323","type":"LegendItem"},{"attributes":{},"id":"9366","type":"UnionRenderers"},{"attributes":{"line_alpha":0.1,"line_color":"#1f77b4","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"9314","type":"Line"},{"attributes":{},"id":"9350","type":"Selection"},{"attributes":{"data_source":{"id":"9352"},"glyph":{"id":"9353"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"9354"},"selection_glyph":null,"view":{"id":"9356"}},"id":"9355","type":"GlyphRenderer"},{"attributes":{},"id":"9320","type":"BasicTickFormatter"},{"attributes":{},"id":"9386","type":"Selection"},{"attributes":{"axis":{"id":"9303"},"ticker":null},"id":"9306","type":"Grid"},{"attributes":{"line_alpha":0.1,"line_color":"#d62728","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"9354","type":"Line"},{"attributes":{"label":{"value":"Beam Width - 5"},"renderers":[{"id":"9340"}]},"id":"9351","type":"LegendItem"},{"attributes":{},"id":"9304","type":"BasicTicker"},{"attributes":{},"id":"9334","type":"UnionRenderers"},{"attributes":{"data_source":{"id":"9312"},"glyph":{"id":"9313"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"9314"},"selection_glyph":null,"view":{"id":"9316"}},"id":"9315","type":"GlyphRenderer"},{"attributes":{"source":{"id":"9369"}},"id":"9373","type":"CDSView"},{"attributes":{},"id":"9403","type":"Selection"},{"attributes":{},"id":"9349","type":"UnionRenderers"},{"attributes":{},"id":"9308","type":"BasicTicker"},{"attributes":{"line_alpha":0.1,"line_color":"#ff7f0e","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"9326","type":"Line"},{"attributes":{"label":{"value":"Beam Width - 3"},"renderers":[{"id":"9327"}]},"id":"9336","type":"LegendItem"},{"attributes":{"source":{"id":"9352"}},"id":"9356","type":"CDSView"},{"attributes":{},"id":"9367","type":"Selection"},{"attributes":{"line_color":"#ff7f0e","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"9325","type":"Line"},{"attributes":{"line_color":"#9467bd","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"9370","type":"Line"},{"attributes":{"items":[{"id":"9323"},{"id":"9336"},{"id":"9351"},{"id":"9368"},{"id":"9387"}],"label_text_font_size":"10px","spacing":-8},"id":"9322","type":"Legend"},{"attributes":{},"id":"9301","type":"LinearScale"},{"attributes":{},"id":"9318","type":"BasicTickFormatter"},{"attributes":{"axis_label":"Likelihood ratio","formatter":{"id":"9318"},"ticker":{"id":"9308"}},"id":"9307","type":"LinearAxis"},{"attributes":{},"id":"9297","type":"DataRange1d"},{"attributes":{"below":[{"id":"9303"}],"center":[{"id":"9306"},{"id":"9310"},{"id":"9322"}],"left":[{"id":"9307"}],"plot_height":320,"renderers":[{"id":"9315"},{"id":"9327"},{"id":"9340"},{"id":"9355"},{"id":"9372"}],"sizing_mode":"stretch_width","title":{"id":"9293"},"toolbar":{"id":"9311"},"toolbar_location":null,"x_range":{"id":"9295"},"x_scale":{"id":"9299"},"y_range":{"id":"9297"},"y_scale":{"id":"9301"}},"id":"9292","subtype":"Figure","type":"Plot"},{"attributes":{"label":{"value":"Beam Width - 7"},"renderers":[{"id":"9355"}]},"id":"9368","type":"LegendItem"},{"attributes":{"line_color":"#d62728","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"9353","type":"Line"},{"attributes":{},"id":"9402","type":"UnionRenderers"},{"attributes":{"data_source":{"id":"9324"},"glyph":{"id":"9325"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"9326"},"selection_glyph":null,"view":{"id":"9328"}},"id":"9327","type":"GlyphRenderer"},{"attributes":{"line_color":"#1f77b4","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"9313","type":"Line"},{"attributes":{"data":{"x":[100,350,600,850,1100,1350,1600,1850,2100,2350,2600,2850,3100,3350,3600,3850],"y":{"__ndarray__":"drl0iNeP9T/6lVJR6Y/yPxKbcHRac/I/thBAnGV38j9LGmRFcGHyPyaWGXdGcvI/qlaWYD+p8T8tyGK2EhfyP0z5JViEyvE/+uADxKO18T8WTS5VJaPxPyY888BMk/E/5q2Lgm1y8T8ENHj95rDxP7Cj0UjzF/E/fD5/Zhha8T8=","dtype":"float64","shape":[16]}},"selected":{"id":"9386"},"selection_policy":{"id":"9385"}},"id":"9352","type":"ColumnDataSource"},{"attributes":{"data":{"x":[100,350,600,850,1100,1350,1600,1850,2100,2350,2600,2850,3100,3350,3600,3850],"y":{"__ndarray__":"/l4+oeEz9D/WBTOm3JXxP75KaLIWuvE/ssGconnB8T80wElIQ3LxP3qMuhYZiPE/Gl0suTT/8D8v9oAW72bxPxR+Nd1DTvE/1tl7Ikwm8T+uhez6ICTxPwz4QmP29PA/sH4lYgUI8T/Ge8v7kvnwP9R+x7aAqPA/qtq7DzLW8D8=","dtype":"float64","shape":[16]}},"selected":{"id":"9350"},"selection_policy":{"id":"9349"}},"id":"9324","type":"ColumnDataSource"},{"attributes":{"source":{"id":"9324"}},"id":"9328","type":"CDSView"},{"attributes":{},"id":"9385","type":"UnionRenderers"},{"attributes":{"text":"Temperature = 10"},"id":"9293","type":"Title"},{"attributes":{"data":{"x":[100,350,600,850,1100,1350,1600,1850,2100,2350,2600,2850,3100,3350,3600,3850],"y":{"__ndarray__":"QoEm9h/l9T/OvYCk/s7yP4poqRwxv/I/3sBfsBS08j9MSaw2f3ryP4MpAD2rlPI/YgUSpdvO8T/s+V7Ikz3yPywvcJHi4PE/WOl+sUvD8T8yXYrPddDxP1QUPSqOoPE/bLY6fF9+8T8NZryym7rxP2Ky0QQNJfE/sGw5xrNv8T8=","dtype":"float64","shape":[16]}},"selected":{"id":"9403"},"selection_policy":{"id":"9402"}},"id":"9369","type":"ColumnDataSource"},{"attributes":{"data":{"x":[100,350,600,850,1100,1350,1600,1850,2100,2350,2600,2850,3100,3350,3600,3850],"y":{"__ndarray__":"1ncgHdq09D/F2ftjzTbyP29/7rP+S/I/5HvBvwtE8j+BvgedPSbyP5F6P/TIYPI/vq424PyN8T+ia1t3AuDxPyPLKrNxsPE/ULXUSx5u8T94JrCtSW/xPyTSSAttgfE/nkxfZFA88T86yHXFcJPxP7QFp7px0/A/FRAKArtF8T8=","dtype":"float64","shape":[16]}},"selected":{"id":"9367"},"selection_policy":{"id":"9366"}},"id":"9337","type":"ColumnDataSource"},{"attributes":{"line_color":"#2ca02c","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"9338","type":"Line"},{"attributes":{"line_alpha":0.1,"line_color":"#9467bd","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"9371","type":"Line"},{"attributes":{},"id":"9299","type":"LinearScale"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","logo":null},"id":"9311","type":"Toolbar"},{"attributes":{},"id":"9335","type":"Selection"},{"attributes":{"data_source":{"id":"9369"},"glyph":{"id":"9370"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"9371"},"selection_glyph":null,"view":{"id":"9373"}},"id":"9372","type":"GlyphRenderer"},{"attributes":{"data_source":{"id":"9337"},"glyph":{"id":"9338"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"9339"},"selection_glyph":null,"view":{"id":"9341"}},"id":"9340","type":"GlyphRenderer"},{"attributes":{"line_alpha":0.1,"line_color":"#2ca02c","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"9339","type":"Line"},{"attributes":{"axis":{"id":"9307"},"dimension":1,"ticker":null},"id":"9310","type":"Grid"},{"attributes":{"label":{"value":"Beam Width - 9"},"renderers":[{"id":"9372"}]},"id":"9387","type":"LegendItem"},{"attributes":{"data":{"x":[100,350,600,850,1100,1350,1600,1850,2100,2350,2600,2850,3100,3350,3600,3850],"y":{"__ndarray__":"DhBv////7z9926T7///vP3cnLuL//+8/kfzD9v//7z9VjwAJAADwP+0+DfH//+8/eB13CwAA8D8SYSQGAADwPwYmiOr//+8/YwOzAwAA8D87hN4JAADwPwbgOgYAAPA/Wz0WDQAA8D9pHvcHAADwP0u9oP3//+8/gu/W4f//7z8=","dtype":"float64","shape":[16]}},"selected":{"id":"9335"},"selection_policy":{"id":"9334"}},"id":"9312","type":"ColumnDataSource"},{"attributes":{"source":{"id":"9337"}},"id":"9341","type":"CDSView"},{"attributes":{},"id":"9295","type":"DataRange1d"}],"root_ids":["9292"]},"title":"Bokeh Application","version":"2.0.1"}}
-        </script>
-        <script type="text/javascript">
-          (function() {
-            var fn = function() {
-              Bokeh.safely(function() {
-                (function(root) {
-                  function embed_document(root) {
-                    
-                  var docs_json = document.getElementById('9659').textContent;
-                  var render_items = [{"docid":"4a98b9d2-5cd5-4c65-84ee-37d5c2ae6e17","root_ids":["9292"],"roots":{"9292":"ffdbe7a5-3dff-4870-b386-6c7fd154cb64"}}];
-                  root.Bokeh.embed.embed_items(docs_json, render_items);
-                
-                  }
-                  if (root.Bokeh !== undefined) {
-                    embed_document(root);
-                  } else {
-                    var attempts = 0;
-                    var timer = setInterval(function(root) {
-                      if (root.Bokeh !== undefined) {
+    <div
+      class="bk-root"
+      id="ffdbe7a5-3dff-4870-b386-6c7fd154cb64"
+      data-root-id="9292"></div>
+
+    <script type="application/json" id="9659">
+      {
+        "4a98b9d2-5cd5-4c65-84ee-37d5c2ae6e17": {
+          "roots": {
+            "references": [
+              {
+                "attributes": {
+                  "axis_label": "Vocab Length",
+                  "formatter": { "id": "9320" },
+                  "ticker": { "id": "9304" }
+                },
+                "id": "9303",
+                "type": "LinearAxis"
+              },
+              {
+                "attributes": { "source": { "id": "9312" } },
+                "id": "9316",
+                "type": "CDSView"
+              },
+              {
+                "attributes": {
+                  "label": { "value": "Beam Width - 1" },
+                  "renderers": [{ "id": "9315" }]
+                },
+                "id": "9323",
+                "type": "LegendItem"
+              },
+              { "attributes": {}, "id": "9366", "type": "UnionRenderers" },
+              {
+                "attributes": {
+                  "line_alpha": 0.1,
+                  "line_color": "#1f77b4",
+                  "line_width": 2,
+                  "x": { "field": "x" },
+                  "y": { "field": "y" }
+                },
+                "id": "9314",
+                "type": "Line"
+              },
+              { "attributes": {}, "id": "9350", "type": "Selection" },
+              {
+                "attributes": {
+                  "data_source": { "id": "9352" },
+                  "glyph": { "id": "9353" },
+                  "hover_glyph": null,
+                  "muted_glyph": null,
+                  "nonselection_glyph": { "id": "9354" },
+                  "selection_glyph": null,
+                  "view": { "id": "9356" }
+                },
+                "id": "9355",
+                "type": "GlyphRenderer"
+              },
+              { "attributes": {}, "id": "9320", "type": "BasicTickFormatter" },
+              { "attributes": {}, "id": "9386", "type": "Selection" },
+              {
+                "attributes": { "axis": { "id": "9303" }, "ticker": null },
+                "id": "9306",
+                "type": "Grid"
+              },
+              {
+                "attributes": {
+                  "line_alpha": 0.1,
+                  "line_color": "#d62728",
+                  "line_width": 2,
+                  "x": { "field": "x" },
+                  "y": { "field": "y" }
+                },
+                "id": "9354",
+                "type": "Line"
+              },
+              {
+                "attributes": {
+                  "label": { "value": "Beam Width - 5" },
+                  "renderers": [{ "id": "9340" }]
+                },
+                "id": "9351",
+                "type": "LegendItem"
+              },
+              { "attributes": {}, "id": "9304", "type": "BasicTicker" },
+              { "attributes": {}, "id": "9334", "type": "UnionRenderers" },
+              {
+                "attributes": {
+                  "data_source": { "id": "9312" },
+                  "glyph": { "id": "9313" },
+                  "hover_glyph": null,
+                  "muted_glyph": null,
+                  "nonselection_glyph": { "id": "9314" },
+                  "selection_glyph": null,
+                  "view": { "id": "9316" }
+                },
+                "id": "9315",
+                "type": "GlyphRenderer"
+              },
+              {
+                "attributes": { "source": { "id": "9369" } },
+                "id": "9373",
+                "type": "CDSView"
+              },
+              { "attributes": {}, "id": "9403", "type": "Selection" },
+              { "attributes": {}, "id": "9349", "type": "UnionRenderers" },
+              { "attributes": {}, "id": "9308", "type": "BasicTicker" },
+              {
+                "attributes": {
+                  "line_alpha": 0.1,
+                  "line_color": "#ff7f0e",
+                  "line_width": 2,
+                  "x": { "field": "x" },
+                  "y": { "field": "y" }
+                },
+                "id": "9326",
+                "type": "Line"
+              },
+              {
+                "attributes": {
+                  "label": { "value": "Beam Width - 3" },
+                  "renderers": [{ "id": "9327" }]
+                },
+                "id": "9336",
+                "type": "LegendItem"
+              },
+              {
+                "attributes": { "source": { "id": "9352" } },
+                "id": "9356",
+                "type": "CDSView"
+              },
+              { "attributes": {}, "id": "9367", "type": "Selection" },
+              {
+                "attributes": {
+                  "line_color": "#ff7f0e",
+                  "line_width": 2,
+                  "x": { "field": "x" },
+                  "y": { "field": "y" }
+                },
+                "id": "9325",
+                "type": "Line"
+              },
+              {
+                "attributes": {
+                  "line_color": "#9467bd",
+                  "line_width": 2,
+                  "x": { "field": "x" },
+                  "y": { "field": "y" }
+                },
+                "id": "9370",
+                "type": "Line"
+              },
+              {
+                "attributes": {
+                  "items": [
+                    { "id": "9323" },
+                    { "id": "9336" },
+                    { "id": "9351" },
+                    { "id": "9368" },
+                    { "id": "9387" }
+                  ],
+                  "label_text_font_size": "10px",
+                  "spacing": -8
+                },
+                "id": "9322",
+                "type": "Legend"
+              },
+              { "attributes": {}, "id": "9301", "type": "LinearScale" },
+              { "attributes": {}, "id": "9318", "type": "BasicTickFormatter" },
+              {
+                "attributes": {
+                  "axis_label": "Likelihood ratio",
+                  "formatter": { "id": "9318" },
+                  "ticker": { "id": "9308" }
+                },
+                "id": "9307",
+                "type": "LinearAxis"
+              },
+              { "attributes": {}, "id": "9297", "type": "DataRange1d" },
+              {
+                "attributes": {
+                  "below": [{ "id": "9303" }],
+                  "center": [
+                    { "id": "9306" },
+                    { "id": "9310" },
+                    { "id": "9322" }
+                  ],
+                  "left": [{ "id": "9307" }],
+                  "plot_height": 320,
+                  "renderers": [
+                    { "id": "9315" },
+                    { "id": "9327" },
+                    { "id": "9340" },
+                    { "id": "9355" },
+                    { "id": "9372" }
+                  ],
+                  "sizing_mode": "stretch_width",
+                  "title": { "id": "9293" },
+                  "toolbar": { "id": "9311" },
+                  "toolbar_location": null,
+                  "x_range": { "id": "9295" },
+                  "x_scale": { "id": "9299" },
+                  "y_range": { "id": "9297" },
+                  "y_scale": { "id": "9301" }
+                },
+                "id": "9292",
+                "subtype": "Figure",
+                "type": "Plot"
+              },
+              {
+                "attributes": {
+                  "label": { "value": "Beam Width - 7" },
+                  "renderers": [{ "id": "9355" }]
+                },
+                "id": "9368",
+                "type": "LegendItem"
+              },
+              {
+                "attributes": {
+                  "line_color": "#d62728",
+                  "line_width": 2,
+                  "x": { "field": "x" },
+                  "y": { "field": "y" }
+                },
+                "id": "9353",
+                "type": "Line"
+              },
+              { "attributes": {}, "id": "9402", "type": "UnionRenderers" },
+              {
+                "attributes": {
+                  "data_source": { "id": "9324" },
+                  "glyph": { "id": "9325" },
+                  "hover_glyph": null,
+                  "muted_glyph": null,
+                  "nonselection_glyph": { "id": "9326" },
+                  "selection_glyph": null,
+                  "view": { "id": "9328" }
+                },
+                "id": "9327",
+                "type": "GlyphRenderer"
+              },
+              {
+                "attributes": {
+                  "line_color": "#1f77b4",
+                  "line_width": 2,
+                  "x": { "field": "x" },
+                  "y": { "field": "y" }
+                },
+                "id": "9313",
+                "type": "Line"
+              },
+              {
+                "attributes": {
+                  "data": {
+                    "x": [
+                      100, 350, 600, 850, 1100, 1350, 1600, 1850, 2100, 2350,
+                      2600, 2850, 3100, 3350, 3600, 3850
+                    ],
+                    "y": {
+                      "__ndarray__": "drl0iNeP9T/6lVJR6Y/yPxKbcHRac/I/thBAnGV38j9LGmRFcGHyPyaWGXdGcvI/qlaWYD+p8T8tyGK2EhfyP0z5JViEyvE/+uADxKO18T8WTS5VJaPxPyY888BMk/E/5q2Lgm1y8T8ENHj95rDxP7Cj0UjzF/E/fD5/Zhha8T8=",
+                      "dtype": "float64",
+                      "shape": [16]
+                    }
+                  },
+                  "selected": { "id": "9386" },
+                  "selection_policy": { "id": "9385" }
+                },
+                "id": "9352",
+                "type": "ColumnDataSource"
+              },
+              {
+                "attributes": {
+                  "data": {
+                    "x": [
+                      100, 350, 600, 850, 1100, 1350, 1600, 1850, 2100, 2350,
+                      2600, 2850, 3100, 3350, 3600, 3850
+                    ],
+                    "y": {
+                      "__ndarray__": "/l4+oeEz9D/WBTOm3JXxP75KaLIWuvE/ssGconnB8T80wElIQ3LxP3qMuhYZiPE/Gl0suTT/8D8v9oAW72bxPxR+Nd1DTvE/1tl7Ikwm8T+uhez6ICTxPwz4QmP29PA/sH4lYgUI8T/Ge8v7kvnwP9R+x7aAqPA/qtq7DzLW8D8=",
+                      "dtype": "float64",
+                      "shape": [16]
+                    }
+                  },
+                  "selected": { "id": "9350" },
+                  "selection_policy": { "id": "9349" }
+                },
+                "id": "9324",
+                "type": "ColumnDataSource"
+              },
+              {
+                "attributes": { "source": { "id": "9324" } },
+                "id": "9328",
+                "type": "CDSView"
+              },
+              { "attributes": {}, "id": "9385", "type": "UnionRenderers" },
+              {
+                "attributes": { "text": "Temperature = 10" },
+                "id": "9293",
+                "type": "Title"
+              },
+              {
+                "attributes": {
+                  "data": {
+                    "x": [
+                      100, 350, 600, 850, 1100, 1350, 1600, 1850, 2100, 2350,
+                      2600, 2850, 3100, 3350, 3600, 3850
+                    ],
+                    "y": {
+                      "__ndarray__": "QoEm9h/l9T/OvYCk/s7yP4poqRwxv/I/3sBfsBS08j9MSaw2f3ryP4MpAD2rlPI/YgUSpdvO8T/s+V7Ikz3yPywvcJHi4PE/WOl+sUvD8T8yXYrPddDxP1QUPSqOoPE/bLY6fF9+8T8NZryym7rxP2Ky0QQNJfE/sGw5xrNv8T8=",
+                      "dtype": "float64",
+                      "shape": [16]
+                    }
+                  },
+                  "selected": { "id": "9403" },
+                  "selection_policy": { "id": "9402" }
+                },
+                "id": "9369",
+                "type": "ColumnDataSource"
+              },
+              {
+                "attributes": {
+                  "data": {
+                    "x": [
+                      100, 350, 600, 850, 1100, 1350, 1600, 1850, 2100, 2350,
+                      2600, 2850, 3100, 3350, 3600, 3850
+                    ],
+                    "y": {
+                      "__ndarray__": "1ncgHdq09D/F2ftjzTbyP29/7rP+S/I/5HvBvwtE8j+BvgedPSbyP5F6P/TIYPI/vq424PyN8T+ia1t3AuDxPyPLKrNxsPE/ULXUSx5u8T94JrCtSW/xPyTSSAttgfE/nkxfZFA88T86yHXFcJPxP7QFp7px0/A/FRAKArtF8T8=",
+                      "dtype": "float64",
+                      "shape": [16]
+                    }
+                  },
+                  "selected": { "id": "9367" },
+                  "selection_policy": { "id": "9366" }
+                },
+                "id": "9337",
+                "type": "ColumnDataSource"
+              },
+              {
+                "attributes": {
+                  "line_color": "#2ca02c",
+                  "line_width": 2,
+                  "x": { "field": "x" },
+                  "y": { "field": "y" }
+                },
+                "id": "9338",
+                "type": "Line"
+              },
+              {
+                "attributes": {
+                  "line_alpha": 0.1,
+                  "line_color": "#9467bd",
+                  "line_width": 2,
+                  "x": { "field": "x" },
+                  "y": { "field": "y" }
+                },
+                "id": "9371",
+                "type": "Line"
+              },
+              { "attributes": {}, "id": "9299", "type": "LinearScale" },
+              {
+                "attributes": {
+                  "active_drag": "auto",
+                  "active_inspect": "auto",
+                  "active_multi": null,
+                  "active_scroll": "auto",
+                  "active_tap": "auto",
+                  "logo": null
+                },
+                "id": "9311",
+                "type": "Toolbar"
+              },
+              { "attributes": {}, "id": "9335", "type": "Selection" },
+              {
+                "attributes": {
+                  "data_source": { "id": "9369" },
+                  "glyph": { "id": "9370" },
+                  "hover_glyph": null,
+                  "muted_glyph": null,
+                  "nonselection_glyph": { "id": "9371" },
+                  "selection_glyph": null,
+                  "view": { "id": "9373" }
+                },
+                "id": "9372",
+                "type": "GlyphRenderer"
+              },
+              {
+                "attributes": {
+                  "data_source": { "id": "9337" },
+                  "glyph": { "id": "9338" },
+                  "hover_glyph": null,
+                  "muted_glyph": null,
+                  "nonselection_glyph": { "id": "9339" },
+                  "selection_glyph": null,
+                  "view": { "id": "9341" }
+                },
+                "id": "9340",
+                "type": "GlyphRenderer"
+              },
+              {
+                "attributes": {
+                  "line_alpha": 0.1,
+                  "line_color": "#2ca02c",
+                  "line_width": 2,
+                  "x": { "field": "x" },
+                  "y": { "field": "y" }
+                },
+                "id": "9339",
+                "type": "Line"
+              },
+              {
+                "attributes": {
+                  "axis": { "id": "9307" },
+                  "dimension": 1,
+                  "ticker": null
+                },
+                "id": "9310",
+                "type": "Grid"
+              },
+              {
+                "attributes": {
+                  "label": { "value": "Beam Width - 9" },
+                  "renderers": [{ "id": "9372" }]
+                },
+                "id": "9387",
+                "type": "LegendItem"
+              },
+              {
+                "attributes": {
+                  "data": {
+                    "x": [
+                      100, 350, 600, 850, 1100, 1350, 1600, 1850, 2100, 2350,
+                      2600, 2850, 3100, 3350, 3600, 3850
+                    ],
+                    "y": {
+                      "__ndarray__": "DhBv////7z9926T7///vP3cnLuL//+8/kfzD9v//7z9VjwAJAADwP+0+DfH//+8/eB13CwAA8D8SYSQGAADwPwYmiOr//+8/YwOzAwAA8D87hN4JAADwPwbgOgYAAPA/Wz0WDQAA8D9pHvcHAADwP0u9oP3//+8/gu/W4f//7z8=",
+                      "dtype": "float64",
+                      "shape": [16]
+                    }
+                  },
+                  "selected": { "id": "9335" },
+                  "selection_policy": { "id": "9334" }
+                },
+                "id": "9312",
+                "type": "ColumnDataSource"
+              },
+              {
+                "attributes": { "source": { "id": "9337" } },
+                "id": "9341",
+                "type": "CDSView"
+              },
+              { "attributes": {}, "id": "9295", "type": "DataRange1d" }
+            ],
+            "root_ids": ["9292"]
+          },
+          "title": "Bokeh Application",
+          "version": "2.0.1"
+        }
+      }
+    </script>
+    <script type="text/javascript">
+      (function () {
+        var fn = function () {
+          Bokeh.safely(function () {
+            (function (root) {
+              function embed_document(root) {
+                var docs_json = document.getElementById("9659").textContent;
+                var render_items = [
+                  {
+                    docid: "4a98b9d2-5cd5-4c65-84ee-37d5c2ae6e17",
+                    root_ids: ["9292"],
+                    roots: { 9292: "ffdbe7a5-3dff-4870-b386-6c7fd154cb64" },
+                  },
+                ];
+                root.Bokeh.embed.embed_items(docs_json, render_items);
+              }
+              if (root.Bokeh !== undefined) {
+                embed_document(root);
+              } else {
+                var attempts = 0;
+                var timer = setInterval(
+                  function (root) {
+                    if (root.Bokeh !== undefined) {
+                      clearInterval(timer);
+                      embed_document(root);
+                    } else {
+                      attempts++;
+                      if (attempts > 100) {
                         clearInterval(timer);
-                        embed_document(root);
-                      } else {
-                        attempts++;
-                        if (attempts > 100) {
-                          clearInterval(timer);
-                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
-                        }
+                        console.log(
+                          "Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing"
+                        );
                       }
-                    }, 10, root)
-                  }
-                })(window);
-              });
-            };
-            if (document.readyState != "loading") fn();
-            else document.addEventListener("DOMContentLoaded", fn);
-          })();
-        </script>
-    
+                    }
+                  },
+                  10,
+                  root
+                );
+              }
+            })(window);
+          });
+        };
+        if (document.readyState != "loading") fn();
+        else document.addEventListener("DOMContentLoaded", fn);
+      })();
+    </script>
   </body>
-  
 </html>

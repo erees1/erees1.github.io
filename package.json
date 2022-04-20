@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-brands-svg-icons": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.1.0",
+    "glob": "^8.0.3",
+    "html-minifier": "^4.0.0",
+    "mathjax-full": "^3.2.2",
+    "purgecss": "^5.0.0",
+    "rollup": "^2.79.1",
+    "yargs": "^17.6.2"
+  }
+}

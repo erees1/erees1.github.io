@@ -1,11 +1,14 @@
-
 exclude:
-  - "/vendor/"
+  - "/bundle/"
   - "Gemfile"
   - "Gemfile.lock"
   - "README.md"
   - "LICENSE.md"
   - "*.gemspec"
+  - "assets/*/README.md"
+
+include:
+  - _pages
 
 keep_files:
   - "CNAME"
@@ -15,28 +18,25 @@ keep_files:
 collections:
   project_items:
     output: false
-  sections:
-    output: false
   timeline:
     output: false
-  pages:
-    output: true
-    permalink: /:path/
 
 sass:
-  sass_dir: _sass
+  load_paths:
+  - _sass
   style: compressed
 
 # Site settings
-show_project_filter: false
 url: "edward-rees.com" # the base hostname & protocol for your site
 baseurl: ""
+
+permalink: /:title/
 
 # User information
 title: Edward Rees
 name: "Edward Rees"
-avatar_path: "/img/site/ga-cartoon-2.png"
-job_title: "PhD Candidate at UCL"
+avatar_path: "/assets/img/site/mountain_cropped.JPG"
+job_title: "Machine Learning Engineer"
 github_url: "https://github.com/erees1"
 linkedin_url: "https://linkedin.com/in/Rees"
 twitter_url: "https://twitter.com/ERees01"
@@ -47,8 +47,3 @@ markdown: kramdown
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-
-exclude: [assets/*/README.md]
-
-# Google analytics
-# ga_tracking_id: "UA-XXXX-1"

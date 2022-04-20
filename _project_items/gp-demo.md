@@ -1,11 +1,11 @@
 ---
 title: "Interactive Gaussian Process"
 draft: false
-image : "img/projects/gp-cover.jpeg"
+image : "assets/img/projects/gp-cover.jpeg"
 category: "statistics"
 github_repo: "js-GP"
 project_page: "gp"
-blog_post: 
+blog_post:
 order: -9
 date: Feb 2020
 demo: true

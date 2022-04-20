@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-sm fixed-top navbar-default">
-  <div class="container-lg">
+<nav class="navbar navbar-expand fixed-top navbar-default">
+  <div class="container-lg l-fixed-nav">
     <button
       class="hamburger hamburger--collapse navbar-toggler"
       type="button"
@@ -7,8 +7,7 @@
       data-target="#navbarCollapse"
       aria-controls="navbarCollapse"
       aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+      aria-label="Toggle navigation">
       <span class="hamburger-box">
         <span class="hamburger-inner"></span>
       </span>
@@ -19,13 +18,15 @@
         true" -%} {%- unless _pages == null -%} {%- assign _pages = _pages |
         sort: 'order' -%} {%- for _page in _pages -%}
         <li class="nav-item">
-          <a class="nav-link" href="{{- _page.url | relative_url -}}"
-            >{{- _page.title -}}</a
-          >
+          <a class="nav-link" href="{{- _page.url | relative_url -}}">
+            {{- _page.title -}}
+          </a>
         </li>
         {% endfor %} {% endunless %}
       </ul>
     </div>
+    <span class="navbar-text">
+    </span>
   </div>
 </nav>
 

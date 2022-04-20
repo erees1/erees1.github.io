@@ -1,20 +1,14 @@
-{% comment %}
-    Adds references to JavaScript and CSS files to a page.
-    Takes page.custom-javascript-list varialbe and renders script tag for each item in it.
-    Takes page.custom-css-list varialbe and renders link tag for each item in it.
-{% endcomment %}
-{% for javascript in page.custom-javascript-list %}
-{% if javascript contains "https" %}
+{% comment %} Adds references to JavaScript and CSS files to a page. Takes
+page.custom-javascript-list varialbe and renders script tag for each item in it.
+Takes page.custom-css-list varialbe and renders link tag for each item in it. {%
+endcomment %} {% for javascript in page.custom-javascript-list %} {% if
+javascript contains "https" %}
 <script src="{{ javascript }}"></script>
 {% else %}
 <script src="{{ site.baseurl }}/{{ javascript }}"></script>
-{% endif %}
-{% endfor %}
-
-{% for css in page.custom-css-list %}
-{% if css contains "http" %}
-<link href="{{ css }}" rel="stylesheet">
+{% endif %} {% endfor %} {% for css in page.custom-css-list %} {% if css
+contains "http" %}
+<link href="{{ css }}" rel="stylesheet" />
 {% else %}
-<link href="{{ site.baseurl }}/{{ css }}" rel="stylesheet"></link>
-{% endif %}
-{% endfor %}
+<link href="{{ site.baseurl }}/{{ css }}" rel="stylesheet" />
+{% endif %} {% endfor %}

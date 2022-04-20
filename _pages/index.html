@@ -1,0 +1,51 @@
+---
+title: Home
+layout: sidebar
+order: 1
+permalink: /
+---
+
+<div class="block">
+  <article class="page-content" id="portfolio-work">
+    <h1>Posts</h1>
+    <div id="post-list">
+      {%- assign _posts = site.posts -%} {%- assign posts = _posts | sort:
+      'date' | reverse -%} {%- for post in site.posts %}
+      <a href="{{ post.url | prepend: site.baseurl }}">
+        <div class="post-area">
+          <div class="row">
+            <div
+              class="{% if post.image %} col-xl-7 col-lg-7 col-md-6 col-sm-12 order-2 order-md-1 {% else %} col-xl-12 col-lg-12 col-md-12 col-sm-12 {% endif %}">
+              <div class="post-info-container">
+                <h3 class="card-title">{{ post.title }}</h3>
+                <p class="post-excerpt">
+                  {% if post.content contains '
+                  <!--summary_start-->
+                  ' %} {% assign words = post.content | split: '
+                  <!--summary_start-->
+                  ' %} {{ words[1] | truncatewords:40 | strip_html }} {% else %}
+                  {{ post.content | truncatewords:50 | strip_html }} {% endif %}
+                </p>
+                <p class="subtitle post-meta">
+                  {{ post.date | date_to_long_string }} · {{ post.author }}
+                </p>
+              </div>
+            </div>
+            {% if post.image %}
+            <div
+              class="col-xl-5 col-lg-5 col-md-6 col-sm-12 order-1 order-md-1">
+              <div class="post-img-container">
+                <img
+                  class="post-img"
+                  src="{{ post.image }}"
+                  alt="{{ post.title }}" />
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </a>
+      {% endfor -%}
+    </div>
+  </article>
+</div>

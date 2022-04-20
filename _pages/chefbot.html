@@ -1,58 +1,70 @@
 ---
-layout: page
+layout: demo
 title: ChefBot
 github-link: https://github.com/erees1/recipe-chatbot
+hide: true
+permalink: /chefbot
 ---
 
-<div class="center-image-container"><img class="img-page-icon"
-    src="{{ 'img/projects/chefbot/chefbot-icon.png' | relative_url }}" /></div>
+<div class="l-full-center">
+  <img
+    class="img-page-icon"
+    src="{{ 'assets/img/projects/chefbot/chefbot-icon.png' | relative_url }}" />
+</div>
 <p>
-  I've been working on a chatbot to provide people with cooking ideas and recipes.
-  The idea for this project arose because whilst I quite enjoy cooking I often struggle
-  to come up with good ideas or recipes to cook.
-  Additionally, I often don't end up thinking about what to cook until I am in the supermarket, by which time it is too
-  late to do a proper search.
-  Therefore I made this chatbot to try and assist me in finding recipes. I am a big fan of <a
-    href=https://mobkitchen.co.uk>MobKitchen</a> so they were the first set of recipes that I added to the bot.
-  However I hope to add some other sites in the future.
+  I've been working on a chatbot to provide people with cooking ideas and
+  recipes. The idea for this project arose because whilst I quite enjoy cooking
+  I often struggle to come up with good ideas or recipes to cook. Additionally,
+  I often don't end up thinking about what to cook until I am in the
+  supermarket, by which time it is too late to do a proper search. Therefore I
+  made this chatbot to try and assist me in finding recipes. I am a big fan of
+  <a href="https://mobkitchen.co.uk">MobKitchen</a>
+  so they were the first set of recipes that I added to the bot. However I hope
+  to add some other sites in the future.
 </p>
 <p>
-  The bot is still very much in development and hence runs locally on my computer. However, if the server is running you
-  should see a blue chat icon in the bottom right hand corner.
-  Feel free to try it out! The source code and more explanation is on my <a
-    href=https://github.com/erees1/recipe-chatbot>GitHub</a>. Note that it is not yet very good at handling deviations
-  for the happy path!
+  The bot is still very much in development and hence runs locally on my
+  computer. However, if the server is running you should see a blue chat icon in
+  the bottom right hand corner. Feel free to try it out! The source code and
+  more explanation is on my
+  <a href="https://github.com/erees1/recipe-chatbot">GitHub</a>
+  . Note that it is not yet very good at handling deviations for the happy path!
 </p>
 
-<section class="sub-section">
-  <div class="sub-section-title center-text">
+<section>
+  <div class="sub-section-title text-center">
     <h3>Example Conversation</h3>
   </div>
   <div class="row">
-    <div class="col-md-4 col-sm-4">
-      <img class="image-fit" src="{{ 'img/projects/chefbot/chefbot_ex1.jpeg' | relative_url }}" alt="ChefBot" />
+    <div class="col-md-4 col-sm-12">
+      <img
+        src="{{ 'assets/img/projects/chefbot/chefbot_ex1.jpeg' | relative_url }}"
+        alt="ChefBot" />
     </div>
-    <div class="col-md-4 col-sm-4">
-      <img class="image-fit" src="{{ 'img/projects/chefbot/chefbot_ex2.jpeg' | relative_url }}" alt="ChefBot" />
+    <div class="col-md-4 col-sm-12">
+      <img
+        src="{{ 'assets/img/projects/chefbot/chefbot_ex2.jpeg' | relative_url }}"
+        alt="ChefBot" />
     </div>
-    <div class="col-md-4 col-sm-4">
-      <img class="image-fit" src="{{ 'img/projects/chefbot/chefbot_ex3.jpeg' | relative_url }}" alt="ChefBot" />
+    <div class="col-md-4 col-sm-12">
+      <img
+        src="{{ 'assets/img/projects/chefbot/chefbot_ex3.jpeg' | relative_url }}"
+        alt="ChefBot" />
     </div>
-
   </div>
 </section>
 
-<div id="webchat" >
-<script src="{{- 'assets/js/webchat.js' | relative_url -}}"></script>
-<script>
-  WebChat.default.init({
-    selector: "#webchat",
-    initPayload: "/greet",
-    customData: { "language": "en" }, // arbitrary custom data. Stay minimal as this will be added to the socket
-    socketUrl: "https://4e1bc332fb6d.ngrok.io",
-    title: "ChefBot",
-    subtitle: "",
-    hideWhenNotConnected: true,
-  })
-</script>
+<div id="webchat">
+  <script src="{{- 'assets/js/webchat.js' | relative_url -}}"></script>
+  <script>
+    WebChat.default.init({
+      selector: "#webchat",
+      initPayload: "/greet",
+      customData: { language: "en" }, // arbitrary custom data. Stay minimal as this will be added to the socket
+      socketUrl: "https://4e1bc332fb6d.ngrok.io",
+      title: "ChefBot",
+      subtitle: "",
+      hideWhenNotConnected: true,
+    });
+  </script>
 </div>

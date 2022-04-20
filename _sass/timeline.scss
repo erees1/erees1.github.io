@@ -1,10 +1,11 @@
 ul.timeline {
     list-style-type: none;
     position: relative;
+    padding-left: 40px;
 }
 ul.timeline:before {
     content: ' ';
-    background: var(--light-grey);
+    background: var(--element1);
     display: inline-block;
     position: absolute;
     left: 29px;
@@ -18,11 +19,11 @@ ul.timeline > li {
 }
 ul.timeline > li:before {
     content: ' ';
-    background: white;
+    background: var(--background1);
     display: inline-block;
     position: absolute;
     border-radius: 50%;
-    border: 3px solid var(--highlight-light);
+    border: 3px solid var(--accent3);
     left: 20px;
     width: 20px;
     height: 20px;
@@ -48,7 +49,7 @@ img.timeline-logo{
 .timeline-subtitle{
     font-size: 1em;
     font-style: italic;
-    color: var(--subtitle-text)
+    color: var(--text2)
 }
 .timeline-date{
     text-align: right;

@@ -2,33 +2,34 @@
 layout: default
 ---
 
-<script src="{{ site.baseurl }}/assets/js/code-theme.js"></script>
-
 <article id="post">
-  <div class="container page-content">
-    <div class="block">
-      <div class="blog-title">
-        <h1>{{ page.title }}</h1>
-        <div class="post-info-wrapper" id="add_after_me">
-          <p class="italic">
-            By <span class="bold">{{ page.author }}</span> on
-            <span class="bold">{{ page.date | date: "%B %-d, %Y" }}</span>
-          </p>
+  <div class="blog-title">
+    <div class="container-lg">
+      <div class="row justify-content-md-center">
+        <div class="l-fixed-content">
+          <h1>{{ page.title }}</h1>
+          <div class="post-info-wrapper" id="add_after_me">
+            <p class="italic">
+              <span class="bold">
+                {{ page.date | date: "%B %-d, %Y"}} · {{ page.author }}
+              </span>
+            </p>
+          </div>
         </div>
-        <hr />
-      </div>
-      <div class="blog-content">
-        {{ content }}
-        <script>
-          addToggleButton();
-        </script>
       </div>
     </div>
-
-    <div class="btp">
-      <hr />
+  </div>
+  <div class="container-lg post-container">
+    {% if page.has_toc == false %}
+    <div class="row justify-content-md-center">
+      <div class="col-xl-7 l-fixed-content" markdown="1">{{ content }}</div>
+    </div>
+    {% else %} {{ content }} {% endif %}
+  </div>
+  <div class="btp">
+    <div class="container-lg">
       <p>
-        <a href="{{ site.baseurl }}/posts">Back to posts</a>
+        <a href="{{ site.baseurl }}/">Back to posts</a>
       </p>
     </div>
   </div>

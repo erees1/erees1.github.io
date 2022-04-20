@@ -1,16 +1,10 @@
 ---
-title: Semantic Segmentation Without Deep Learning
+title: Simple Segmentation of Faces Using Histogram of Oriented Gradients
 author: Edward Rees
 layout: post
-short_description: These days no one would dream about performing a segmentation task without using deep learning. However that is exactly what I set out to do in this project, to see how far you can get with a small dataset, random forests and no TensorFlow!
 ---
 
-<h2> Table of Contents </h2>
-
-<div id='TOC' markdown="1">
-
-<!-- TOC depthFrom:2 depthTo:2 -->
-
+{% capture toc %}
 - [Introduction](#introduction)
 - [Data cleaning / preparation](#data-cleaning--preparation)
 - [Feature Creation](#feature-creation)
@@ -18,12 +12,11 @@ short_description: These days no one would dream about performing a segmentation
 - [Results](#results)
 - [Conclusion](#conclusion)
 - [References](#references)
+{% endcapture %}
 
-<!-- /TOC -->
+{% capture main %}
 
-</div>
-
-## Introduction
+<!--summary_start-->
 
 These days no one would dream about performing a segmentation task without using deep learning. However that is exactly what I set out to do in this project, to see how far you can get with a small dataset and no TensorFlow!
 
@@ -40,7 +33,8 @@ This project was primarily based of the work of [1] and utilises the dataset tha
 The raw dataset was obtained from the FASSEG Repository [here](http://massimomauro.github.io/FASSEG-repository/) and is presented by [1] in three parts. I used FASSEG V2 and parts of FASSEG V3 for this work. V2 contains only images of faces looking straight on whilst V3 contains images at a variety of head angles. I only used the images that were within +/-15% of straight on from V3. This left me with 80 images in total.
 
 Inspecting the dataset:
-<span class="image blog"><img src="{{ "img/blog/2019-12-12-segmentation/seg.jpeg" | relative_url }}" alt="" /></span>
+
+<div ><img src="{{ "assets/img/blog/2019-12-12-segmentation/seg.jpeg" | relative_url }}" alt="" /></div>
 
 There were two main points to tackle before Modelling. The first was to resize the images to a uniform size (necessary if I want to run them through a convolutional net, or create an array containing all of the images) and the second was to clean up the labels (the images on the bottom row above).
 
@@ -67,15 +61,15 @@ This loads the images as numpy arrays and appends them to a list. I then resized
 
 ### Image resizing
 
-I wanted to maintain the aspect ratio of the images when resizing so I implemented a set of functions that scaled the image such that the largest dimension was equal the size required then padded the other dimension with zeros to meet the size required. I resized all of the images to `(600, 600)` square. This was done to each of the images and labels in turn. 
+I wanted to maintain the aspect ratio of the images when resizing so I implemented a set of functions that scaled the image such that the largest dimension was equal the size required then padded the other dimension with zeros to meet the size required. I resized all of the images to `(600, 600)` square. This was done to each of the images and labels in turn.
 
 #### Images before resizing
 
-<span class="image blog"><img src="{{ "img/blog/2019-12-12-segmentation/resize_1.jpeg" | relative_url }}" alt="resize-1-1" /></span>
+<div class="l-inset"><img src="{{ "assets/img/blog/2019-12-12-segmentation/resize_1.jpeg" | relative_url }}" alt="resize-1-1" /></div>
 
 #### Images after resizing (black bars indicate zeros)
 
-<span class="image blog"><img src="{{ "img/blog/2019-12-12-segmentation/resize_2.jpeg" | relative_url }}" alt="resize_2" /></span>
+<div class="l-inset"><img src="{{ "assets/img/blog/2019-12-12-segmentation/resize_2.jpeg" | relative_url }}" alt="resize_2" /></div>
 
 ### Label cleaning
 
@@ -122,7 +116,7 @@ this function takes a grayscale image of the labels and outputs an array of the 
 
 The images below were input to the K-means algorithm and have **256 unique classes**
 
-<span class="image blog"><img src="{{ "img/blog/2019-12-12-segmentation/seg-1.jpeg" | relative_url }}" alt="seg-1" /></span>
+<div class="l-inset"><img src="{{ "assets/img/blog/2019-12-12-segmentation/seg-1.jpeg" | relative_url }}" alt="seg-1" /></div>
 
 The output of the k-means algorithm below has **7 unique classes** and are integer arrays as opposed to r-g-b arrays. (Although I present them here as colours for visualisation purposes.)
 
@@ -131,7 +125,7 @@ print('Number of unique colors:', len(np.unique(processed_label_sample[0])))
 #--> Number of unique colors: 7
 ```
 
-<span class="image blog"><img src="{{ "img/blog/2019-12-12-segmentation/seg-2.jpeg" | relative_url }}" alt="seg-2" /></span>
+<div class="l-inset"><img src="{{ "assets/img/blog/2019-12-12-segmentation/seg-2.jpeg" | relative_url }}" alt="seg-2" /></div>
 
 Whilst the K-means algorithm works to reduce the number of classes to 7 as desired, the order of the classes is arbitrary and so for each image the classes are different (note how the face is green on the left picture but red on the right). For this reason I wrote a function to map the outputs of the new images back to the original images so that the classes are consistent.
 
@@ -191,7 +185,7 @@ desired_labels = [
 
 The function `convert_labels()` utilises another function `mask_image()` which takes the original labelled_image and masks it basked on the criteria in `label_dict`. By multiplying the result of this mask with the result of the K-means algorithm it is possible to infer which number corresponds to which class and then reassign the labels accordingly. I haven't included the full code here as it is quite verbose but the full source code is [here](https://github.com/erees1/faces-segmentation/blob/master/src/label_processing.py#L114). Below shows the `mask_image()` function in action.
 
-<span class="image blog"><img src="{{ "img/blog/2019-12-12-segmentation/mask-example.jpeg" | relative_url }}" alt="mask-example" /></span>
+<div class="l-inset"><img src="{{ "assets/img/blog/2019-12-12-segmentation/mask-example.jpeg" | relative_url }}" alt="mask-example" /></div>
 
 ## Feature Creation
 
@@ -235,7 +229,7 @@ This generalises to any nxn image. Appending the `x` and `y` values for each pix
 
 The limitation of this approach is that each data point considers each pixel totally in isolation with no account taken of the surrounding pixels or structure. In [1], Khan et al. utilise HOG (Histogram of Orientated Gradients) to encapsulate some information about the pixels surrounding region. This is actually quite a neat function which takes an image and calculates the predominant direction in the surrounding region. It is best demonstrated by the demonstration below I used scikit-images [HOG function](https://scikit-image.org/docs/dev/auto_examples/features_detection/plot_hog.html) to perform this calculation.
 
-<span class="image blog"><img src="{{ "img/blog/2019-12-12-segmentation/image-20200104170315064.png" | relative_url }}" alt="image-20200104170315064" /></span>
+<div class="l-inset"><img src="{{ "assets/img/blog/2019-12-12-segmentation/image-20200104170315064.png" | relative_url }}" alt="image-20200104170315064" /></div>
 
 ### Feature Creation Class
 
@@ -351,7 +345,7 @@ Accuracy Score 0.9345462962962963
 weighted avg       0.93      0.93      0.93    540000
 ```
 
-<span class="image blog"><img src="{{ "img/blog/2019-12-12-segmentation/model1.jpeg" | relative_url }}" alt="model1" /></span>
+<div><img src="{{ "assets/img/blog/2019-12-12-segmentation/model1.jpeg" | relative_url }}" alt="model1" /></div>
 
 ### Model with HOG features
 
@@ -372,7 +366,7 @@ Accuracy Score 0.9451351851851851
 weighted avg       0.94      0.95      0.94    540000
 ```
 
-<span class="image blog"><img src="{{ "img/blog/2019-12-12-segmentation/model2.jpeg" | relative_url }}" alt="model2" /></span>
+<div><img src="{{ "assets/img/blog/2019-12-12-segmentation/model2.jpeg" | relative_url }}" alt="model2" /></div>
 
 Including the HOG features gave a slight bump of c.1% to the overall model accuracy.
 
@@ -380,7 +374,7 @@ Including the HOG features gave a slight bump of c.1% to the overall model accur
 
 The chart below shows the feature importance of the different elements in the model, pixel location turned out to be the strongest predictor of class which is unsurprising given the uniformity of the images. Thus their may be potential to use image augmentation to improve the robustness of the classifier.
 
-<span class="image blog"><img src="{{ "img/blog/2019-12-12-segmentation/feature-importance.jpeg" | relative_url }}" alt="feature-importance" /></span>
+<div><img src="{{ "assets/img/blog/2019-12-12-segmentation/feature-importance.jpeg" | relative_url }}" alt="feature-importance" /></div>
 
 This shows that the location of the pixel is by far the biggest indicator of class. This highlights perhaps the limitation of the dataset in that the images are very consistent and well centred. Interestingly the pixel value for red is stronger than the other colours. This is potentially due to the red colour found in the skin tone of most of the images.
 
@@ -388,7 +382,7 @@ This shows that the location of the pixel is by far the biggest indicator of cla
 
 The precision recall curve is a good way to investigate the quality of the classifier. For an explanation of what they are check out the good explanation [here](https://machinelearningmastery.com/roc-curves-and-precision-recall-curves-for-classification-in-python/).
 
-<span class="image blog"><img src="{{ "img/blog/2019-12-12-segmentation/precision-recall-curve.jpeg" | relative_url }}" alt="precision-recall-curve" /></span>
+<div class="l-inset"><img src="{{ "assets/img/blog/2019-12-12-segmentation/precision-recall-curve.jpeg" | relative_url }}" alt="precision-recall-curve" /></div>
 
 This shows that the classifier is weakest at classifying class 3 and 4 which are the left and right eyes respectively. These correspond to the classes with the fewest number of observations (pixels). This contrasts with class 1 and 0, the padding and background respectively which are the most common classes.
 
@@ -398,10 +392,11 @@ I found that it's possible to develop a fairly strong segmentation classifier of
 
 ### Model Improvements
 
-* Image augmentation to reduce the reliance on location feature
-* Inclusion of more than one size of HOG feature to encapsulate information from both the immediate vicinity and other features further away from the pixel being classified
-- Encode location information as relative rather than as absolute, for instance predict the location of the nose then base other measurements from this (I would have to think more deeply about how to implement this in practice)
-- Create a histogram of colours from the pixels around the pixel being classified to encapsulate more information from the surrounding region, this is implemented in [1]
+- Image augmentation to reduce the reliance on location feature
+- Inclusion of more than one size of HOG feature to encapsulate information from both the immediate vicinity and other features further away from the pixel being classified
+
+* Encode location information as relative rather than as absolute, for instance predict the location of the nose then base other measurements from this (I would have to think more deeply about how to implement this in practice)
+* Create a histogram of colours from the pixels around the pixel being classified to encapsulate more information from the surrounding region, this is implemented in [1]
 
 ## References
 
@@ -415,3 +410,7 @@ IEEE International Conference on Image Processing (ICIP), 2015
 IEEE International Conference on Multimedia and Expo (ICME), 2017
 _In collaboration with [YonderLabs](http://www.yonderlabs.com)_
 -- [**PDF**](https://github.com/massimomauro/FASSEG-repository/blob/master/papers/pose_estimation_by_segmentation_ICME2017.pdf)
+
+{% endcapture %}
+
+{% include toc_template.html %}

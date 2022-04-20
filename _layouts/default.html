@@ -1,26 +1,14 @@
 <!DOCTYPE html>
 <html class="no-js">
+  <head>
+    {% if jekyll.environment != 'test' %} {% include analytics.html %} {% endif
+    %} {% include head.html %}
+  </head>
 
-<head>
-  {% if jekyll.environment != 'test' %}
-  {% include analytics.html %}
-  {% endif %}
-  {% include head.html %}
+  <body>
+    {% include header.html %}
+    <div id="main">{{ content }}</div>
 
-</head>
-
-<body>
-
-
-  {% include header.html %}
-  <div id='main'>
-    <div class="container-lg">
-      {{ content }}
-    </div>
-  </div>
-
-  {% include footer.html %}
-
-</body>
-
+    {% include footer.html %}
+  </body>
 </html>

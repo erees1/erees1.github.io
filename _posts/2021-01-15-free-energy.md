@@ -1,9 +1,8 @@
 ---
-title: "Derivation of Free Energy (ELBO) in Variational ML"
+title: "Note: Derivation of Free Energy (ELBO) in Variational ML"
 author: Edward Rees
 layout: post
-short_description: This note sets out the derivation of the variational free energy $\mathcal{F}
-mathjax: true
+has_toc: false
 ---
 
 This note sets out the derivation of the variational free energy $\mathcal{F} (q,\theta)$ which is the lower bound for the log-likelihood of the data $\mathcal{L}(\theta) = log \ P(X \vert \theta)$. This is also known as the evidence and thus variational free energy is often called the Evidence Lower BOund (ELBO). The dependance on $\theta$ is included to highlight that $P$ is often a parametric model, and indeed we are usually interested in maximizing the likelihood $\mathcal{L}(\theta)$ with respect to these parameters.

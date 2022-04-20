@@ -1,0 +1,81 @@
+---
+layout: sidebar
+title: Books
+order: 3
+permalink: /books
+---
+# Books
+This is an incomplete list of books that I've read in rough reverse chronological order. I've ripped off my old colleage [Sam](https://samringer.github.io/books/) who in turned ripped off [Patrick Collinson](https://patrickcollison.com/bookshelf) by colouring books I thought exceptional in <span style="color:green">green</span> and those I considered good in <span style="color:HSL(204, 62%, 47%)">blue</span>.
+
+- **Ultralearning** - Scott H. Young
+- **The Book of Why** - Judea Pearl & Dana Mackenzie
+- **Ghost in the Wires** - Kevin Mitnick with William L. Simon
+- <span style="color:HSL(204, 62%, 47%)">**The Scout Mindset** - Julia Galef</span>
+- <span style="color:HSL(204, 62%, 47%)">**Doing Good Better** - Will MacAskill</span>
+- **21 Lessons for the 21st Century** - Yuval Noah Harari
+- <span style="color:HSL(204, 62%, 47%)">**Superintelligence** - Nick Bostrom</span>
+- <span style="color:green">**Harry Potter and the Methods of Rationality** - Eliezer Yudkowksy</span>
+- **Inadequate Equilibria** - Eliezer Yudkowsky
+- **Chaos Monkeys** - Antonio García Martínez
+- <span style="color:HSL(204, 62%, 47%)">**The Rationalists Guide to the Galaxy** - Tom Chivers</span>
+- **The Everything Store** - Brad Stone
+- **Trust & Modularity (The Engines of Cognition)** - Various
+- **Never Split the Difference** - Chris Voss
+- <span style="color:green">**Liftoff** - Eric Berger</span>
+- **The Double Helix** - James D. Watson
+- **Tales of the Jazz Age** - F. Scott Fitzgerald
+- **Second Sleep** - Robert Harris
+- **Brief Answers to the Big Questions** - Stephen Hawking
+- <span style="color:HSL(204, 62%, 47%)">**How to Actually Change Your Mind** - Eliezer Yudkowsky</span>
+- <span style="color:HSL(204, 62%, 47%)">**Map and Territory** - Eliezer Yudkowsky</span>
+- <span style="color:HSL(204, 62%, 47%)">**Conclave** - Robert Harris</span>
+- **Foundation** - Isaac Asimov
+- **Freakonomics - A Rogue Economist Explores the Hidden Side of Everything** - Steven D. Levitt, Stephen J. Dubner
+- **Life 3.0** - Max Tegmark
+- **Stumbling on Happiness** - David Gilbert
+- **Brief Answers to the Big Questions** - Stephen Hawking
+- **Range** - David Epstein
+- **Munich** - Robert Harris
+- **How Many Friends Does One Person Need** - Robin Dunbar
+- <span style="color:HSL(204, 62%, 47%)">**The Undoing Project** - Michael Lewis</span>
+- <span style="color:HSL(204, 62%, 47%)">**Red Notice** - Bill Browder</span>
+- **Misbehaving** - Richard Thaler
+- <span style="color:HSL(204, 62%, 47%)">**Homo Deus** - Yuval Noah Harari<span>
+- <span style="color:green">**Rogue Male** - Geoffrey Household</span>
+- **Pompeii** - Robert Harris
+- **Isaac Newton** - James Gleick
+- <span style="color:green">**An Officer and a Spy** - Robert Harris</span>
+- **Fahrenheit 451** - Ray Bradbury
+- <span style="color:HSL(204, 62%, 47%)">**Dictator** - Robert Harris</span>
+- <span style="color:HSL(204, 62%, 47%)">**Lustrum** - Robert Harris</span>
+- <span style="color:green">**Imperium** - Robert Harris</span>
+- **The Grand Design** - Stephen Hawking
+- **Archangel** - Robert Harris
+- **Fatherland** - Robert Harris
+- **The Ghost** - Robert Harris
+- **The Fear Index** - Robert Harris
+- <span style="color:green">**A Farewell to Arms** - Ernest Hemingway</span>
+- **17 Equations that Changed the world** - Ian Stewart
+- **The Sense of an Ending** - Julian Barnes
+- <span style="color:HSL(204, 62%, 47%)">**1984** - George Orwell</span>
+- **A Brave New World** - Aldous Huxley
+- <span style="color:green">**Day of the Jackal** - Frederick Forsyth</span>
+- **Heart of Darkness** - Joseph Conrad
+- **Decline and Fall** - Evelyn Waugh
+- **Carry on Jeeves** - P. G. Wodehouse
+- <span style="color:green">**Free Will** - Sam Harris</span>
+- **The Art of Learning: An Inner Journey to Optimal Performance** - Josh Waitzkin
+- **The Hitchhiker’s Guide to the Galaxy** - Douglas Adams
+- **Live and Let Die** - Ian Fleming
+- **Zen and the Art of Motorcycle Maintenance** - Robert M. Pirsig
+- **Perfume: The Story of a Murderer** - Patrick Susskind
+- <span style="color:HSL(204, 62%, 47%)">**Moonwalking with Einstein: The Art and Science of Remembering Everything** - Joshua Foer</span>
+- **A Briefer History of Time** - Stephen Hawking
+- **Fermat's Last Theorem** - Simon Singh
+- **How to Teach Quantum Physics to Your Dog** - Chad Orzel
+- <span style="color:green">**The Old Man and the Sea** - Ernest Hemingway</span>
+- **Death of a Salesman** - Arthur Miller
+- <span style="color:HSL(204, 62%, 47%)">**The Great Gatsby** - F. Scott Fitzgerald</span>
+- **The Picture of Dorian Gray** - Oscar Wilde
+- **Animal Farm** - George Orwell
+- **The Hobbit** - J.R. Tolkein
