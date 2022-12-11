@@ -479,6 +479,9 @@ p.post-excerpt {
     Myriad, "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue",
     Helvetica, Arial, sans-serif;
 
+  a {
+    color: inherit;
+  }
   details summary > * {
     display: inline;
   }
