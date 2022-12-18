@@ -3,7 +3,7 @@ BOOTSTRAP_DIR = ./_sass/vendor/bootstrap
 
 #Serve Website in test environment
 .PHONY: serve
-serve:
+serve: bootstrap node_modules bundle
 	npx rollup -c --watch & JEKYLL_ENV=development bundle exec jekyll serve --drafts
 
 .PHONY: view_prod
@@ -11,7 +11,7 @@ view_prod: build
 	bundle exec jekyll serve --skip-initial-build
 
 .PHONY: build
-build: bootstrap
+build: bootstrap node_modules bundle
 	npx rollup -c
 	./build.sh
 
@@ -24,6 +24,9 @@ $(BOOTSTRAP_DIR): bundle
 
 bundle: Gemfile.lock Gemfile
 	bundle install
+
+node_modules: package.json
+	npm install
 
 .PHONY: clean
 clean:
