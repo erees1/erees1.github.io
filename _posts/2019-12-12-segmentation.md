@@ -2,6 +2,7 @@
 title: Simple Segmentation of Faces Using Histogram of Oriented Gradients
 author: Edward Rees
 layout: post
+published: false
 ---
 
 {% capture toc %}

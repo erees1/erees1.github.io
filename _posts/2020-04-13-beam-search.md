@@ -2,12 +2,12 @@
 title: The Beam Search Algorithm
 author: Edward Rees
 layout: post
-summary: "In this post I aim to discuss the beam search algorithm in the context of language modelling. First I will set out more generally the problem that beam search algorithm tries to solve and then I discuss some simple experiments using dummy data that compare the effectiveness of the beam search algorithm to a greedy search."
+published: false
 ---
 
 
 {% capture toc %}
-- [Conditional Language Modelling](#conditional-language-modelling)
+- [Language Modelling](#language-modelling)
 - [Greedy Search Decoder](#greedy-search-decoder)
 - [Beam Search Decoder](#beam-search-decoder)
 - [Experiments](#experiments)
@@ -19,12 +19,17 @@ summary: "In this post I aim to discuss the beam search algorithm in the context
 
 <!--summary_start-->
 
-In this post I aim to discuss the beam search algorithm in the
+In this post I will discuss the beam search algorithm in the
 context of language modelling. First I will set out more generally the problem that
-beam search algorithm tries to solve and then I discuss some simple experiments using dummy data that compare
-the effectiveness of the beam search algorithm to a greedy search.
+beam search algorithm tries to solve and then I discuss some simple experiments using dummy data that compare the effectiveness of the beam search algorithm to a greedy search.
 
-## Conditional Language Modelling
+## Language Modelling
+
+Language modelling involves modelling probabilities of word sequences, which mathematically, can be denoted by considering the joint probability of a sequence of words $ \mathbf{w} $ of length $l$ as:
+
+$$
+p(\mathbf{w}) = p(w_1, w_2, w_3, \dots w_{l})
+$$
 
 Consider the problems of: English to French translation, question answering and image captioning. These problems all belong to a class of similar natural language problems which can be addressed using conditional language modelling. In essence tackling any of these problems involves answering the same question:
 

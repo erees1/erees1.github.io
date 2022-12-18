@@ -2,14 +2,25 @@
 title: "Note: Derivation of Free Energy (ELBO) in Variational ML"
 author: Edward Rees
 layout: post
-has_toc: false
+has_toc: true
+published: false
 ---
+
+{% capture toc %}
+- [Derivation](#Derivation)
+- [Variational Auto-Encoder Formulation](#VariationalAuto-EncoderFormulation)
+- [References / Sources](#ReferencesSources)
+{% endcapture %}
+
+
+{% capture main %}
+
 
 This note sets out the derivation of the variational free energy $\mathcal{F} (q,\theta)$ which is the lower bound for the log-likelihood of the data $\mathcal{L}(\theta) = log \ P(X \vert \theta)$. This is also known as the evidence and thus variational free energy is often called the Evidence Lower BOund (ELBO). The dependance on $\theta$ is included to highlight that $P$ is often a parametric model, and indeed we are usually interested in maximizing the likelihood $\mathcal{L}(\theta)$ with respect to these parameters.
 
 The free energy is frequently used in cases where a distribution $Q$ over unobserved/latent variables $Z$ is used to approximate the true posterior $P(Z \vert X)$, for instance if this distribution is intractable.
 
-### Derivation
+###  1. <a name='Derivation'></a>Derivation
 
 We start by considering the log-likelihood of the data $\mathcal{L}(\theta)$ and explicitly including the latent variables $Z$:
 
@@ -39,7 +50,7 @@ $$
 \end{align*}
 $$
 
-### Variational Auto-Encoder Formulation
+###  2. <a name='VariationalAuto-EncoderFormulation'></a>Variational Auto-Encoder Formulation
 
 Earlier we said $q(Z)$ may or may not depend on $X$ and in the case of an auto-encoder $Z$ is indeed constructed from $X$, thus replacing $q(Z)$ with $Q(Z\vert X)$ we get:
 
@@ -58,8 +69,13 @@ $$
 
 This formulation is exactly the objective function for a variational auto-encoder where the first term is the reconstruction loss and the second term forces our approximating distribution $Q$ to match the real distribution $P$.
 
-### References / Sources
+###  3. <a name='ReferencesSources'></a>References / Sources
 
 [Probabilistic and Unsupervised Learning Lecture Notes](http://www.gatsby.ucl.ac.uk/teaching/courses/ml1/slides_COMP0086.pdf) - Peter Orbanz, UCL
 
 [Tutorial on Variational Autoencoders](https://arxiv.org/abs/1606.05908) - Carl Doersch
+
+
+{% endcapture %}
+
+{% include toc_template.html %}
