@@ -19,7 +19,7 @@ This is an incomplete list of books that I've read in rough reverse chronologica
 - **Chaos Monkeys** - Antonio García Martínez
 - <span style="color:HSL(204, 62%, 47%)">**The Rationalists Guide to the Galaxy** - Tom Chivers</span>
 - **The Everything Store** - Brad Stone
-- **Trust & Modularity (The Engines of Cognition)** - Various
+- **The Engines of Cognition (Best of LessWrong 2019)** - Various
 - **Never Split the Difference** - Chris Voss
 - <span style="color:green">**Liftoff** - Eric Berger</span>
 - **The Double Helix** - James D. Watson
