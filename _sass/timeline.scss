@@ -1,65 +1,73 @@
 ul.timeline {
-    list-style-type: none;
-    position: relative;
-    padding-left: 40px;
+  list-style-type: none;
+  position: relative;
+  padding-left: 40px;
 }
 ul.timeline:before {
-    content: ' ';
-    background: var(--element1);
-    display: inline-block;
-    position: absolute;
-    left: 29px;
-    width: 2px;
-    height: 100%;
-    z-index: 400;
+  content: " ";
+  background: var(--element1);
+  display: inline-block;
+  position: absolute;
+  left: 29px;
+  width: 2px;
+  height: 100%;
+  z-index: 400;
 }
 ul.timeline > li {
-    margin: 20px 0;
-    padding-left: 20px;
+  margin: 20px 0;
+  padding-left: 20px;
 }
 ul.timeline > li:before {
-    content: ' ';
-    background: var(--background1);
-    display: inline-block;
-    position: absolute;
-    border-radius: 50%;
-    border: 3px solid var(--accent3);
-    left: 20px;
-    width: 20px;
-    height: 20px;
-    z-index: 400;
+  content: " ";
+  background: var(--background1);
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid var(--accent3);
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  z-index: 400;
 }
 ul.timeline-list {
-    list-style: disc;
+  list-style: disc;
 }
-img.timeline-logo{
-    max-width: 60px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto
+img.timeline-logo {
+  max-width: 60px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
-.timeline-title{
-    font-size: 1em;
-    color: inherit;
-    font-weight: 700;
+.timeline-title {
+  font-size: 1.1em;
+  color: inherit;
+  font-weight: 700;
+  font-family: var(--header-font);
 }
-.timeline-title:hover{
-    color: inherit
+a.timeline-title {
+  text-decoration: none;
 }
-.timeline-subtitle{
-    font-size: 1em;
-    font-style: italic;
-    color: var(--text2)
+a.timeline-title:hover {
+  text-decoration: underline;
 }
-.timeline-date{
-    text-align: right;
+.timeline-title:hover {
+  color: inherit;
 }
-.timeline-logo-col{
-    text-align: center;
+.timeline-subtitle {
+  font-style: italic;
+  color: var(--text2);
+  font-family: var(--header-font);
+}
+.timeline-date {
+  text-align: right;
+  font-family: var(--header-font);
+}
+.timeline-logo-col {
+  text-align: center;
 }
 
 @media only screen and (max-width: 575px) {
-    .timeline-date{
-        text-align: left;
-    }
+  .timeline-date {
+    text-align: left;
+  }
 }

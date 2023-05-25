@@ -1,5 +1,5 @@
 ---
-layout: sidebar
+layout: basic
 title: Books
 order: 3
 permalink: /books

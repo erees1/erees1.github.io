@@ -4,9 +4,14 @@ layout: default
 
 <article id="post">
   <div class="blog-title">
-    <div class="container-lg">
+    <div class="container-xl l-fixed-content">
       <div class="row justify-content-md-center">
-        <div class="l-fixed-content">
+        {% if page.has_toc != false %}
+        <div class="col-lg">
+          <div class="TOC"></div>
+        </div>
+        {% endif %}
+        <div class="col-lg-9">
           <h1>{{ page.title }}</h1>
           <div class="post-info-wrapper" id="add_after_me">
             <p class="italic">
@@ -16,13 +21,16 @@ layout: default
             </p>
           </div>
         </div>
+        {% if page.has_toc != false %}
+        <div class="col-xl-1"></div>
+        {% endif %}
       </div>
     </div>
   </div>
-  <div class="container-lg post-container">
+  <div class="container-xl l-fixed-content">
     {% if page.has_toc == false %}
     <div class="row justify-content-md-center">
-      <div class="col-xl-7 l-fixed-content" markdown="1">{{ content }}</div>
+      <div class="col-lg-9" markdown="1">{{ content }}</div>
     </div>
     {% else %} {{ content }} {% endif %}
   </div>

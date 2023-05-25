@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", init, false);
 function init() {
   // Add this manually after content load to avoid the navbar exapnding on page load
   let button = document.createElement("button");
-  button.innerHTML = `<svg class="fa fa-lg fa-adjust"></svg>`;
+  button.innerHTML = `<svg class="fa fa-md fa-adjust"></svg>`;
   button.type = "button";
   button.title = "Toggle dark mode";
   button.classList.add("theme-toggle");

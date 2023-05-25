@@ -2,15 +2,15 @@
 	Colors
 --*/
 :root {
-  --background0-light: rgb(255, 255, 255);
-  --background1-light: rgb(255, 255, 255);
-  --background2-light: rgb(245, 245, 245); /* blockquote and card */
+  --background0-light: rgb(254, 254, 253);
+  --background1-light: rgb(255, 255, 255); /* unused */
+  --background2-light: rgb(245, 245, 242); /* blockquote and card */
   --background3-light: var(--background2-light); /* navbar */
   --text0-light: black;
   --text1-light: rgba(0,0,0,0.8);
   --text2-light: rgba(0,0,0,0.6); /* subtitles */
   --text3-light: #0dcbd1; /* contrast headings */
-  --text4-light: #086cd6;
+  --text4-light: #F23540; /* links */
   --hover1-light: rgb(0,0,0,0.8);
   --hover2-light: var(--hover1-light);
   --hover4-light: var(--text1);
@@ -29,10 +29,10 @@
   --text1-dark: #ddddde;
   --text2-dark: #a9a9a9; /* subtitles */
   --text3-dark: var(--text3-light); /* contrast headings */
-  --text4-dark: var(--text3-dark);
+  --text4-dark: #f8535c;
   --hover1-dark: var(--text2-dark);
   --hover2-dark: var(--text3-dark);
-  --hover4-dark: var(--text2-dark);
+  --hover4-dark: var(--text4-dark);
   --accent1-dark: rgb(0, 33, 71); /* top of navbar */
   --accent2-dark: #434858; /* bottom of navbar */
   --accent3-dark: var(--accent3-light);
