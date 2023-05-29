@@ -39,7 +39,7 @@ html {
 body {
   font-family: var(--body-font);
   // -webkit-font-smoothing: antialiased;
-  font-size: 20px;
+  font-size: 19px;
   color: var(--text1);
   margin: 100px 0 100px; /* must be larger than footer size */
   background-color: var(--background0);
@@ -433,7 +433,7 @@ html {
   width: 100%;
 
   p {
-    font-size: 0.8em;
+    font-size: 0.9em;
     margin-bottom: 0em;
     margin-top: 0em;
     color: var(--text2);
