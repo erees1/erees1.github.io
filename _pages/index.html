@@ -19,12 +19,7 @@ permalink: /
               <div class="post-info-container">
                 <h3 class="card-title">{{ post.title }}</h3>
                 <p class="post-excerpt">
-                  {% if post.content contains '
-                  <!--summary_start-->
-                  ' %} {% assign words = post.content | split: '
-                  <!--summary_start-->
-                  ' %} {{ words[1] | truncatewords:40 | strip_html }} {% else %}
-                  {{ post.content | truncatewords:50 | strip_html }} {% endif %}
+                  {{ post.content | truncatewords:60 | strip_html }}
                 </p>
                 <p class="subtitle post-meta">
                   {{ post.date | date_to_long_string }} · {{ post.author }}
