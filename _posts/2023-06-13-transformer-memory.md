@@ -26,7 +26,7 @@ has_toc: true
 <!--summary_start-->
 
 
-How much memory is used when training a transformer? In this post I take a first principles approach to calculating the steady state and peak memory usage during training and by deriving estimates of memory usage for the different components see how close I could get to the allocated memory numbers reported by pytorch. There are a few posts on this topic already, e.g. [here](https://www.trentonbricken.com/TransformerMemoryRequirements/) and [here](https://stats.stackexchange.com/questions/563919/formula-to-compute-approximate-memory-requirements-of-transformer-models), but I wanted to build up a more granular approximation and more accurately account for the different data types used by autocast and see if this got me closer to the actual numbers.
+How much memory is used when training a transformer? In this post I take a first principles approach to calculating the steady state and peak memory usage during training and by deriving estimates of memory usage for the different components see how close I could get to the allocated memory numbers reported by pytorch. There are a few posts on this topic already, e.g. [here](https://www.trentonbricken.com/TransformerMemoryRequirements/), [here](https://stats.stackexchange.com/questions/563919/formula-to-compute-approximate-memory-requirements-of-transformer-models) and [here](https://blog.eleuther.ai/transformer-math/), but I wanted to build up a more granular approximation and more accurately account for the different data types used by autocast (e.g. [EleutherAI](https://blog.eleuther.ai/transformer-math/) assume all activations in fp16) and see if this got me closer to the actual numbers.
 This post was in part inspired by [Transformer Inference Arithmetic](https://kipp.ly/blog/transformer-inference-arithmetic/).
 
 Specifically I will be looking at GPT2 using Kaparthy's [nanoGPT](https://github.com/karpathy/nanoGPT) implementation - [my fork/branch here](https://github.com/erees1/nanoGPT/tree/feature/mem_checks), in the [readme](https://github.com/erees1/nanoGPT/tree/feature/mem_checks) I add a short section on modifications I made to help with this investigation. You can also find my colab notebook with calculations [here](https://colab.research.google.com/drive/1Zr53EaAi5LQueyhbZv4OMZrkaQGuOWe0?usp=sharing).
@@ -322,6 +322,14 @@ To check the accuracy of the activations calculations above lets take another sn
 <a href="/assets/img/blog/transformer-memory/mem_fwd_allocated-step3-flashFalse_memory.html"><img src="{{ "assets/img/blog/transformer-memory/activations_snapshot2.png" | relative_url }}" alt="resize-1-1" /></a>
 
 The snapshot shows 17.673GB of activations in memory. Using my function above I estimate 17.429GB which is pretty close again but there is c. 250MB of allocations unaccounted for by my estimate. From inspecting the traces and snapshots I notice that some of the linear layers are making some additional allocations that I am not accounting for. For example, the linear layers for the QKV matmuls are responsible for a total allocation of 256.5 MB (21.375MB per layer) whereas I only budget 18MB in my calculations above leaving a 3.375MB difference per layer. Some of the other linear layers show similar unexplained allocations. Whilst it pains me not to account for every byte I am going to ignore this for now and move on.  
+
+Comparing to [EleutherAI's](https://blog.eleuther.ai/transformer-math/#activations-and-batch-size) formula:
+
+$$
+M_{\text{activations}} = T \times \text{Bsz} \times D_{\text{model}} \times N_{\text{layers}}(34 + 5\frac{N_{\text{heads}}T}{D_{\text{model}}})
+$$
+
+we get an estimate of only 12.02GB showing the importance of taking into account the datatype that the activations are stored in.
 
 ### Total peak memory
 
