@@ -1,7 +1,5 @@
 function getCurrentTheme() {
-  let theme = window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
+  let theme = "light";
   localStorage.getItem("er-color-scheme")
     ? (theme = localStorage.getItem("er-color-scheme"))
     : null;
