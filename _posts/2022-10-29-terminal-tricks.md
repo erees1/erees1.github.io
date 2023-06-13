@@ -2,6 +2,7 @@
 title: "My Favourite Terminal Workflow Tricks"
 author: Edward Rees
 layout: post
+has_toc: true
 ---
 
 {% capture toc %}

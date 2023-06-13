@@ -6,7 +6,7 @@ layout: default
   <div class="blog-title">
     <div class="container-xl l-fixed-content">
       <div class="row justify-content-md-center">
-        {% if page.has_toc != false %}
+        {% if page.has_toc == true %}
         <div class="col-lg">
           <div class="TOC"></div>
         </div>
@@ -21,7 +21,7 @@ layout: default
             </p>
           </div>
         </div>
-        {% if page.has_toc != false %}
+        {% if page.has_toc == true %}
         <div class="col-xl-1"></div>
         {% endif %}
       </div>
