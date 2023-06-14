@@ -6,3 +6,4 @@ gem 'jekyll-seo-tag'
 gem 'jekyll-feed'
 gem 'bootstrap', '~> 5.0.1'
 gem "webrick"
+gem "jekyll-sitemap"

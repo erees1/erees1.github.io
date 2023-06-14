@@ -27,10 +27,10 @@ sass:
   style: compressed
 
 # Site settings
-url: "edward-rees.com" # the base hostname & protocol for your site
+url: "https://edward-rees.com" # the base hostname & protocol for your site
 baseurl: ""
 
-permalink: /:title/
+permalink: /:title
 
 # User information
 title: Edward Rees
@@ -47,3 +47,4 @@ markdown: kramdown
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
