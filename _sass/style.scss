@@ -1,18 +1,18 @@
 @use "sass:map";
-$content-max-width: 900px;
+$demo-page-max-width: 1150px;
 $page-max-width: 1250px;
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
   md: 768px,
-  lg: 1200px,
-  xl: $page-max-width,
+  lg: 992px,
+  xl: $page-max-width / 0.95,
   xxl: 5000px,
 );
 $container-max-widths: (
   sm: 540px,
   md: 720px,
-  lg: 1000px,
+  lg: 960px,
   xl: $page-max-width,
   xxl: 1600px,
 );
@@ -84,20 +84,8 @@ body {
   margin-right: 2em;
   margin-left: 2em;
 }
-@include media-breakpoint-down(lg) {
-  .l-fixed-content {
-    max-width: $content-max-width;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-@include media-breakpoint-up(xl) {
-  .l-fixed-nav {
-    max-width: $page-max-width;
-  }
-}
-.l-max-page {
-  max-width: $content-max-width + 150;
+.l-max-demo {
+  max-width: $demo-page-max-width;
 }
 .remove-vert-margin {
   margin-top: -1em;
@@ -575,7 +563,7 @@ p.post-excerpt {
   }
 }
 
-@include media-breakpoint-down(lg) {
+@include media-breakpoint-down(xl) {
   .TOC {
     display: block;
     width: 100%;
@@ -588,7 +576,7 @@ p.post-excerpt {
     }
   }
 }
-@include media-breakpoint-up(lg) {
+@include media-breakpoint-up(xl) {
   .post-container {
     max-width: 2000px !important;
   }
