@@ -4,22 +4,20 @@ layout: default
 
 <article id="post">
   <div class="blog-title">
-    <div class="container-xl l-fixed-content">
-      <div class="row justify-content-md-center">
-        {% if page.has_toc == true %}
-        <div class="col-lg">
-          <div class="TOC"></div>
-        </div>
-        {% endif %}
-        <div class="col-lg-9">
-          <h1>{{ page.title }}</h1>
-          <div class="post-info-wrapper" id="add_after_me">
-            <p class="italic">
-              <span class="bold">
-                {{ page.date | date: "%B %-d, %Y"}} · {{ page.author }}
-              </span>
-            </p>
-          </div>
+    <div class="row justify-content-md-center">
+      {% if page.has_toc == true %}
+      <div class="col-lg">
+        <div class="TOC"></div>
+      </div>
+      {% endif %}
+      <div class="col-lg-9">
+        <h1>{{ page.title }}</h1>
+        <div class="post-info-wrapper" id="add_after_me">
+          <p class="italic">
+            <span class="bold">
+              {{ page.date | date: "%B %-d, %Y"}} · {{ page.author }}
+            </span>
+          </p>
         </div>
         {% if page.has_toc == true %}
         <div class="col-xl-1"></div>
@@ -27,18 +25,17 @@ layout: default
       </div>
     </div>
   </div>
-  <div class="container-xl l-fixed-content">
-    {% if page.has_toc == false %}
-    <div class="row justify-content-md-center">
-      <div class="col-lg-9" markdown="1">{{ content }}</div>
-    </div>
-    {% else %} {{ content }} {% endif %}
+  {% if page.has_toc == false %}
+  <div class="row justify-content-md-center">
+    <div class="col-lg-9" markdown="1">{{ content }}</div>
   </div>
+  {% else %} {{ content }} {% endif %}
   <div class="btp">
-    <div class="container-xl">
-      <p>
-        <a href="{{ site.baseurl }}/">Back to posts</a>
-      </p>
-    </div>
+    <p>
+      <a href="{{ site.baseurl }}/">
+        <i class="fa-solid fa-arrow-left"></i>
+        Back to posts
+      </a>
+    </p>
   </div>
 </article>

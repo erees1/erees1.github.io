@@ -1,5 +1,5 @@
 ---
-layout: basic
+layout: default
 title: Books
 order: 3
 permalink: /books
