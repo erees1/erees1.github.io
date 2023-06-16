@@ -15,7 +15,8 @@ import {
   faEye,
   faPencil,
   faAdjust,
+  faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faCircle, faTwitter, faGithub, faLinkedin, faLocationDot, faKey, faBars, faLink, faEye, faPencil, faAdjust);
+library.add(faCircle, faTwitter, faGithub, faLinkedin, faLocationDot, faKey, faBars, faLink, faEye, faPencil, faAdjust, faArrowLeft);
 dom.watch();

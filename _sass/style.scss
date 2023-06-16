@@ -39,7 +39,7 @@ html {
 body {
   font-family: var(--body-font);
   // -webkit-font-smoothing: antialiased;
-  font-size: 19px;
+  font-size: 20px;
   color: var(--text1);
   margin: 100px 0 100px; /* must be larger than footer size */
   background-color: var(--background0);
@@ -99,7 +99,6 @@ h4,
 h5,
 h6 {
   font-family: var(--header-font);
-  font-weight: 600;
 }
 h1 {
   font-size: 1.6em;
@@ -294,10 +293,6 @@ blockquote p:first-child {
 blockquote p:last-child {
   margin-bottom: 0px;
 }
-blockquote p {
-  margin: inherit;
-  font-size: 1.15em;
-}
 /*---------------------------------------------
 					Header and Footer
 -----------------------------------------------*/
@@ -330,7 +325,6 @@ blockquote p {
       color: var(--text2);
       font-size: 0.7em;
       text-transform: uppercase;
-      font-weight: 600 !important;
       line-height: 1em;
       padding-bottom: 6px;
     }
@@ -371,11 +365,6 @@ button.theme-toggle {
   padding: 2px;
   color: var(--text2);
 }
-.btn-xs {
-  padding: 0.1rem 0.3rem;
-  font-size: 0.72rem;
-  line-height: 1.1;
-}
 /*--
 	footer Start
 --*/
@@ -389,7 +378,8 @@ footer {
   height: 70px;
   width: 100%;
   overflow: hidden;
-  font-size: 12px;
+  font-family: var(--header-font);
+  font-size: 0.7em;
   a {
     text-decoration: none;
   }
@@ -506,7 +496,6 @@ p.post-excerpt {
   // border: 1px solid var(--border);
   width: 250px;
   font-size: 0.8em;
-  font-weight: 500;
 
   font-family: var(--toc-font);
   a {
@@ -515,7 +504,6 @@ p.post-excerpt {
   }
   div > ul > li > a {
     // color: var(--text1);
-    font-weight: 800;
     font-size: 1.1em;
   }
   details summary > * {
@@ -531,7 +519,6 @@ p.post-excerpt {
     border-bottom: 1px solid var(--accent2);
     padding-bottom: 0.5em;
     font-size: 1.2em;
-    font-weight: 400;
     font-family: inherit;
   }
   .active {
@@ -602,7 +589,6 @@ p.post-excerpt {
   font-family: var(--header-font);
   h1 {
     font-size: 1.7em;
-    font-weight: 600;
     margin-top: 0px;
     margin-bottom: 10px;
     color: var(--text0);
@@ -620,7 +606,7 @@ p.post-excerpt {
 .btp {
   margin-top: 80px;
   text-align: center;
-  // border-top: 1px solid var(--accent2);
+  font-family: var(--header-font);
   p {
     margin-top: 1em;
   }
@@ -670,7 +656,6 @@ p.post-excerpt {
   h3,
   h4 {
     margin-top: 0px;
-    font-weight: bold;
   }
 
   p {
@@ -704,7 +689,6 @@ img.img-page-icon {
   margin-top: 1em;
   .user-name {
     font-size: 1.2em;
-    font-weight: 700;
     font-family: var(--header-font);
   }
   .user-desc {
@@ -712,6 +696,7 @@ img.img-page-icon {
   }
 }
 .sidebar-social ul {
+  font-family: var(--header-font);
   font-size: 0.85em;
   margin-top: 10px;
   list-style: none;
