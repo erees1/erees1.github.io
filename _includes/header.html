@@ -1,2 +1,44 @@
-<header id="site-header">{% include nav.html %}</header>
-<!-- Header does take up any space so this pushes content down -->
+<header id="site-header">
+  <nav class="navbar navbar-expand fixed-top navbar-default">
+    <div class="container-xl">
+      <button
+        class="hamburger hamburger--collapse navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarCollapse"
+        aria-controls="navbarCollapse"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          {%- assign _pages = site.html_pages | where_exp: "page", "page.hide !=
+          true" -%} {%- unless _pages == null -%} {%- assign _pages = _pages |
+          sort: 'order' -%} {%- for _page in _pages -%}
+          <li class="nav-item">
+            <a class="nav-link" href="{{- _page.url | relative_url -}}">
+              {{- _page.title -}}
+            </a>
+          </li>
+          {% endfor %} {% endunless %}
+        </ul>
+      </div>
+      <span class="navbar-text"></span>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Look for .hamburger
+  var hamburger = document.querySelector(".hamburger");
+  // On click
+  hamburger.addEventListener("click", function () {
+    console.log("hamburger pressed");
+    // Toggle class "is-active"
+    hamburger.classList.toggle("is-active");
+    // Do something else, like open/close menu
+  });
+</script>
