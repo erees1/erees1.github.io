@@ -9,7 +9,7 @@ has_toc: true
 - [Preamble: The caching allocator](#preamble-the-caching-allocator)
   - [Allocated vs reserved memory](#allocated-vs-reserved-memory)
 - [Steady state memory usage](#steady-state-memory-usage)
-  - [Aside: cuBLAS workspace](#aside-cuBLAS-workspace)
+  - [Aside: cuBLAS workspace](#aside-cublas-workspace)
   - [Weights, gradients and states](#weights-gradients-and-states)
 - [Peak memory usage](#peak-memory-usage)
   - [Layer Norm](#layer-norm)
@@ -349,7 +349,7 @@ $$
 
 Using this formula we expect 21.648GB peak allocated memory for GPT2-small. `pytorch.cuda.max_memory_allocated()` returns 21.898GB and the 250MB delta is accounted for by the unexplained activation allocations mentioned above.
 
-I plot a comparison of estimated to actual peak memory usage for various GPT2 small models below.
+I plot a comparison of estimated to actual peak memory usage for various GPT2 models below.
 
 <img src="{{ "assets/img/blog/transformer-memory/GPT2-comparison.svg" | relative_url }}" alt="resize-1-1" />
 <div class="subtitle">
