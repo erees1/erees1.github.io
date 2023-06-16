@@ -2,7 +2,12 @@ document.addEventListener("DOMContentLoaded", init, false);
 
 function init() {
   const anchors = $("body").find("h2, h3");
-  const TOC_links = $("#TOC").find("a");
+  const TOC_links = $("#TOC").find("li a");
+
+  // add "<span class='indicator'> •</span>" after each TOC link
+  for (var i = 0; i < TOC_links.length; i++) {
+    $(TOC_links[i]).append("<span class='indicator'>&nbsp•</span>");
+  }
 
   $(window).scroll(function () {
     var scrollTop = $(document).scrollTop();

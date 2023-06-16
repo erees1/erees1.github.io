@@ -5,14 +5,14 @@ $grid-breakpoints: (
   xs: 0,
   sm: 576px,
   md: 768px,
-  lg: 992px,
+  lg: 1052px,
   xl: $page-max-width / 0.95,
   xxl: 5000px,
 );
 $container-max-widths: (
   sm: 540px,
   md: 720px,
-  lg: 960px,
+  lg: 1000px,
   xl: $page-max-width,
   xxl: 1600px,
 );
@@ -494,7 +494,6 @@ p.post-excerpt {
   display: block;
   margin-bottom: 30px;
   // border: 1px solid var(--border);
-  width: 250px;
   font-size: 0.8em;
 
   font-family: var(--toc-font);
@@ -528,8 +527,11 @@ p.post-excerpt {
     color: var(--text1);
     text-decoration: none;
   }
-  .active::after {
-    content: " •";
+  .indicator {
+    color: var(--background0);
+  }
+  .active .indicator {
+    color: var(--text1);
   }
   ul {
     padding-left: 0em;
@@ -550,10 +552,11 @@ p.post-excerpt {
   }
 }
 
-@include media-breakpoint-down(xl) {
+@include media-breakpoint-down(lg) {
   .TOC {
     display: block;
     width: 100%;
+    max-width: 100%;
 
     .contents-inline {
       display: block;
@@ -563,10 +566,7 @@ p.post-excerpt {
     }
   }
 }
-@include media-breakpoint-up(xl) {
-  .post-container {
-    max-width: 2000px !important;
-  }
+@include media-breakpoint-up(lg) {
   .TOC {
     display: block;
     position: sticky;
@@ -578,6 +578,11 @@ p.post-excerpt {
     .contents-inline {
       display: none;
     }
+  }
+}
+@include media-breakpoint-up(xl) {
+  .TOC {
+    width: 280px;
   }
 }
 
