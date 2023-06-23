@@ -169,7 +169,7 @@ Using the formulas above we expect the total memory usage to be 2,057,547,776 by
 
 To more closely dig into that breakdown and verify the calculations above I took a [memory snapshot](https://zdevito.github.io/2022/08/16/memory-snapshots.html) at the start of the 2nd step. You can see this below (click for interactive version).
 
-<a href="/assets/img/blog/transformer-memory/mem_pre_fwd-step1_memory.html"><img src="{{ "assets/img/blog/transformer-memory/steady_state_snapshot.png" | relative_url }}" alt="resize-1-1" /></a>
+<a href="/assets/img/blog/transformer-memory/mem_pre_fwd-step1_memory.html"><img src="/assets/img/blog/transformer-memory/steady_state_snapshot.png" alt="resize-1-1" /></a>
 
 The table below shows a comparison to the bytes seen on the segment above and my predicted values. We come very close and the vast majority of the difference is accounted for by "gaps"  which are the differences between the allocated block size and the actual size of the tensor in that block [(source)](https://github.com/pytorch/pytorch/blob/main/torch/cuda/_memory_viz.py#L109) which are caused by the rounding up of tensor sizes to block sizes in the caching allocator.
 
@@ -260,7 +260,7 @@ Additionally from inspecting the trace below (click for interactive version) as 
 
 <div class="l-inset">
 <a href="/assets/img/blog/transformer-memory/mem_post_bwd-step2-flashFalse_trace.html">
-<img src="{{ "assets/img/blog/transformer-memory/transformer-arithmetic.svg" | relative_url }}" alt="resize-1-1" />
+<img src="/assets/img/blog/transformer-memory/transformer-arithmetic.svg" alt="resize-1-1" />
 </a>
 </div>
 <div class="subtitle">
@@ -319,7 +319,7 @@ def get_activations_mem(d_model, n_layers, vocab_size, bsz, seq_len):
 
 To check the accuracy of the activations calculations above lets take another snapshot after the forwards pass but before the backwards pass so we can see the activations in memory.
 
-<a href="/assets/img/blog/transformer-memory/mem_fwd_allocated-step3-flashFalse_memory.html"><img src="{{ "assets/img/blog/transformer-memory/activations_snapshot2.png" | relative_url }}" alt="resize-1-1" /></a>
+<a href="/assets/img/blog/transformer-memory/mem_fwd_allocated-step3-flashFalse_memory.html"><img src="/assets/img/blog/transformer-memory/activations_snapshot2.png" alt="resize-1-1" /></a>
 
 The snapshot shows 17.673GB of activations in memory. Using my function above I estimate 17.429GB which is pretty close again but there is c. 250MB of allocations unaccounted for by my estimate. From inspecting the traces and snapshots I notice that some of the linear layers are making some additional allocations that I am not accounting for. For example, the linear layers for the QKV matmuls are responsible for a total allocation of 256.5 MB (21.375MB per layer) whereas I only budget 18MB in my calculations above leaving a 3.375MB difference per layer. Some of the other linear layers show similar unexplained allocations. Whilst it pains me not to account for every byte I am going to ignore this for now and move on.  
 
@@ -351,7 +351,7 @@ Using this formula we expect 21.648GB peak allocated memory for GPT2-small. `pyt
 
 I plot a comparison of estimated to actual peak memory usage for various GPT2 models below.
 
-<img src="{{ "assets/img/blog/transformer-memory/GPT2-comparison.svg" | relative_url }}" alt="resize-1-1" />
+<img src="/assets/img/blog/transformer-memory/GPT2-comparison.svg" alt="resize-1-1" />
 <div class="subtitle">
 <p>Comparison of estimated to actual peak memory usage for GPT2 small, medium and large.</p>
 </div>
