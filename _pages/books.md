@@ -2,7 +2,7 @@
 layout: default
 title: Books
 order: 3
-permalink: /books
+permalink: /books/
 ---
 # Books
 This is an incomplete list of books that I've read in rough reverse chronological order. I've ripped off my old colleage [Sam](https://samringer.github.io/books/) who in turned ripped off [Patrick Collinson](https://patrickcollison.com/bookshelf) by colouring books I thought exceptional in <span style="color:green">green</span> and those I considered good in <span style="color:HSL(204, 62%, 47%)">blue</span>.

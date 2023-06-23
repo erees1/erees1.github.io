@@ -27,10 +27,10 @@ sass:
   style: compressed
 
 # Site settings
-url: "https://edward-rees.com" # the base hostname & protocol for your site
+url: "https://erees.dev" # the base hostname & protocol for your site
 baseurl: ""
 
-permalink: /:title
+permalink: /:title/
 
 # User information
 title: Edward Rees
