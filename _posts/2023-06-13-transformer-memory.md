@@ -98,9 +98,9 @@ Aside over - back to the main event.
 Training a transformer with $N_{\text{param}}$ parameters and $N_{\text{buf}}$ additional buffer elements with automatic mixed precision means persisting the following tensors in memory (in bytes).
 
 #### At the start of the forward pass:
-- FP32 copies of the weights of your model, $M_{\text{model}}=4N_{\text{param}} + 4N_{\text{buf}}$
+- FP32 copies of the weights of your model, $M_{\text{model}}=4N_{\text{param}} + 4N_{\text{buf}}$ (fp32 implies 4 bytes per element)
 - FP32 copies of optimizer states, 2 for adam, $M_{\text{optimizer}}=8N_{\text{param}}$
-- Copies of your data and targets, assuming int64 inputs (as in nanoGPT), $M_{\text{data}}= 2 \times \text{Bsz} \times \text{seq\_len} \times 8$
+- Copies of your data and targets, assuming int64 inputs (as in nanoGPT), $M_{\text{data}}= 2 \times \text{Bsz} \times T \times 8$ (int64 implies 8 bytes per element)
 
 #### After the backwards pass (and possibly persisting):
 - FP32 copies of the gradients size, $M_{\text{gradients}}= 4N_{\text{param}}$
