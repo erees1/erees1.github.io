@@ -6,7 +6,7 @@
   --background1-light: rgb(255, 255, 255); /* unused */
   --background2-light: rgb(245, 245, 242); /* blockquote and card */
   --background3-light: var(--background2-light); /* navbar */
-  --text0-light: black;
+  --text0-light: #40403E;
   --text1-light: rgba(0,0,0,0.8);
   --text2-light: rgba(0,0,0,0.6); /* subtitles */
   --text3-light: #0dcbd1; /* contrast headings */
@@ -25,7 +25,7 @@
   --background1-dark: #21242b;
   --background2-dark: #272b34; /* blockquote */
   --background3-dark: #1a1e24;
-  --text0-dark: white;
+  --text0-dark: rgb(243, 243, 243);
   --text1-dark: #ddddde;
   --text2-dark: #a9a9a9; /* subtitles */
   --text3-dark: var(--text3-light); /* contrast headings */
