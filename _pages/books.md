@@ -8,6 +8,7 @@ permalink: /books/
 # Books
 
 This is an incomplete list of books that I've read in rough reverse chronological order. I've ripped off my old colleague [Sam](https://samringer.github.io/books/) who in turned ripped off [Patrick Collinson](https://patrickcollison.com/bookshelf) by colouring books I thought exceptional in <span style="color:green">green</span> and those I considered good in <span style="color:HSL(204, 62%, 47%)">blue</span>.
+- <span style="color:HSL(204, 62%, 47%)">**Deep Work** - Cal Newport</span>
 - <span style="color:green">**Friendship is Optimal** - Iceman</span>
 - **Three Worlds Collide** - Eliezer Yudkowsky
 - **Act of Oblivion** - Robert Harris
