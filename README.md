@@ -1,4 +1,4 @@
-Source code for my website [edward-rees.com](https://edward-rees.com). Stylistically inspired by [academic pages](https://github.com/academicpages/academicpages.github.io).
+Source code for my website [erees.dev](https://erees.dev). Stylistically inspired by [academic pages](https://github.com/academicpages/academicpages.github.io).
 
 Requires ruby 2.7.2:
 ```
