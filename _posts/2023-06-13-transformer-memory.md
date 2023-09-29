@@ -9,7 +9,6 @@ has_toc: true
 - [Preamble: The caching allocator](#preamble-the-caching-allocator)
   - [Allocated vs reserved memory](#allocated-vs-reserved-memory)
 - [Steady state memory usage](#steady-state-memory-usage)
-  - [Aside: cuBLAS workspace](#aside-cublas-workspace)
   - [Weights, gradients and states](#weights-gradients-and-states)
 - [Peak memory usage](#peak-memory-usage)
   - [Layer Norm](#layer-norm)
@@ -18,7 +17,9 @@ has_toc: true
   - [Other transformer operations](#other-transformer-operations)
   - [Cross entropy](#cross-entropy)
   - [Total peak memory](#total-peak-memory)
-- [Side note: some other uses of memory](#side-note-some-other-uses-of-memory)
+- [Appendix: some other uses of memory](#side-note-some-other-uses-of-memory)
+  - [CuBLAS workspace](#cublas-workspace)
+  - [Cuda Context](#cuda-context)
 {% endcapture %}
 
 {% capture main %}
@@ -56,38 +57,6 @@ Reasoning about reserved memory is beyond the scope of this post so I will only 
 
 ## Steady state memory usage
 
-### Aside: CuBLAS workspace
-
-Before getting to the memory used by the model I want to touch on one small (and interesting) use of persistent memory which is related to cuBLAS creating a workspace lazily on the first call to a GEMM. These pools are created [thread locally](https://github.com/pytorch/pytorch/blob/03101a227f6639d5a9ad628d1dc300f9f99a8812/aten/src/ATen/cuda/CublasHandlePool.cpp#L90) (so we get one for the forwards pass and one for the backwards pass) and they use 8,519,680 bytes, e.g. sum the numbers on [this line](https://github.com/pytorch/pytorch/blob/03101a227f6639d5a9ad628d1dc300f9f99a8812/aten/src/ATen/cuda/CublasHandlePool.cpp#L51). Shout out to David Macleod for tracking down the sources of these allocations in the PyTorch source code!
-
-The python code below demonstrates the appearance of these allocations:
-```python
-def snap():
-    return torch.cuda.memory_allocated()
-
-print(f"Starting mem: {snap()}")
-a = torch.randn(2, 2, requires_grad=True).cuda()
-a.retain_grad()
-print(f"Mem usage after allocating a: {snap()}")
-out = a.mm(a)
-print(f"Mem usage after matmul: {snap()}")
-gradient = torch.randn(2, 2).cuda()
-print(f"Mem usage allocating gradient: {snap()}")
-out.backward(gradient)
-print(f"Mem usage after backwards: {snap()}")
-
-# prints:
-Starting mem: 0
-Mem usage after allocating a: 512
-Mem usage after matmul: 8520704
-Mem usage allocating gradient: 8521216
-Mem usage after backwards: 17041408
-```
-We can see after the matmul there are an extra 8,519,680 bytes allocated (above the 512 bytes for the allocations of `a` and `out`). And an extra 8,519,680 bytes are allocated after the backwards pass (= 17,041,408 - 8,521,216 - 512) with the final 512 being the allocation of the `a.grad` that is created during the backwards pass.
-
-Why 512 bytes? This is smallest block size that the caching allocator will allocate - [link](https://zdevito.github.io/2022/08/04/cuda-caching-allocator.html#allocation-rounding), so a tensor of size 512 bytes or less will result in an allocation of 512 bytes.
-
-Aside over - back to the main event.
 
 ### Weights, gradients and states
 
@@ -115,7 +84,7 @@ seq_len = 1024
 d_model = 768
 ```
 
-We can use the function below to exactly get the number of parameters in a GPT model (tested vs `model.parameters()` in nanoGPT).
+We can then use the function below to exactly get the number of parameters in a GPT model (tested vs `model.parameters()` in nanoGPT).
 
 ```python
 def get_num_params(d_model, n_layers, vocab_size, seq_len, include_embedding=True, bias=False):
@@ -152,39 +121,47 @@ $$
 where $T$ is the sequence length and $D_{\text{vocab}}$ is the vocab size.
 
 ```python
+# Code implemenation of the above equations, see colab notebook for full code
 N = get_num_params(d_model, n_layers, vocab_size)
 B = seq_len ** 2 * n_layers  # Buffers corresponding to attention mask (one per layer)
 
 model = 4 * N + 4 * B
 grads = 4 * N
 optimizer = 8 * N
+inputs_mem = get_inputs_mem(bsz, seq_len)
+total_mem = model + grads + adam + kernels * 2 + inputs_mem
+print(f"Model memory (bytes): {total_mem:,.0f}", )
+# Model memory (bytes): 2,057,547,776
 ```
-Note that because PyTorch optimizers don't initalize their state buffers until the first call to the `step()` method, on the first call we won't see any memory usage from the optimizer and would only expect to see the weights and the data. Therefore I inspect the memory usage after the first call to `optmizer.step()` below. To see the steady state memory we can either take a snapshot before the forwards pass or after `optimizer.step()`.
 
-Using the formulas above we expect the total memory usage to be 2,057,547,776 bytes. `torch.cuda.memory_allocated()` returns 2,064,403,456 bytes, so we are pretty close (~6.5MB delta).
+Using the formulas above we see the total estimated memory usage to be 2,057,547,776 bytes. `torch.cuda.memory_allocated()` returns 2,064,403,456 bytes, so we are pretty close (~6.5MB delta).
 
-To more closely dig into that breakdown and verify the calculations above I took a [memory snapshot](https://zdevito.github.io/2022/08/16/memory-snapshots.html) at the start of the 2nd step. You can see this below (click for interactive version).
+To more closely dig into that breakdown and verify the calculations above I took a [memory snapshot](https://zdevito.github.io/2022/08/16/memory-snapshots.html) at the start of the 2nd step. You can see this below (click the picture for an interactive version).
+
+Note I take this at the start of the **2nd** step because PyTorch optimizers don't initalize their state buffers until the first call to the `step()` method, so if we took a snapshot before the first call we won't see any memory usage from the optimizer and would only expect to see the weights and the data. You would see the same steady state memory memory usage if you take the snapshot before the forwards pass (as I do here) or after `optimizer.step()`.
+
 
 <a href="/assets/img/blog/transformer-memory/mem_pre_fwd-step1-flashFalse_memory.html"><img src="/assets/img/blog/transformer-memory/steady_state_snapshot.png" alt="resize-1-1" /></a>
 
-The table below shows a comparison to the bytes seen on the segment above and my predicted values. We come very close and the vast majority of the difference is accounted for by "gaps"  which are the differences between the allocated block size and the actual size of the tensor in that block [(source)](https://github.com/pytorch/pytorch/blob/main/torch/cuda/_memory_viz.py#L109) which are caused by the rounding up of tensor sizes to block sizes in the caching allocator.
+The table below shows a comparison to the bytes seen on the segment above and my predicted values. We come very close and the vast majority of the difference is accounted for by "gaps"  which are caused by the allocated block size being larger than the tensor in that block [(source)](https://github.com/pytorch/pytorch/blob/main/torch/cuda/_memory_viz.py#L117) because of the rounding up of tensor sizes to block sizes in the caching allocator.
 
 | GPT2 Small                     | Predicted             | Actual                 | Diff                     |
 | ------------------------------ | --------------------- | ---------------------- | ------------------------ |
 | N Parameters                   |        124,373,760    |         124,373,760    |                        0 |
 | Model Memory (bytes)           |        547,826,688    |         547,826,688    |                        0 |
 | Gradients  (bytes)             |        497,495,040    |         497,495,040    |                        0 |
-| Adam buffers   (bytes)\*       |        994,990,080    |         994,990,380    |                      300 |
-| cuBLAS workspace (bytes)       |          17,039,360   |           17,039,360   |                        0 |
+| Adam buffers   (bytes)<sup>1</sup>       |        994,990,080    |         994,990,380    |                      300 |
+| CuBLAS workspace (bytes)<sup>2</sup>       |          17,039,360   |           17,039,360   |                        0 |
 | Gaps                 (bytes)   |                       |             6,855,368  |                       -  |
 | Inputs / Targets (bytes)       |               196,608 |  Not visible           |                       -  |
 | Others not visble on segment (bytes) |                 |                196,620 |                       -  |
-| Total (bytes)\**               |     2,057,547,776     | 2,064,403,456          |            6,855,680     |
+| Total (bytes)<sup>3</sup>               |     2,057,547,776     | 2,064,403,456          |            6,855,680     |
 
 <div class="subtitle">
-<p>*summing the bytes in `adamw.py:114._init_group` blocks in the snapshot does give us exact agreement so there are some other (small) tensors being allocated by the optimizer.</p>
+<p><sup>1</sup> summing the bytes in `adamw.py:114._init_group` blocks in the snapshot does give us exact agreement so there are some other (small) tensors being allocated by the optimizer.</p>
+<p><sup>2</sup> See <a href="#cublas-workspace">CuBLAS workspace</a> section below.</p>
 
-<p>**actual as reported by <code class="language-plaintext highlighter-rouge">torch.cuda.memory_allocated()</code></p>
+<p><sup>3</sup> actual as reported by <code class="language-plaintext highlighter-rouge">torch.cuda.memory_allocated()</code></p>
 </div>
 
 Pulling together the formulas above we can calculate the steady state memory usage of a transformer model as:
@@ -252,7 +229,7 @@ $$
 
 ### Cross entropy
 For the cross entropy loss we need to store the logits. The logits are $L \in \mathbb{R}^{\text{Bsz} \times T \times D_{\text{vocab}}}$ (let $N_l = \text{Bsz} \times T \times D_{\text{vocab}}$).
-Additionally from inspecting the trace below (click for interactive version) as part of the forwards pass PyTorch is storing an FP16 copy of the logits and (I infer) an FP32 tensor of the same size as the logits. So the total memory usage for the cross entropy is $2N_l + 4N_l = 6N_l$ bytes.
+Additionally from inspecting the trace below (click for interactive version) as part of the forwards pass PyTorch is storing an FP16 copy of the logits and (I infer) an FP32 tensor of the same size as the logits. So the total memory usage for the cross entropy is $2N_l + 4N_l = 6N_l$ bytes (these correspond to the green and yellow blocks below, the purple block is allocated after `.backwards()` is called so I account for this later as it is technically not an activation).
 
 <div class="l-inset">
 <a href="/assets/img/blog/transformer-memory/mem_post_bwd-step2-flashFalse_trace.html">
@@ -331,7 +308,7 @@ we get an estimate of only 12.02GB showing the importance of taking into account
 
 So we now have accurate estimates for the steady state memory usage and (slightly less accurate) estimates of activation allocations. We can now use these to estimate our peak allocated memory during training. 
 
-We saw from the trace in the [cross entropy](#cross-entropy) section that the peak memory usage occurs just after the start of the backwards pass when there is an additional allocation equal to an FP32 copy of the logits (labeled "Start of backwards pass" in the trace). So to estimate our peak allocation we can just add this additional $4N_l$ bytes to our steady state memory usage and the activations.
+We saw from the trace in the [cross entropy](#cross-entropy) section that the peak memory usage occurs just after the start of the backwards pass when there is an additional allocation equal to an FP32 copy of the logits (purple block labeled "Start of backwards pass" in the trace). So to estimate our peak allocation we can just add this additional $4N_l$ bytes to our steady state memory usage and the activations.
 
 
 Peak memory usage for a transformer is then given by:
@@ -345,7 +322,7 @@ $$
 
 Using this formula we expect 21.648GB peak allocated memory for GPT2-small. `pytorch.cuda.max_memory_allocated()` returns 21.898GB and the 250MB delta is accounted for by the unexplained activation allocations mentioned above.
 
-I plot a comparison of estimated to actual peak memory usage for various GPT2 models below.
+I plot a comparison of estimated to actual peak memory usage for various GPT2 models below I also include a line for the predicted steady state memory usage (i.e. exculding activations).
 
 <img src="/assets/img/blog/transformer-memory/GPT2-comparison.svg" alt="resize-1-1" />
 <div class="subtitle">
@@ -353,7 +330,40 @@ I plot a comparison of estimated to actual peak memory usage for various GPT2 mo
 </div>
 
 
-## Side note: some other uses of memory 
+## Appendix: some other uses of memory 
+
+### CuBLAS workspace
+
+One small (and interesting) use of persistent memory which is related to cuBLAS creating a workspace lazily on the first call to a GEMM. These pools are created [thread locally](https://github.com/pytorch/pytorch/blob/03101a227f6639d5a9ad628d1dc300f9f99a8812/aten/src/ATen/cuda/CublasHandlePool.cpp#L90) (so we get one for the forwards pass and one for the backwards pass) and they use 8,519,680 bytes, e.g. sum the numbers on [this line](https://github.com/pytorch/pytorch/blob/03101a227f6639d5a9ad628d1dc300f9f99a8812/aten/src/ATen/cuda/CublasHandlePool.cpp#L51). Shout out to David Macleod for tracking down the sources of these allocations in the PyTorch source code!
+
+The python code below demonstrates the appearance of these allocations:
+```python
+def snap():
+    return torch.cuda.memory_allocated()
+
+print(f"Starting mem: {snap()}")
+a = torch.randn(2, 2, requires_grad=True).cuda()
+a.retain_grad()
+print(f"Mem usage after allocating a: {snap()}")
+out = a.mm(a)
+print(f"Mem usage after matmul: {snap()}")
+gradient = torch.randn(2, 2).cuda()
+print(f"Mem usage allocating gradient: {snap()}")
+out.backward(gradient)
+print(f"Mem usage after backwards: {snap()}")
+
+# prints:
+Starting mem: 0
+Mem usage after allocating a: 512
+Mem usage after matmul: 8520704
+Mem usage allocating gradient: 8521216
+Mem usage after backwards: 17041408
+```
+We can see after the matmul there are an extra 8,519,680 bytes allocated (above the 512 bytes for the allocations of `a` and `out`). And an extra 8,519,680 bytes are allocated after the backwards pass (= 17,041,408 - 8,521,216 - 512) with the final 512 being the allocation of the `a.grad` that is created during the backwards pass.
+
+Why 512 bytes? This is smallest block size that the caching allocator will allocate - [link](https://zdevito.github.io/2022/08/04/cuda-caching-allocator.html#allocation-rounding), so a tensor of size 512 bytes or less will result in an allocation of 512 bytes.
+
+### Cuda Context
 
 Another large-ish source of memory usage is the cuda context. This is initialized as soon as your allocate your first a tensor to the gpu and takes up about 863MB. However this is not shown by `torch.cuda.memory_allocated()` or `torch.cuda.memory_reserved()`. But you will see it on `nvidia-smi`. 
 
