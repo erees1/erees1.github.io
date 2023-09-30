@@ -17,6 +17,7 @@ has_toc: true
   - [Other transformer operations](#other-transformer-operations)
   - [Cross entropy](#cross-entropy)
   - [Total peak memory](#total-peak-memory)
+- [Other considerations](#other-considerations)
 - [Appendix: some other uses of memory](#side-note-some-other-uses-of-memory)
   - [CuBLAS workspace](#cublas-workspace)
   - [Cuda Context](#cuda-context)
@@ -329,6 +330,16 @@ I plot a comparison of estimated to actual peak memory usage for various GPT2 mo
 <p>Comparison of estimated to actual peak memory usage for GPT2 small, medium and large.</p>
 </div>
 
+## Other considerations
+This post has focussed on a rather vanilla implementation and there exist a number of tricks aimed at reducing memory footprint which I haven't covered here. These include:
+- Gradient checkpointing (save memory by recomputing some activations during the backwards pass)
+- Tensor parallel (reduce the memory usage of the activations and weights by splitting the model across multiple gpus)
+- Zero redundancy optimizer (reduce the memory usage of optimizer states by sharding these tensors across multiple gpus)
+- FSDP (reduce the memory usage by sharding parameters, optimizer states, gradients activations across multiple gpus)
+
+I may come back to cover these in a future post.
+
+Thanks to Sam for reviewing an earlier draft of this post and providing some helpful feedback.
 
 ## Appendix: some other uses of memory 
 
@@ -383,14 +394,6 @@ Shows 0 bytes allocated before and after creating the empty tensor. But running 
 +-------------------------------+----------------------+----------------------+
 ```
 
-## Other considerations
-This post has focussed on a rather vanilla implementation and there exist a number of tricks aimed at reducing memory footprint which I haven't covered here. These include:
-- Gradient checkpointing (save memory by recomputing some activations during the backwards pass)
-- Tensor parallel (reduce the memory usage of the activations and weights by splitting the model across multiple gpus)
-- Zero redundancy optimizer (reduce the memory usage of optimizer states by sharding these tensors across multiple gpus)
-- FSDP (reduce the memory usage by sharding parameters, optimizer states, gradients activations across multiple gpus)
-
-I may come back to cover these in a future post.
 
 {% endcapture %}
 
