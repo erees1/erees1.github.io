@@ -1,6 +1,6 @@
 @use "sass:map";
 $demo-page-max-width: 1150px;
-$page-max-width: 1300px;
+$page-max-width: 1200px;
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -594,7 +594,7 @@ p.post-excerpt {
   margin-bottom: 40px;
   padding-bottom: 0px;
   padding-top: 40px;
-  // text-align: center;
+  text-align: center;
   font-family: var(--header-font);
   h1 {
     font-size: 1.7em;
@@ -602,6 +602,9 @@ p.post-excerpt {
     margin-bottom: 10px;
     color: var(--text0);
   }
+}
+#post .post-info-wrapper {
+  color: var(--text2)
 }
 #post {
   img {

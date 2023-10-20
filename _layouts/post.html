@@ -3,40 +3,42 @@ layout: default
 ---
 
 <article id="post">
-  <div class="blog-title">
-    <div class="row justify-content-md-center">
-      <div class="col-xl-1 order-3"></div>
-      {% if page.has_toc == true %}
-      <div class="col-lg order-1 order-xl-1">
-        <div class="TOC"></div>
-      </div>
-      {% endif %}
-      <div class="col-lg-8 order-2 order-xl-2">
-        <h1>{{ page.title }}</h1>
-        <div class="post-info-wrapper" id="add_after_me">
-          <p class="italic">
-            <span class="bold">
-              {{ page.date | date: "%B %-d, %Y"}} · {{ page.author }}
-            </span>
-          </p>
-        </div>
-        {% if page.has_toc == true %}
+  <div class="container-md">
+    <div class="blog-title">
+      <div class="row justify-content-md-center">
         <div class="col-xl-1 order-3"></div>
+        {% if page.has_toc == true %}
+        <div class="col-lg order-1 order-xl-1">
+          <div class="TOC"></div>
+        </div>
         {% endif %}
+        <div class="col-lg-8 order-2 order-xl-2">
+          <h1>{{ page.title }}</h1>
+          <div class="post-info-wrapper" id="add_after_me">
+            <p class="italic">
+              <span class="bold">
+                {{ page.date | date: "%B %-d, %Y"}} · {{ page.author }}
+              </span>
+            </p>
+          </div>
+          {% if page.has_toc == true %}
+          <div class="col-xl-1 order-3"></div>
+          {% endif %}
+        </div>
       </div>
     </div>
-  </div>
-  {% if page.has_toc == false %}
-  <div class="row justify-content-md-center">
-    <div class="col-lg-8" markdown="1">{{ content }}</div>
-  </div>
-  {% else %} {{ content }} {% endif %}
-  <div class="btp">
-    <p>
-      <a href="{{ site.baseurl }}/">
-        <i class="fa-solid fa-arrow-left"></i>
-        Back to posts
-      </a>
-    </p>
+    {% if page.has_toc == false %}
+    <div class="row justify-content-md-center">
+      <div class="col-lg-8" markdown="1">{{ content }}</div>
+    </div>
+    {% else %} {{ content }} {% endif %}
+    <div class="btp">
+      <p>
+        <a href="{{ site.baseurl }}/">
+          <i class="fa-solid fa-arrow-left"></i>
+          Back to posts
+        </a>
+      </p>
+    </div>
   </div>
 </article>
