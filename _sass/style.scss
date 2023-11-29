@@ -26,7 +26,7 @@ $paragraph-spacing: 1rem;
   --header-font: "Crimson Pro", serif;
   --ui-font: "Lato", "-apple-system", "sans-serif",
     sans-serif;
-  --toc-font: var(--ui-font);
+  --toc-font: var(--body-font);
 }
 
 /*---------------------------------------------
@@ -388,7 +388,7 @@ footer {
   height: 70px;
   width: 100%;
   overflow: hidden;
-  font-family: var(--header-font);
+  font-family: var(--ui-font);
   font-size: 0.7em;
   a {
     text-decoration: none;
@@ -499,7 +499,8 @@ p.post-excerpt {
   border-radius: var(--border-radius);
   display: block;
   margin-bottom: 30px;
-  font-size: 0.7em;
+  font-size: 0.8em;
+  // border-right: 1px solid var(--accent2);
 
   font-family: var(--toc-font);
   a {
@@ -702,7 +703,7 @@ img.img-page-icon {
   margin: 0px 20px 20px 0px;
   position: sticky;
   top: 117px;
-  font-family: var(--ui-font);
+  font-family: var(--header-font);
   font-size: 0.9em;
 }
 .user-info {
