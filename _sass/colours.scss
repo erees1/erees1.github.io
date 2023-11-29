@@ -6,8 +6,7 @@
   --background1-light: rgb(255, 255, 255); /* unused */
   --background2-light: rgb(245, 245, 242); /* blockquote and card */
   --background3-light: var(--background2-light); /* navbar */
-  --text0-light: rgb(64, 64, 62);
-  --text1-light: rgba(0,0,0,0.8);
+  --text1-light: rgba(0,0,0,0.8); /* body text */
   --text2-light: rgba(0,0,0,0.6); /* subtitles */
   --text3-light: #0dcbd1; /* contrast headings */
   --text4-light: #5f9b65; /* links */
@@ -19,13 +18,13 @@
   --accent3-light: #5ceaff; /* timeline */
   --element1-light: #e4dada;
   --code-bg-light: var(--background2-light);
+  --code-inline-light: #555555;
   --border-light: rgb(238, 238, 238);
 
   --background0-dark: #21242b;
   --background1-dark: #21242b;
   --background2-dark: #272b34; /* blockquote */
   --background3-dark: #1a1e24;
-  --text0-dark: rgb(243, 243, 243);
   --text1-dark: #ddddde;
   --text2-dark: #a9a9a9; /* subtitles */
   --text3-dark: var(--text3-light); /* contrast headings */
@@ -38,6 +37,7 @@
   --accent3-dark: var(--accent3-light);
   --element1-dark: #4d4d4d;
   --code-bg-dark: #32363f;
+  --code-inline-dark: #c5c2c2;
   --border-dark: #272b3493;
 }
 
@@ -47,7 +47,6 @@
   --background1: var(--background1-dark);
   --background2: var(--background2-dark);
   --background3: var(--background3-dark);
-  --text0: var(--text0-dark);
   --text1: var(--text1-dark);
   --text2: var(--text2-dark);
   --text3: var(--text3-dark);
@@ -60,6 +59,7 @@
   --accent3: var(--accent3-dark);
   --element1: var(--element1-dark);
   --code-bg: var(--code-bg-dark);
+  --code-inline: var(--code-inline-dark);
   --border: var(--border-dark);
 }
 [color-scheme="light"] {
@@ -68,7 +68,6 @@
   --background1: var(--background1-light);
   --background2: var(--background2-light);
   --background3: var(--background3-light);
-  --text0: var(--text0-light);
   --text1: var(--text1-light);
   --text2: var(--text2-light);
   --text3: var(--text3-light);
@@ -81,5 +80,6 @@
   --accent3: var(--accent3-light);
   --element1: var(--element1-light);
   --code-bg: var(--code-bg-light);
+  --code-inline: var(--code-inline-light);
   --border: var(--border-light);
 }

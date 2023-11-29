@@ -16,17 +16,17 @@ $container-max-widths: (
   xl: $page-max-width,
   xxl: 1600px,
 );
-$paragraph-spacing: 1em;
+$paragraph-spacing: 1rem;
 
 @import "vendor/bootstrap/stylesheets/bootstrap";
 
 :root {
   --border-radius: 0px;
-  --body-font: "Optima","Lora", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Helvetica Neue", Arial, sans-serif;
-  --header-font: "Lato", "-apple-system", "Helvetica Neue", Helvetica, "Roboto",
+  --body-font: "Crimson Pro", serif;
+  --header-font: "Crimson Pro", serif;
+  --ui-font: "Lato", "-apple-system", "sans-serif",
     sans-serif;
-  --toc-font: var(--header-font);
+  --toc-font: var(--ui-font);
 }
 
 /*---------------------------------------------
@@ -39,7 +39,7 @@ html {
 body {
   font-family: var(--body-font);
   // -webkit-font-smoothing: antialiased;
-  font-size: 17px;
+  font-size: 19px;
   color: var(--text1);
   margin: 100px 0 100px; /* must be larger than footer size */
   background-color: var(--background0);
@@ -109,19 +109,21 @@ h1 {
   font-size: 1.6em;
 }
 h2 {
-  font-size: 1.4em;
+  font-size: 1.5em;
 }
 h3 {
   font-size: 1.2em;
+  font-style: italic;
 }
 h4 {
   font-size: inherit;
+  font-style: italic;
 }
 h1,
 h2,
 h3,
 h4 {
-  margin-top: 1.3em;
+  margin-top: 1.4em;
   margin-bottom: 0.6em;
 }
 h2[id]::before,
@@ -140,9 +142,12 @@ ol {
 p {
   font-size: inherit;
   line-height: 1.6em;
+  margin-top: 0;
+  margin-bottom: $paragraph-spacing;
 }
 li {
-  margin-bottom: $paragraph-spacing / 2;
+  margin-top: 0;
+  margin-bottom: $paragraph-spacing;
 }
 .subtitle {
   color: var(--text2);
@@ -233,14 +238,13 @@ pre {
 pre.highlight {
   border-radius: var(--border-radius);
   padding: 20px;
-  // padding-top: 20px;
-  // padding-bottom: 20px;
 }
 code.highlighter-rouge {
-  background-color: var(--code-bg);
-  color: var(--text1);
-  padding: 1px 2px;
-  border-radius: 5px;
+  // background-color: var(--code-bg);
+  color: var(--code-inline);
+  font-size: 0.76em;
+  // padding: 1px 2px;
+  // border-radius: 5px;
 }
 div.highlighter-rouge {
   margin-bottom: $paragraph-spacing;
@@ -312,9 +316,10 @@ blockquote p:last-child {
   background-color: var(--background0);
   margin-bottom: 0px;
   border: 0px;
+  font-size: 0.9em;
   border-top: 5px solid var(--background0);
   border-bottom: 1px solid var(--background0);
-  font-family: var(--header-font);
+  font-family: var(--ui-font);
   padding-left: 1rem;
   padding-right: 1rem;
   .navbar-nav .nav-link {
@@ -438,11 +443,6 @@ html {
   margin-bottom: 30px;
   padding-bottom: 30px;
 
-  // padding: 0.8em 0.8em 0.8em 0.8em;
-  // border: 1px solid var(--accent2);
-  // border-radius: var(--border-radius);
-  // box-shadow: rgba(0, 0, 0, 0.011) 0px 2px 0px;
-
   color: var(--text1);
   width: 100%;
 
@@ -458,6 +458,7 @@ html {
     font-size: 1.2em;
     margin-top: 0em;
     margin-bottom: 0.7em;
+    font-style: normal;
   }
 }
 .post-img-container {
@@ -498,8 +499,7 @@ p.post-excerpt {
   border-radius: var(--border-radius);
   display: block;
   margin-bottom: 30px;
-  // border: 1px solid var(--border);
-  font-size: 0.8em;
+  font-size: 0.7em;
 
   font-family: var(--toc-font);
   a {
@@ -524,6 +524,7 @@ p.post-excerpt {
     padding-bottom: 0.5em;
     font-size: 1.2em;
     font-family: inherit;
+    font-style: normal;
   }
   .active {
     color: var(--text1);
@@ -605,7 +606,7 @@ p.post-excerpt {
     font-size: 1.7em;
     margin-top: 0px;
     margin-bottom: 10px;
-    color: var(--text0);
+    color: var(--text1);
   }
 }
 #post .post-info-wrapper {
@@ -701,19 +702,16 @@ img.img-page-icon {
   margin: 0px 20px 20px 0px;
   position: sticky;
   top: 117px;
+  font-family: var(--ui-font);
+  font-size: 0.9em;
 }
 .user-info {
   margin-top: 1em;
   .user-name {
     font-size: 1.2em;
-    font-family: var(--header-font);
-  }
-  .user-desc {
-    font-family: var(--header-font);
   }
 }
 .sidebar-social ul {
-  font-family: var(--header-font);
   font-size: 0.85em;
   margin-top: 10px;
   list-style: none;
