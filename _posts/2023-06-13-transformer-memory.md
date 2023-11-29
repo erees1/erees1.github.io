@@ -39,9 +39,7 @@ Pytorch uses a caching allocator to manage gpu memory. The high level aim of the
 
 ### Allocated vs reserved memory
 
-It is important to distinguish between allocated and reserved memory. Allocated memory comprises memory actually being used by tensors that PyTorch is maintaining a reference too, whereas reserved memory is the total memory currently being manged by the caching allocator. Thus when a tensor is garbage collected the allocated memory will decrease but the reserved memory will not.
-
-We can view these values using the following PyTorch functions:
+It is important to distinguish between allocated and reserved memory. Allocated memory comprises memory actually being used by tensors that PyTorch is maintaining a reference too, whereas reserved memory is the total memory currently being manged by the caching allocator. Thus when a tensor is garbage collected the allocated memory will decrease but the reserved memory will not. We can view these values using the following PyTorch functions:
 
 ```python
 torch.cuda.memory_allocated()
@@ -63,12 +61,12 @@ Reasoning about reserved memory is beyond the scope of this post so I will only 
 
 Training a transformer with $N_{\text{param}}$ parameters and $N_{\text{buf}}$ additional buffer elements with automatic mixed precision means persisting the following tensors in memory (in bytes).
 
-#### At the start of the forward pass:
+At the start of the forward pass:
 - FP32 copies of the weights of your model, $M_{\text{model}}=4N_{\text{param}} + 4N_{\text{buf}}$ (fp32 implies 4 bytes per element)
 - FP32 copies of optimizer states, 2 for adam, $M_{\text{optimizer}}=8N_{\text{param}}$
 - Copies of your data and targets, assuming int64 inputs (as in nanoGPT), $M_{\text{data}}= 2 \times \text{Bsz} \times T \times 8$ (int64 implies 8 bytes per element)
 
-#### After the backwards pass (and possibly persisting):
+After the backwards pass (and possibly persisting):
 - FP32 copies of the gradients size, $M_{\text{gradients}}= 4N_{\text{param}}$
 
 Note that whether or not the gradients exist only between the backwards pass and the call to `optimizer.step()` depends on a number of other things:
@@ -160,7 +158,7 @@ The table below shows a comparison to the bytes seen on the segment above and my
 
 <div class="subtitle">
 <p><sup>1</sup> summing the bytes in `adamw.py:114._init_group` blocks in the snapshot does give us exact agreement so there are some other (small) tensors being allocated by the optimizer.</p>
-<p><sup>2</sup> See <a href="#cublas-workspace">CuBLAS workspace</a> section below.</p>
+<p><sup>2</sup> see <a href="#cublas-workspace">CuBLAS workspace</a> section below.</p>
 
 <p><sup>3</sup> actual as reported by <code class="language-plaintext highlighter-rouge">torch.cuda.memory_allocated()</code></p>
 </div>
