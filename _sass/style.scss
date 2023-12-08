@@ -240,11 +240,9 @@ pre.highlight {
   padding: 20px;
 }
 code.highlighter-rouge {
-  // background-color: var(--code-bg);
   color: var(--code-inline);
-  font-size: 0.76em;
-  // padding: 1px 2px;
-  // border-radius: 5px;
+  font-size: 0.85em;
+  padding: 3px;
 }
 div.highlighter-rouge {
   margin-bottom: $paragraph-spacing;
