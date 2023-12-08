@@ -8,6 +8,7 @@ permalink: /books/
 # Books
 
 This is an incomplete list of books that I've read in rough reverse chronological order. I've ripped off my old colleague [Sam](https://samringer.github.io/books/) who in turned ripped off [Patrick Collinson](https://patrickcollison.com/bookshelf) by colouring books I thought exceptional in <span style="color:green">green</span> and those I considered good in <span style="color:HSL(204, 62%, 47%)">blue</span>.
+- **Chip War: The Fight for the World's Most Critical Technology** - Chris Miller
 - <span style="color:HSL(204, 62%, 47%)">**Replacing Guilt** - Nate Soares</span>
 - **A Philosophy of Software Design** - John Ousterhout
 - <span style="color:HSL(204, 62%, 47%)">**So Good They Can't Ignore You** - Cal Newport</span>
