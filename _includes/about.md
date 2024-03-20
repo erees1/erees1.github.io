@@ -2,4 +2,4 @@ Hello! I'm Ed. I currently work as a Software Engineer at [Apollo Research](http
 
 Before getting into AI Safety I was a Senior Machine Learning Engineer at [Speechmatics](https://www.speechmatics.com) where I led a team working on representation learning in the audio domain. We think we have the best speech recognition in the world (you can try it out free [here](https://portal.speechmatics.com/signup)).
 
-If you want to get in touch you can reach me at edward [dot] r [dot] rees [at] gmail [dot] [com].
+If you want to get in touch you can reach me at edward.r.rees[at]gmail.com.

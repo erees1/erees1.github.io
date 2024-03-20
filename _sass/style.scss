@@ -424,12 +424,6 @@ html {
 #post-list {
   padding-top: 14px;
   // no underlines on hover on a links
-  a {
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: none;
-  }
   margin-top: 10px;
 }
 
@@ -438,16 +432,11 @@ html {
   // bottom border
   border-bottom: 1px solid var(--accent2);
   margin-bottom: 30px;
-  padding-bottom: 30px;
 
   color: var(--text1);
   width: 100%;
-
   p {
     font-size: 0.9em;
-    margin-bottom: 0em;
-    margin-top: 0em;
-    color: var(--text2);
   }
 
   h4,
@@ -461,6 +450,10 @@ html {
   .paper-authors {
     font-style: italic;
     margin-bottom: 0.5em;
+  }
+
+  .card-title > a {
+    color: var(--text1);
   }
 }
 .post-img-container {
@@ -476,12 +469,8 @@ html {
   height: 100%;
   position: relative;
 }
-.post-meta {
-  bottom: 0;
-  position: absolute;
-}
 p.post-excerpt {
-  margin-bottom: 2.5em;
+  margin-bottom: 0.5em;
 }
 @include media-breakpoint-down(md) {
   .post-area {
