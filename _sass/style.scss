@@ -22,10 +22,9 @@ $paragraph-spacing: 1rem;
 
 :root {
   --border-radius: 0px;
-  --body-font: "Crimson Pro", serif;
-  --header-font: "Crimson Pro", serif;
-  --ui-font: "Lato", "-apple-system", "sans-serif",
-    sans-serif;
+  --body-font: '-apple-system', "system-ui", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", sans-serif;
+  --header-font: var(--body-font);
+  --ui-font: var(--body-font);
   --toc-font: var(--body-font);
 }
 
@@ -39,7 +38,7 @@ html {
 body {
   font-family: var(--body-font);
   // -webkit-font-smoothing: antialiased;
-  font-size: 19px;
+  font-size: 16px;
   color: var(--text1);
   margin: 100px 0 100px; /* must be larger than footer size */
   background-color: var(--background0);
@@ -232,7 +231,7 @@ table td {
       Code start
   --*/
 pre {
-  font-size: 0.75em;
+  font-size: 0.85em;
   line-height: inherit;
 }
 pre.highlight {
@@ -241,7 +240,7 @@ pre.highlight {
 }
 code.highlighter-rouge {
   color: var(--code-inline);
-  font-size: 0.85em;
+  font-size: 0.95em;
   padding: 3px;
 }
 div.highlighter-rouge {
@@ -331,7 +330,7 @@ blockquote p:last-child {
     margin: 0px 26px 0px 0px;
     a {
       color: var(--text2);
-      font-size: 0.7em;
+      font-size: 0.85em;
       text-transform: uppercase;
       line-height: 1em;
       padding-bottom: 6px;
@@ -455,8 +454,13 @@ html {
   h3 {
     font-size: 1.2em;
     margin-top: 0em;
-    margin-bottom: 0.7em;
+    margin-bottom: 0.3em;
     font-style: normal;
+  }
+
+  .paper-authors {
+    font-style: italic;
+    margin-bottom: 0.5em;
   }
 }
 .post-img-container {
@@ -488,6 +492,10 @@ p.post-excerpt {
       margin-top: 1em;
     }
   }
+}
+
+#about-section {
+  margin-bottom: 50px;
 }
 /*---------------------------------------------
 					Post Page Start
@@ -634,57 +642,6 @@ p.post-excerpt {
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
-}
-/*---------------------------------------------
-					Projects Start
------------------------------------------------*/
-
-.unused-class {
-  display: none;
-}
-
-#portfolio-work .portfolio-content-extra {
-  div,
-  ul,
-  p,
-  h5 {
-    display: inline;
-  }
-  ul {
-    padding-left: 0;
-    list-style-type: none;
-  }
-  li {
-    padding-left: 0;
-    margin-top: 20px;
-  }
-}
-#portfolio-work .portfolio-content {
-  ul {
-    padding-left: 0;
-  }
-}
-#portfolio-work .portfolio-content > ul > li > .project-area {
-  padding: 0px 20px 20px 20px;
-  min-height: 150px;
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    margin-top: 0px;
-  }
-
-  p {
-    margin-top: 0px;
-  }
-}
-#portfolio-work div.non-demo-project-links {
-  display: inline-block;
-}
-
-.card {
-  background-color: var(--background2);
 }
 
 /*---------------------------------------------

@@ -1,46 +1,60 @@
 ---
-title: Posts
-layout: default
+title: Home
+layout: sidebar
 order: 1
 permalink: /
 ---
 
 <div class="block">
-  <article class="page-content" id="portfolio-work">
-    <h1>Posts</h1>
-    <div id="post-list">
-      {%- assign _posts = site.posts -%} {%- assign posts = _posts | sort:
-      'date' | reverse -%} {%- for post in site.posts %}
-      <a href="{{ post.url | prepend: site.baseurl }}">
-        <div class="post-area">
-          <div class="row">
-            <div
-              class="{% if post.image %} col-xl-8 col-lg-7 col-md-6 col-sm-12 order-2 order-md-1 {% else %} col-xl-12 col-lg-12 col-md-12 col-sm-12 {% endif %}">
-              <div class="post-info-container">
-                <h3 class="card-title">{{ post.title }}</h3>
-                <p class="post-excerpt">
-                  {{ post.content | truncatewords:60 | strip_html }}
-                </p>
-                <p class="subtitle post-meta">
-                  {{ post.date | date_to_long_string }}
-                </p>
+  <article class="page-content">
+
+    <!-- include the about.md and process to html -->
+    <div id="about-section">
+      {% capture about %}{% include about.md %}{% endcapture %}
+      {{ about | markdownify }}
+    </div>
+      <h2>Posts & Papers</h2>
+
+      <div id="post-list">
+        {%- assign _posts = site.posts -%} {%- assign posts = _posts | sort:
+        'date' | reverse -%} {%- for post in site.posts %}
+        <!-- if there is a out_url then use that otherwise use the post.url -->
+        {%- if post.out_url -%}
+        <a href="{{ post.out_url }}">
+          {%- else -%}
+          <a href="{{ post.url | prepend: site.baseurl }}">
+            {%- endif -%}
+            <div class="post-area">
+              <div class="row">
+                <div
+                  class="{% if post.image %} col-xl-8 col-lg-7 col-md-6 col-sm-12 order-2 order-md-1 {% else %} col-xl-12 col-lg-12 col-md-12 col-sm-12 {% endif %}">
+                  <div class="post-info-container">
+                    <h3 class="card-title">{{ post.title }}</h3>
+                    {%- if post.paper_authors -%}
+                    <p class="paper-authors">
+                      {{ post.paper_authors }}
+                    </p>
+                    {%- endif -%}
+                    <p class="post-excerpt">
+                      {{ post.content | truncatewords:60 | strip_html }}
+                    </p>
+                    <p class="subtitle post-meta">
+                      {{ post.date | date_to_long_string }}
+                    </p>
+                  </div>
+                </div>
+                {% if post.image %}
+                <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12 order-1 order-md-1">
+                  <div class="post-img-container">
+                    <img class="post-img" src="{{ post.image }}" alt="{{ post.title }}" />
+                  </div>
+                </div>
+                {% endif %}
               </div>
             </div>
-            {% if post.image %}
-            <div
-              class="col-xl-4 col-lg-5 col-md-6 col-sm-12 order-1 order-md-1">
-              <div class="post-img-container">
-                <img
-                  class="post-img"
-                  src="{{ post.image }}"
-                  alt="{{ post.title }}" />
-              </div>
-            </div>
-            {% endif %}
-          </div>
-        </div>
-      </a>
-      {% endfor -%}
+          </a>
+          {% endfor -%}
+      </div>
     </div>
   </article>
 </div>
