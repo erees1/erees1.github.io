@@ -7,5 +7,5 @@ link: https://www.speechmatics.com/
 order: 4
 logo: speechmatics.jpeg
 ---
-
-As before - with a particular focus on representation learning.
+- Focused on representation learning for speech, also worked on inference optimization
+- Led a team of 4 engineers

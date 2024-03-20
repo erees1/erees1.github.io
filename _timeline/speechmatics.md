@@ -7,5 +7,4 @@ link: https://www.speechmatics.com/
 order: 2
 logo: speechmatics.jpeg
 ---
-
-Internship in Speechmatics' Advanced Machine Learning Team (AML). Deep Learning research in the speech domain.
+- Internship in Speechmatics' Advanced Machine Learning Team (AML). Deep Learning research in the speech domain.

@@ -3,6 +3,9 @@ ul.timeline {
   position: relative;
   padding-left: 40px;
 }
+.timeline-heading {
+  padding-bottom: 8px;
+}
 ul.timeline:before {
   content: " ";
   background: var(--element1);
@@ -14,8 +17,17 @@ ul.timeline:before {
   z-index: 400;
 }
 ul.timeline > li {
-  margin: 20px 0;
-  padding-left: 20px;
+  margin: 10px 0;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+ul.timeline ul {
+  list-style-type: disc;
+  padding-left: 1.5em;
+  li {
+    margin-bottom: 0.25em;
+  }
 }
 ul.timeline > li:before {
   content: " ";

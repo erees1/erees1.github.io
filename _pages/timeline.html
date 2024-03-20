@@ -1,6 +1,6 @@
 ---
 layout: sidebar
-title: Timeline
+title: "Timeline / CV"
 order: 2
 permalink: /timeline/
 ---
@@ -21,7 +21,7 @@ permalink: /timeline/
               </a>
             </div>
             <div class="col-sm-10 col-9">
-              <div class="row">
+              <div class="row timeline-heading">
                 <div class="col-sm-7 col-12">
                   <a
                     target="_blank"
@@ -37,11 +37,10 @@ permalink: /timeline/
                   </div>
                 </div>
               </div>
-              <p>{{ item.content }}</p>
+              {{ item.content }}
             </div>
           </div>
         </li>
-
         {% endfor %}
       </ul>
     </div>

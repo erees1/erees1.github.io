@@ -7,4 +7,5 @@ link: https://www.ucl.ac.uk/aihealth-cdt/
 order: 3
 logo: ucl.png
 ---
-Started a PhD at UCL's CDT for AI Enabled Healthcare. Decided to move back to Speechmatics rather than stay in academia.
+- Started a PhD at UCL's CDT for AI Enabled Healthcare
+- Decided to move back to Speechmatics rather than stay in academia
