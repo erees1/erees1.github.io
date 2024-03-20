@@ -3,14 +3,14 @@ set -euo pipefail
 
 
 JEKYLL_ENV=production bundle exec jekyll build
-echo "-> Embedding Math"
-files=$(find _site -name "*.html")
+# echo "-> Embedding Math"
+# files=$(find _site -name "*.html")
 
-# convert each file with node and embed_math.js replacing the original
-for file in $files; do
-    utils/tex2chtml-page.js $file > output.html
-    mv output.html $file
-done
+# # convert each file with node and embed_math.js replacing the original
+# for file in $files; do
+#     utils/tex2chtml-page.js $file > output.html
+#     mv output.html $file
+# done
 
 echo "-> Purging CSS"
 npx purgecss -c utils/purgecss.config.js -o _site/assets/css
