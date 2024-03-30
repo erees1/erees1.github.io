@@ -8,6 +8,14 @@ permalink: /books/
 # Books
 
 This is an incomplete list of books that I've read in rough reverse chronological order. I've ripped off my old colleague [Sam](https://samringer.github.io/books/) who in turned ripped off [Patrick Collinson](https://patrickcollison.com/bookshelf) by colouring books I thought exceptional in <span style="color:green">green</span> and those I considered good in <span style="color:HSL(204, 62%, 47%)">blue</span>.
+- **Spy Line** - Len Deighton
+- <span style="color:green">**London Match** - Len Deighton</span>
+- <span style="color:green">**Mexico Set** - Len Deighton</span>
+- <span style="color:green">**Berlin Game** - Len Deighton</span>
+- <span style="color:HSL(204, 62%, 47%)">**Enigma** - Robert Harris</span>
+- <span style="color:HSL(204, 62%, 47%)">**Tomorrow, And Tomorrow, And Tomorrow** - Gabrielle Zevin </span>
+- <span style="color:HSL(204, 62%, 47%)">**V2** - Robert Harris</span>
+- <span style="color:HSL(204, 62%, 47%)">**Funeral in Berlin** - Len Deighton</span>
 - **Chip War: The Fight for the World's Most Critical Technology** - Chris Miller
 - <span style="color:HSL(204, 62%, 47%)">**Replacing Guilt** - Nate Soares</span>
 - **A Philosophy of Software Design** - John Ousterhout

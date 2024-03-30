@@ -2,7 +2,7 @@
 set -euxo pipefail
 
 web_books_path=_pages/books.md
-obsidian_books_path="$HOME/git/md-notes/Books.md"
+obsidian_books_path="$HOME/obsidian/md-notes/Books.md"
 
 cat > $web_books_path.tmp << EOF
 ---
