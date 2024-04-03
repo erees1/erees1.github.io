@@ -35,7 +35,7 @@ permalink: /:title/
 # User information
 title: Edward Rees
 name: "Edward Rees"
-avatar_path: "/assets/img/site/mountain_cropped.JPG"
+avatar_path: "/assets/img/site/headshot.jpg"
 job_title: "Machine Learning Engineer"
 github_url: "https://github.com/erees1"
 linkedin_url: "https://linkedin.com/in/Rees"
