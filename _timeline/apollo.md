@@ -2,7 +2,7 @@
 title: Apollo Research
 subtitle: 'Software Engineer'
 start: Jan 2024
-end: Present
+end: Apr 2024
 link: https://www.apolloresearch.ai/
 order: 8
 logo: apollo.jpeg

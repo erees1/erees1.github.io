@@ -1,11 +1,9 @@
 ---
 title: Anthropic
-subtitle: "External Research Contractor"
-start: Sep 2023
-end: Feb 2024
+subtitle: "Member of Technical Staff"
+start: Apr 2024
+end: Present
 link: https://www.anthropic.com/
-order: 7
+order: 9
 logo: anthropic.webp 
 ---
-- Contracting with Anthropic as part of the MATS extension programme
-- Project as per SERI MATS below
