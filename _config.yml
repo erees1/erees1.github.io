@@ -1,5 +1,6 @@
 exclude:
-  - "/bundle/"
+  - "vendor/bundle/"
+  - "node_modules/"
   - "Gemfile"
   - "Gemfile.lock"
   - "README.md"
@@ -29,7 +30,7 @@ sass:
 # Site settings
 url: "https://erees.dev" # the base hostname & protocol for your site
 baseurl: ""
-
+repository: erees1/erees1.github.io
 permalink: /:title/
 
 # User information

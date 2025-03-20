@@ -20,9 +20,10 @@ bootstrap: $(BOOTSTRAP_DIR)
 
 $(BOOTSTRAP_DIR): bundle
 	mkdir -p $(BOOTSTRAP_DIR)
-	cp -r $(BUNDLE_DIR)/ruby/2.7.0/gems/bootstrap-5.0.2/assets/stylesheets $(BOOTSTRAP_DIR)
+	cp -r $(BUNDLE_DIR)/ruby/3.4.0/gems/bootstrap-5.0.2/assets/stylesheets $(BOOTSTRAP_DIR)
 
 bundle: Gemfile.lock Gemfile
+	bundle update --bundler
 	bundle config set --local path "$(BUNDLE_DIR)"
 	bundle install
 

@@ -8,3 +8,6 @@ gem 'bootstrap', '~> 5.0.1'
 gem "webrick"
 gem "jekyll-sitemap"
 gem 'jekyll-redirect-from'
+gem "bigdecimal"
+gem "base64"
+gem "kramdown-parser-gfm"
