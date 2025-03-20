@@ -32,9 +32,10 @@ permalink: /timeline/
                   <div class="timeline-subtitle">{{ item.subtitle }}</div>
                 </div>
                 <div class="col-sm-5 col-12">
-                  <div class="timeline-date">
+                  <div class="timeline-date" data-start="{{ item.start }}" data-end="{{ item.end }}">
                     {{ item.start }} - {{ item.end }}
                   </div>
+                  <div class="timeline-duration"></div>
                 </div>
               </div>
               {{ item.content }}
@@ -46,3 +47,55 @@ permalink: /timeline/
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    function parseDate(dateStr) {
+        if (dateStr.toLowerCase() === 'present') {
+            return new Date();
+        }
+        const [month, year] = dateStr.split(' ');
+        const monthMap = {
+            'jan': 0, 'feb': 1, 'mar': 2, 'apr': 3, 'may': 4, 'jun': 5,
+            'jul': 6, 'aug': 7, 'sep': 8, 'oct': 9, 'nov': 10, 'dec': 11
+        };
+        return new Date(parseInt(year), monthMap[month.toLowerCase()]);
+    }
+
+    function calculateDuration(startDate, endDate) {
+        let end = parseDate(endDate);
+        let start = parseDate(startDate);
+
+        let years = end.getFullYear() - start.getFullYear();
+        let months = end.getMonth() - start.getMonth();
+
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        let duration = '';
+        if (years > 0) {
+            duration += years + (years === 1 ? ' year' : ' years');
+            if (months > 0) {
+                duration += ' ';
+            }
+        }
+        if (months > 0) {
+            duration += months + (months === 1 ? ' month' : ' months');
+        }
+
+        return duration || '< 1 month';
+    }
+
+    const timelineItems = document.querySelectorAll('.timeline-date');
+
+    timelineItems.forEach(item => {
+        const startDate = item.getAttribute('data-start');
+        const endDate = item.getAttribute('data-end');
+        const duration = calculateDuration(startDate, endDate);
+        const durationDiv = item.parentNode.querySelector('.timeline-duration');
+        durationDiv.textContent = duration;
+    });
+});
+</script>

@@ -65,10 +65,13 @@ a.timeline-title:hover {
 .timeline-title:hover {
   color: inherit;
 }
-.timeline-subtitle {
+.timeline-subtitle, .timeline-duration {
   font-style: italic;
   color: var(--text2);
   font-family: var(--header-font);
+}
+.timeline-duration {
+    text-align: right;
 }
 .timeline-date {
   text-align: right;
